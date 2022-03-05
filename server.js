@@ -22,6 +22,8 @@ app.use(require('./config/checkToken'));
 // API routes here
 app.use('/api/users', require('./routes/api/users'));
 
+const ensureLoggedIn = require('./config/ensureLoggedIn');
+
 // "Catch all" route
 app.get('/*', function(req, res) {
   res.sendFile(path.join(__dirname, 'build', 'index.html'));
