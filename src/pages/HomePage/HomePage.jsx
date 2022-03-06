@@ -1,6 +1,7 @@
 import './HomePage.css'
 import SearchBar from '../../components/SearchBar/SearchBar'
 import DisplayResults from '../../components/DisplayResults/DisplayResults'
+import * as booksAPI from '../../utilities/books-api';
 import { useState, useEffect } from 'react';
 
 export default function HomePage() {
@@ -12,16 +13,23 @@ export default function HomePage() {
       method: 'GET'
     })
     .then(response => response.json())
-    .then(result => setQueryResults(result.items))
+    .then(result => {
+      console.log(result)
+      setQueryResults(result.items)
+    });
     console.log('setResults')
   }
 
+    async function addBook(newBook){
+      const book = await booksAPI.addNewBook(newBook)
+      console.log('homepage')
+    }
 
   return (
     <>
     <h1>HomePage</h1>
       <SearchBar searchForBooks={searchForBooks}/>
-      <DisplayResults queryResults={queryResults} />
+      <DisplayResults queryResults={queryResults} addBook={addBook} />
     </>
   );
 }

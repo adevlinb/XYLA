@@ -18,11 +18,12 @@ app.use(express.static(path.join(__dirname, 'build')));
 
 //middleware to verfiy the token and assign the user object to the request obj.
 app.use(require('./config/checkToken'));
+const ensureLoggedIn = require('./config/ensureLoggedIn');
 
 // API routes here
 app.use('/api/users', require('./routes/api/users'));
+app.use('/api/books', require('./routes/api/books'));
 
-const ensureLoggedIn = require('./config/ensureLoggedIn');
 
 // "Catch all" route
 app.get('/*', function(req, res) {
