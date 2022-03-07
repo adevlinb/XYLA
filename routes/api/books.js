@@ -5,7 +5,7 @@ const ensureLoggedIn = require('../../config/ensureLoggedIn')
 
 
 
-// POST /api/users/check-token
+// POST /api/books/add
 router.post('/add', ensureLoggedIn, booksCtrl.addBook);
 
 module.exports = router;

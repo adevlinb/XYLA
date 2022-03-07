@@ -1,27 +1,10 @@
-import { useState } from 'react'
 
-export default function DisplayResults({ book, addBook }) {
-    // const [formData, setFormData] = useState({
-    //     Title: '',
-    //     Authors: [],
-    //     Subjects: [],
-    //     Publisher: '',
-    //     isbnNum: 0,
-    //     pageCount: 0,
-    //     description: '',
-    //     thumbnail: '',
-    // })
 
-    // function handleChange(evt){
-    //     console.log('formset')
-    //     setFormData({ ...formData, [evt.target.name]: evt.target.value });
-        
-    // }
+export default function DisplayResultsItem({ book, addBook }) {
 
     function handleBook() {
-        let newBook = "book"
-        console.log(addBook)
-        addBook(newBook)
+        console.log(book)
+        addBook(book)
     }
 
     return (
@@ -34,7 +17,11 @@ export default function DisplayResults({ book, addBook }) {
                 <p name="isbnNum">{book.volumeInfo.industryIdentifiers[0].identifier}</p>
                 <p name="rating">{book.volumeInfo.averageRating}</p>
                 <p name="description">{book.volumeInfo.description}</p>
-                <img src={`${book.volumeInfo.imageLinks.thumbnail ? book.volumeInfo.imageLinks.thumbnail : "http://i.imgur.com/J5LVHEL.jpg"}`} alt={`${book.volumeInfo.title}`} name="thumbnail" value={`${book.volumeInfo.imageLinks.thumbnail}`} />
+                {book.volumeInfo.imageLinks.thumbnail ?
+                    <img src={`${book.volumeInfo.imageLinks.thumbnail }`} alt={`${book.volumeInfo.title}`} name="thumbnail"/>
+                    :
+                    <img src="http://i.imgur.com/J5LVHEL.jpg" alt={`${book.volumeInfo.title}`} name="thumbnail"/>
+                }
                 <button onClick={handleBook} type="submit">Add Book</button>
        
         </>

@@ -2,8 +2,7 @@ import sendRequest from './send-request';
 
 const BASE_URL = '/api/books';
 
-// Retrieve an unpaid order for the logged in user
+//send request to server to add (new)Book to bookshelf 
 export function addNewBook(book) {
-    console.log('books-api')
     return sendRequest(`${BASE_URL}/add`, 'POST', book);
 }

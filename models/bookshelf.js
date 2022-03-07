@@ -2,23 +2,62 @@ const mongoose = require('mongoose');
 const user = require('./user');
 const Schema = mongoose.Schema;
 
+const librarySchema = new Schema ({
+    book: {type: Schema.Types.ObjectId, ref: 'book'},
+    currentlyReading: {
+        type: Boolean, 
+        default: false, 
+        startDate: {type: Date}
+        },
+    completed: { 
+        type: Boolean,
+        default: false, 
+        endDate: { type: Date }
+        }
+})
+
+const recommendationSchema = new Schema({
+    recommendation: {type: Schema.Types.ObjectId, ref: 'Book'},
+    personRecommending: { type: Schema.Types.ObjectId, ref: 'User' }
+})
+
 const bookshelfSchema = new Schema({
-    library: [{ type: Mongoose.Schema.Types.ObjectId, 
-                ref: 'Book', 
-                currentlyReading: false, 
-                completed: false,
-                startDate: {type: Date},
-                endDate: {type: Date},
-            }],
-    recommendations: [{ type: Mongoose.Schema.Types.ObjectId, 
-                        ref: 'Book',
-                        personRecommending: user._id,
-                    }],
-    favorites: [{ type: Mongoose.Schema.Types.ObjectId, 
-                  ref: 'Book' 
-                }],
-    userId: user._id,
+    userId: { type: Schema.Types.ObjectId, ref: 'User' },
+    library: [librarySchema],
+    recommendations: [recommendationSchema],
+    user: {type: String, default: "hi im here"},
+    completed: {
+        type: Boolean,
+        default: false,
+        endDate: { type: Date }
+    }
+    // user: { type: Schema.Types.ObjectId, ref: 'User' }
 }, {timestamps: true});
 
 
+// bookshelfSchema.statics.addBookToShelf = async function (bookId) {
+//     const shelf = this;
+//     // Check if book already on shelf
+//     console.log(this.library)
+//     const book = this.library.find(book => book._id.equals(bookId));
+//     if (book) {
+//         console.log(book, "addbook")
+//         console.log('bookshelf')
+//         return;
+//     } else {
+//         const book = await mongoose.model('Book').findById(bookId);
+//         console.log("add new book")
+//         shelf[0].library.push({ book });
+//     }
+//     return shelf.save();
+// };
+
+
 module.exports = mongoose.model('Bookshelf', bookshelfSchema);
+
+
+// const bookshelfSchema = new Schema({
+//     library: [librarySchema],
+//     recommendations: [recommendationSchema],
+//     user: { type: Schema.Types.ObjectId, ref: 'User' }
+// }, { timestamps: true });
