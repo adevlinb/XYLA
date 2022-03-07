@@ -28,9 +28,9 @@ export default function HomePage() {
 
     async function addBook(newBook){
       const books = await booksAPI.addNewBook(newBook)
-      const shelf = books[0].library
-      console.log(shelf)
-      setLibrary(shelf)
+      // const shelf = books[0].library
+      console.log(books.library)
+      setLibrary(books.library)
     }
 
   return (
