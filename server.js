@@ -4,6 +4,7 @@ const favicon = require('serve-favicon');
 const logger = require('morgan');
 const router = require('./routes/api/users');
 
+
 // Always require and configure neat the top
 require('dotenv').config();
 // Connect to the database (after the dotenv)

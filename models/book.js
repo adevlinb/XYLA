@@ -7,7 +7,7 @@ const bookSchema = new Schema({
     subjects: [],
     publishers: { type: String, default: 'Information Not Available'},
     pageCount: { type: Number, default: 0},
-    isbnNum: "",
+    isbnNum: {type: String, default: ""},
     rating: {type: Number, default: 0},
     description: { type: String, default: 'Information Not Available'},
     thumbnail: { type: String, default: "http://i.imgur.com/J5LVHEL.jpg"}
