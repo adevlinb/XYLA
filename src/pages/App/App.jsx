@@ -18,7 +18,7 @@ export default function App() {
             <Routes>
               {/* Route components in here */}
               <Route path="/home" element={<HomePage />} />
-              <Route path="/orders" element={<OrderHistoryPage />} />
+              {/* <Route path="/orders" element={<OrderHistoryPage />} /> */}
               {/* redirect to /orders/new if path in address bar hasn't matched a <Route> above */}
               <Route path="/*" element={<Navigate to="/home" />} />
             </Routes>

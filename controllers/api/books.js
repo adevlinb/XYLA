@@ -14,19 +14,17 @@ async function addBook(req, res) {
     const newBook = await Book.formatBookInfo(req.body);
     const formattedBook = await Book.newBook(newBook);
     const shelf = await Bookshelf.findOne({userId: req.user._id}).exec();
-    let inShelf = shelf.userBookSchema.find(b => b.book.toString() === formattedBook._id.toString())
-    console.log(inShelf);
+    let inShelf = shelf.userBooks.some(userBook => userBook.book._id.equals(formattedBook._id));
     if (inShelf) {
-        console.log("item in shelf");
-        return;
+        const updatedInShelf = await Bookshelf.findOne({ userId: req.user._id })
+            .populate('userBooks.book').exec();
+       return res.json(updatedInShelf);
     }
-    console.log("item not in shelf")
-    shelf.userBookSchema.push({book: formattedBook._id})
-    shelf.save()
-    const updatedShelf = await Bookshelf.findOne({ userId: req.user._id })
-        .populate([{path: 'userBookSchema', populate: { path: 'book', model: Book }}]).exec();
-    console.log(updatedShelf, "updated shelf")
-    res.json(updatedShelf);
+    shelf.userBooks.push({book: formattedBook._id})
+    await shelf.save()
+    const updatedNotInShelf = await Bookshelf.findOne({ userId: req.user._id })
+        .populate('userBooks.book').exec();
+    res.json(updatedNotInShelf);
 }
 
 async function googleSearchAPI(req, res) {
