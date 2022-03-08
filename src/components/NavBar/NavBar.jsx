@@ -10,7 +10,7 @@ export default function NavBar({ user, setUser }) {
   return (
     <nav>
       <img src="/images/XYLA_LOGO.png" alt="XYLA" className='logo' />
-      <Link to="/home">My Bookshelf</Link>
+      <Link to="/library">My Bookshelf</Link>
       &nbsp; | &nbsp;
       <Link to="/search">Find Books</Link>
       &nbsp; | &nbsp;

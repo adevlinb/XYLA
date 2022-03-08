@@ -5,11 +5,8 @@ export default function DisplayLibrary({ library }) {
         <DisplayLibraryItem b={b} key={b._id}/>
     ));
 
-
-
     return (
         <>
-            <h1>Library</h1>
             {book}
         </>
     );
