@@ -4,3 +4,8 @@
     align-items: center;
     
 }
+
+.logo {
+    height: 8vh;
+    float: left;
+}

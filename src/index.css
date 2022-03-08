@@ -1,6 +1,6 @@
 /* CSS Custom Properties */
 :root {
-  --white: #FFFFFF;
+  --blue: #C7E6FF;
   --tan-1: #FBF9F6;
   --tan-2: #E7E2DD;
   --tan-3: #E2D9D1;
@@ -21,7 +21,7 @@ body {
   sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  background-color: var(--tan-4);
+  background-color: var(--blue);
   padding: 2vmin;
   height: 100vh;
 }
@@ -150,4 +150,10 @@ button:disabled, form:invalid button[type="submit"] {
 button[type="submit"] {
   grid-column: span 2;
   margin: 1vmin 0 0;
+}
+
+#logo {
+    height: 8vh;
+    float: left;
+    margin: none;
 }

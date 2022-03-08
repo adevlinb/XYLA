@@ -1,9 +1,10 @@
 import { useState } from 'react';
 import { Routes, Route, Navigate } from 'react-router-dom';
 import './App.css';
-import AuthPage from '../AuthPage/AuthPage';
+import LandingPage from '../LandingPage/LandingPage';
 import HomePage from '../HomePage/HomePage';
-import OrderHistoryPage from '../OrderHistoryPage/OrderHistoryPage';
+import SearchBooksPage from '../SearchBooksPage/SearchBooksPage';
+import SocialWallPage from '../SocialWallPage/SocialWallPage';
 import NavBar from '../../components/NavBar/NavBar';
 import { getUser } from '../../utilities/users-service';
 
@@ -18,13 +19,16 @@ export default function App() {
             <Routes>
               {/* Route components in here */}
               <Route path="/home" element={<HomePage />} />
-              {/* <Route path="/orders" element={<OrderHistoryPage />} /> */}
-              {/* redirect to /orders/new if path in address bar hasn't matched a <Route> above */}
+              <Route path="/search" element={<SearchBooksPage />} />
+              <Route path="/wall" element={<SocialWallPage />} />
               <Route path="/*" element={<Navigate to="/home" />} />
             </Routes>
           </>
           :
-          <AuthPage setUser={setUser} />
+          <>
+          <LandingPage setUser={setUser} />
+          <img src="/images/XYLA_LOGO.png" alt="XYLA" id='logo' />
+          </>
       }
     </main>
   );

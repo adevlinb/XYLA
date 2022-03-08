@@ -9,9 +9,12 @@ export default function NavBar({ user, setUser }) {
 
   return (
     <nav>
-      <Link to="/orders">Order History</Link>
+      <img src="/images/XYLA_LOGO.png" alt="XYLA" className='logo' />
+      <Link to="/home">My Bookshelf</Link>
       &nbsp; | &nbsp;
-      <Link to="/orders/new">New Order</Link>
+      <Link to="/search">Find Books</Link>
+      &nbsp; | &nbsp;
+      <Link to="/wall">Social Wall</Link>
       &nbsp; | &nbsp;
       <span>Welcome, {user.name}</span>
       &nbsp; | &nbsp;
