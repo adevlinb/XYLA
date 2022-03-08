@@ -3,7 +3,7 @@ const user = require('./user');
 const Schema = mongoose.Schema;
 
 const userBookSchema = new Schema ({
-    book: {type: Schema.Types.ObjectId, ref: 'book'},
+    book: {type: Schema.Types.ObjectId, ref: 'Book'},
     currentlyReading: {
         type: Boolean, 
         default: false, 
@@ -23,8 +23,8 @@ const recommendationSchema = new Schema({
 
 const bookshelfSchema = new Schema({
     userId: { type: Schema.Types.ObjectId, ref: 'User' },
-    library: [userBookSchema],
-    recommendations: [recommendationSchema],
+    userBookSchema: [userBookSchema],
+    recommendedFromFriends: [recommendationSchema],
 }, {timestamps: true});
 
 
@@ -54,3 +54,5 @@ module.exports = mongoose.model('Bookshelf', bookshelfSchema);
 //     recommendations: [recommendationSchema],
 //     user: { type: Schema.Types.ObjectId, ref: 'User' }
 // }, { timestamps: true });
+
+// { type: Schema.Types.ObjectId, ref: 'userBookSchema' }

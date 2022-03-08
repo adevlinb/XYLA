@@ -7,18 +7,18 @@ const bookSchema = new Schema({
     subjects: [],
     publishers: { type: String, default: 'Information Not Available'},
     pageCount: { type: Number, default: 0},
-    isbnNum: {type: String, default: ""},
+    isbnNum: {type: String, default: this._id},
     rating: {type: Number, default: 0},
     description: { type: String, default: 'Information Not Available'},
     thumbnail: { type: String, default: "http://i.imgur.com/J5LVHEL.jpg"}
 }, { timestamps: true });
 
 bookSchema.statics.newBook = function (book) {
-    book.isbnNum = parseInt(book.isbnNum);
+    // book.isbnNum = parseInt(book.isbnNum);
     // 'this' is the Book model
     return this.findOneAndUpdate(
         // query
-        {title: book.title},
+        {isbnNum: book.isbnNum},
         // update
         { 
             title: book.title,

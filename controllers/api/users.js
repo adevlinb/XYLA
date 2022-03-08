@@ -17,6 +17,7 @@ async function create(req, res) {
     //create their bookshelf
     const bookshelf = await new Bookshelf ({userId: user._id})
     bookshelf.save();
+    console.log()
     // token will be a string
     const token = createJWT(user);
     // Yes, we can serialize a string

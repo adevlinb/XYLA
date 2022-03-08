@@ -3,7 +3,6 @@
 export default function DisplayResultsItem({ book, addBook }) {
 
     function handleBook() {
-        console.log(book)
         addBook(book)
     }
 
