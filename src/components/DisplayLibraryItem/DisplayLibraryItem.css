@@ -6,6 +6,8 @@
     border-style: solid;
     margin: 20px;
     background-color: rgb(255, 255, 255);
+    overflow: scroll;
+    object-fit: contain;
 }
 
 .image {

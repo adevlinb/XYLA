@@ -7,9 +7,9 @@ export default function SearchBooksPage({ queryResults, setQueryResults, searchF
 
 
   return (
-      <div className="horizontal">
-        <div className="verticalOne">
-          <h5>QUICK SEARCHES</h5>
+    <div className="horizontal">
+      <div className="verticalOne">
+          <h3>QUICK SEARCHES</h3>
           <h5>Shortcut Link</h5>
           <h5>Shortcut Link</h5>
           <h5>Shortcut Link</h5>

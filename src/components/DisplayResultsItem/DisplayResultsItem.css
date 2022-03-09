@@ -7,7 +7,22 @@
     margin: 20px;
     background-color: rgb(255, 255, 255);
     border-radius: 15px;
-    max-height: 30vh;
+    overflow: scroll !important;
+    /* max-height: 30vh; */
+}
+
+.reverse-card {
+    display: flex;
+    flex-direction: row;
+    border-width: 3px;
+    border-color: var(--blue);
+    border-style: solid;
+    margin: 20px;
+    background-color: rgb(255, 255, 255);
+    border-radius: 15px;
+    overflow: scroll !important;
+    max-height: 40vh;
+    padding: 10px;
 }
 
 .image {
@@ -25,4 +40,5 @@ img {
     display: flex;
     flex-direction: column;
     max-width: 50vw;
+    padding: 5px;
 }
