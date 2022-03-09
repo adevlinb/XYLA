@@ -14,9 +14,15 @@ export default function DisplayResultsItem({ book, addBook }) {
                 <div className="card">
                     <div className="image">
                         {book && (book.volumeInfo.imageLinks.thumbnail ?
+                            <>
                             <img src={`${book.volumeInfo.imageLinks.thumbnail}`} alt={`${book.volumeInfo.title}`} className="apiImage" name="thumbnail" />
+                            <button onClick={() => setcardFlip(!cardFlip)}>Details</button>
+                            </>
                             :
+                            <>
                             <img src="http://i.imgur.com/J5LVHEL.jpg" alt={`${book.volumeInfo.title}`} name="thumbnail" />
+                            <button onClick={() => setcardFlip(!cardFlip)}>Details</button>
+                            </>
                         )}
                     </div>
                     <div className="text">
@@ -27,16 +33,13 @@ export default function DisplayResultsItem({ book, addBook }) {
                         {book && book.volumeInfo.pageCount ? <div name="pageCount">{book.volumeInfo.pageCount}</div> : <div>N/A</div>}
                         {book && book.volumeInfo.industryIdentifiers ? <div name="isbnNum">{book.volumeInfo.industryIdentifiers[0].identifier}</div> : <div>N/A</div>}
                         {book && book.volumeInfo.averageRating ? <div name="rating">{book.volumeInfo.averageRating}</div> : <div>N/A</div>}
-                        {/* {book && (<div name="description">{book.volumeInfo.description}</div>)} */}
                         <button onClick={handleBook} type="submit">Add Book</button>
-                        <button onClick={() => setcardFlip(!cardFlip)}>Details</button>
                     </div>
                 </div>
                 :
                 
-                <div className="reverse-card">
+                <div className="cardTwo">
                     {book && <div name="description">{book.volumeInfo.description}</div>}
-                    <button onClick={handleBook} type="submit">Add Book</button>
                     <button onClick={() => setcardFlip(!cardFlip)}>Return</button>
                 </div>
             }

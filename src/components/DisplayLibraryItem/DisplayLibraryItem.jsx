@@ -24,7 +24,7 @@ export default function DisplayLibraryItem({ b }) {
             </div>
             :
             
-            <div className="card">
+            <div className="cardTwo">
                 <div name="description">{b.book.description}</div>
                 <button onClick={() => setcardFlip(!cardFlip)}>Return</button>
             </div>

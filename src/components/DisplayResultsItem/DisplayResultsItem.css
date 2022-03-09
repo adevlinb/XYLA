@@ -8,26 +8,27 @@
     background-color: rgb(255, 255, 255);
     border-radius: 15px;
     overflow: scroll !important;
-    /* max-height: 30vh; */
 }
 
-.reverse-card {
+.cardTwo {
     display: flex;
-    flex-direction: row;
+    flex-direction: column;
     border-width: 3px;
-    border-color: var(--blue);
+    border-color: blue;
     border-style: solid;
     margin: 20px;
     background-color: rgb(255, 255, 255);
-    border-radius: 15px;
-    overflow: scroll !important;
-    max-height: 40vh;
+    overflow: scroll;
+    object-fit: contain;
+    max-height: 35vh;
     padding: 10px;
+    border-radius: 10px;
 }
 
 .image {
     display: flex;
     flex-direction: column;
+    justify-content: space-between;
     border-radius: 15px;
 }
 
@@ -39,6 +40,7 @@ img {
 .text {
     display: flex;
     flex-direction: column;
+    justify-content: space-between;
     max-width: 50vw;
     padding: 5px;
 }

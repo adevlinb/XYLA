@@ -7,8 +7,18 @@ export default function DisplayLibrary({ library }) {
     ));
 
     return (
+        <>
+        <div className='sortLinks'>LINKS TO SORT WITH
+            <button>Books ive read  </button>
+            <button>Whole Shelf </button>
+            <button>Books </button>
+            <button>Another Sort  </button>
+            <button>Sort Again</button>
+            <button>Something Else </button>
+        </div>
         <div className="grid">
             {book}
         </div>
+        </>
     );
 }
