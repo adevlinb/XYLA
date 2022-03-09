@@ -1,9 +1,9 @@
-.horizontal {
+.horizontal-Search {
     display: flex;
     background-color: var(--blue-1);
 }
 
-.verticalOne {
+.verticalOne-Search {
     display: flex;
     flex-direction: column;
     text-align: center;
@@ -11,7 +11,7 @@
     margin: 2vmin;
 }
 
-.verticalTwo {
+.verticalTwo-Search {
     display: flex;
     flex-direction: column;
 }

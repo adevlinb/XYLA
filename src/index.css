@@ -45,8 +45,11 @@ nav > a {
 
 footer {
   background-color: var(--blue);
+  left: 0;
+  right: 0;
   bottom: 0;
   min-height: 50px;
+  position: sticky;
 }
 
 code {

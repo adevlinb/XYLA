@@ -3,7 +3,7 @@
     flex-direction: row;
     border-width: 3px;
     border-color: black;
-    border-style: dotted;
+    border-style: solid;
     margin: 20px;
     background-color: rgb(255, 255, 255);
 }
