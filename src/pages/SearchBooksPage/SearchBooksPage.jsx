@@ -1,4 +1,4 @@
-import * as userService from '../../utilities/users-service';
+// import * as userService from '../../utilities/users-service';
 import SearchBar from '../../components/SearchBar/SearchBar'
 import DisplayResults from '../../components/DisplayResults/DisplayResults';
 

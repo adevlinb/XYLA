@@ -1,4 +1,4 @@
-import * as userService from '../../utilities/users-service';
+// import * as userService from '../../utilities/users-service';
 
 export default function SocialWallPage() {
 

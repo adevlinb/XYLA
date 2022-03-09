@@ -1,4 +1,5 @@
 import DisplayLibraryItem from '../DisplayLibraryItem/DisplayLibraryItem'
+import "./DisplayLibrary.css"
 
 export default function DisplayLibrary({ library }) {
     const book = library.map((b, idx) => (
@@ -6,8 +7,8 @@ export default function DisplayLibrary({ library }) {
     ));
 
     return (
-        <>
+        <div className="grid">
             {book}
-        </>
+        </div>
     );
 }

@@ -7,7 +7,8 @@ const API_KEY = process.env.API_KEY
 
 module.exports = {
     addBook,
-    googleSearchAPI
+    googleSearchAPI,
+    populateUserShelf
 };
 
 async function addBook(req, res) {
@@ -39,4 +40,12 @@ async function googleSearchAPI(req, res) {
     } catch (error) {
       console.log(error);
     }
+}
+
+async function populateUserShelf(req, res) {
+    console.log("get my books")
+    const shelf = await Bookshelf.findOne({ userId: req.user._id }).populate('userBooks.book').exec();
+    let books = shelf.userBooks
+    console.log(books)
+    res.json(books);
 }

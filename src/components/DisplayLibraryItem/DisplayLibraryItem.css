@@ -1,0 +1,20 @@
+.card {
+    display: flex;
+    flex-direction: row;
+    border-width: 3px;
+    border-color: black;
+    border-style: dotted;
+    margin: 20px;
+    background-color: var(--blue-1);
+}
+
+.image {
+    display: flex;
+    flex-direction: column;
+}
+
+.text {
+    display: flex;
+    flex-direction: column;
+    max-width: 50vw;
+}

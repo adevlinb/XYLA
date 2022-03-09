@@ -1,0 +1,16 @@
+.horizontal {
+    display: flex;
+}
+
+.verticalOne {
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    align-items: center;
+    margin: 2vmin;
+}
+
+.verticalTwo {
+    display: flex;
+    flex-direction: column;
+}
