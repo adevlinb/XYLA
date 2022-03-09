@@ -3,8 +3,15 @@ import './ClubPage.css'
 export default function ClubPage() {
 
     return (
-        <>
-            <h1>Club Page</h1>
-        </>
+        <div className="horizontal">
+            <div className="verticalOne">
+                <h3>Quick Links</h3>
+                <h5>My Clubs</h5>
+                <h5>Find Clubs</h5>
+            </div>
+            <div className="verticalTwo">
+                <h1>Clubs!</h1>
+            </div>
+        </div>
     );
 }

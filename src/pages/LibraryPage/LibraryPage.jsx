@@ -21,6 +21,7 @@ useEffect(() => {
         <h5>My Books</h5>
         <h5>Recommendations</h5>
         <h5>My Favorites</h5>
+        <h5>Make a post!</h5>
       </div>
       <div className="verticalTwo">
         <h1>My Bookshelf</h1>
