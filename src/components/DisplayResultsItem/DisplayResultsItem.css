@@ -2,15 +2,23 @@
     display: flex;
     flex-direction: row;
     border-width: 3px;
-    border-color: black;
+    border-color: var(--blue);
     border-style: solid;
     margin: 20px;
     background-color: rgb(255, 255, 255);
+    border-radius: 15px;
+    max-height: 30vh;
 }
 
 .image {
     display: flex;
     flex-direction: column;
+    border-radius: 15px;
+}
+
+img {
+    border-radius: 15px;
+    border: var(--blue);
 }
 
 .text {
