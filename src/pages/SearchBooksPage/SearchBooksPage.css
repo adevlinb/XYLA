@@ -1,0 +1,17 @@
+.horizontal {
+    display: flex;
+    background-color: var(--blue-1);
+}
+
+.verticalOne {
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    align-items: center;
+    margin: 2vmin;
+}
+
+.verticalTwo {
+    display: flex;
+    flex-direction: column;
+}

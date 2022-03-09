@@ -7,10 +7,21 @@ export default function SearchBooksPage({ queryResults, setQueryResults, searchF
 
 
   return (
-    <>
-      <h1>SearchBooksPage</h1>
-      <SearchBar searchForBooks={searchForBooks} />
-      <DisplayResults queryResults={queryResults} addBook={addBook} />
-    </>
+      <div className="horizontal">
+        <div className="verticalOne">
+          <h5>QUICK SEARCHES</h5>
+          <h5>Shortcut Link</h5>
+          <h5>Shortcut Link</h5>
+          <h5>Shortcut Link</h5>
+          <h5>Shortcut Link</h5>
+          <h5>Shortcut Link</h5>
+        </div>
+        <div className="verticalTwo">
+          <h1>Search for new books!</h1>
+          <SearchBar searchForBooks={searchForBooks} />
+          <DisplayResults queryResults={queryResults} addBook={addBook} />
+      </div>
+    </div>
+  
   );
 }

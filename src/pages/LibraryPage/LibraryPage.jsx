@@ -16,11 +16,11 @@ useEffect(() => {
   return (
     <div className="horizontal">
       <div className="verticalOne">
-        <img src="/images/XYLA_LOGO.png" alt="XYLA" className='logo' />
-        <h5>MY BOOKSHELF</h5>
-        <h5>My Shelf</h5>
-        <h5>My Shelf</h5>
-        <h5>My Shelf</h5>
+        {/* <img src="/images/XYLA_LOGO.png" alt="XYLA" className='logo' /> */}
+        <h3>MY BOOKSHELF</h3>
+        <h5>My Books</h5>
+        <h5>Recommendations</h5>
+        <h5>My Favorites</h5>
       </div>
       <div className="verticalTwo">
         <h1>My Bookshelf</h1>

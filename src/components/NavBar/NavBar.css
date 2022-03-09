@@ -2,7 +2,16 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    
+    text-align: center;
+    vertical-align: middle;
+    align-self: center;
+    align-content: center;
+    min-height: 60px;
+    background-color: var(--blue);
+}
+
+.nav > a {
+background: var(--pink-2);
 }
 
 .logo {

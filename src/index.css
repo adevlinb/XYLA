@@ -1,13 +1,14 @@
 /* CSS Custom Properties */
 :root {
-  --blue: #C7E6FF;
+  --blue: #0083FF;
   --blue-1: #C7E6FF;
-  --tan-2: #E7E2DD;
-  --tan-3: #E2D9D1;
+  --pink-2: #F100AD;
+  --blue-3: #a2d1ff;
   --tan-4: #D3C1AE;
   --orange: #F67F00;
   --text-light: #968c84;
   --text-dark: #615954;
+
 }
 
 *, *:before, *:after {
@@ -21,9 +22,31 @@ body {
   sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  background-color: var(--blue);
+  background-color: var(--blue-1);
   padding: 0;
   height: 100vh;
+}
+
+nav {
+  min-height: 60px;
+  background-color: var(--blue);
+  justify-content: center;
+  text-align: center;
+  align-content: center;
+  color: black;
+}
+
+
+nav > a {
+  color: var(--pink-2);
+   -webkit-text-stroke: 0.5px black;
+  font-size: xx-large;
+}
+
+footer {
+  background-color: var(--blue);
+  bottom: 0;
+  min-height: 50px;
 }
 
 code {
@@ -33,6 +56,7 @@ code {
 
 #root {
   height: 100%;
+  height: 100vh;
 }
 
 .align-ctr {
