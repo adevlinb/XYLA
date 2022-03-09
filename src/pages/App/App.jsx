@@ -30,7 +30,6 @@ export default function App() {
 
 
   return (
-    <>
     <main className="App">
       { user ?
           <>
@@ -50,9 +49,8 @@ export default function App() {
           <img src="/images/XYLA_LOGO.png" alt="XYLA" id='logo' />
           </>
       }
-      {/* <footer>ALL RIGHTS RESERVED</footer> */}
-    </main>
       <footer>ALL RIGHTS RESERVED</footer>
-    </>
+    </main>
+  
   );
 }

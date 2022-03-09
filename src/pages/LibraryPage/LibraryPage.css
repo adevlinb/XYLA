@@ -1,6 +1,7 @@
 .horizontal {
     display: flex;
     background-color: var(--blue-1);
+    height: 100%;
 }
 
 .verticalOne {

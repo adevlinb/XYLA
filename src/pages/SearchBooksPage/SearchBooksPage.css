@@ -1,6 +1,7 @@
 .horizontal-Search {
     display: flex;
     background-color: var(--blue-1);
+    height: 100vh !important;
 }
 
 .verticalOne-Search {
