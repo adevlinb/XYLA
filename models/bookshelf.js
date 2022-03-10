@@ -47,12 +47,3 @@ bookshelfSchema.statics.addBookToShelf = async function (bookId) {
 
 
 module.exports = mongoose.model('Bookshelf', bookshelfSchema);
-
-
-// const bookshelfSchema = new Schema({
-//     library: [librarySchema],
-//     recommendations: [recommendationSchema],
-//     user: { type: Schema.Types.ObjectId, ref: 'User' }
-// }, { timestamps: true });
-
-// { type: Schema.Types.ObjectId, ref: 'userBookSchema' }

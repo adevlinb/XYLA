@@ -1,6 +1,7 @@
 import './LibraryPage.css'
 import DisplayLibrary from '../../components/DisplayLibrary/DisplayLibrary';
 import * as booksAPI from '../../utilities/books-api';
+import * as postsAPI from '../../utilities/posts-api';
 import { useState, useEffect } from 'react';
 import DisplayFavorites from '../../components/DisplayFavorites/DisplayFavorites';
 import DisplayRecs from '../../components/DisplayRecs/DisplayRecs';
@@ -23,6 +24,11 @@ export default function LibraryPage({ library, setLibrary }) {
       }
       getData();  
     }, []);
+
+    async function createPost(formData) {
+      const posts = await postsAPI.addNewPost(formData)
+      setPostShelf(posts);
+    }
 
     function handleSetBooks() {
       setMyShelf(true)
@@ -89,11 +95,11 @@ export default function LibraryPage({ library, setLibrary }) {
       </div>
       <div className="verticalTwo">
         {myShelf ? <DisplayLibrary library={library} /> : <></>}
-        {recShelf ? <DisplayRecs library={library} /> : <></>}
-        {favShelf ? <DisplayFavorites library={library} /> : <></>}
-        {post ? <DisplayPosts library={library} /> : <></>}
-        {profile ? <DisplayProfile library={library} /> : <></>}
-        {settings ? <DisplaySettings library={library} /> : <></>}
+        {recShelf ? <DisplayRecs /> : <></>}
+        {favShelf ? <DisplayFavorites/> : <></>}
+        {post ? <DisplayPosts library={library} createPost={createPost}/> : <></>}
+        {profile ? <DisplayProfile /> : <></>}
+        {settings ? <DisplaySettings /> : <></>}
       </div>
     </div>
   );

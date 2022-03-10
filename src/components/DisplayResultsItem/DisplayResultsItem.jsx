@@ -13,7 +13,7 @@ export default function DisplayResultsItem({ book, addBook }) {
             {cardFlip ?
                 <div className="card">
                     <div className="image">
-                        {book && (book.volumeInfo.imageLinks.thumbnail ?
+                        {book && (book.volumeInfo.imageLinks ?
                             <>
                             <img src={`${book.volumeInfo.imageLinks.thumbnail}`} alt={`${book.volumeInfo.title}`} className="apiImage" name="thumbnail" />
                             <button onClick={() => setcardFlip(!cardFlip)}>Details</button>

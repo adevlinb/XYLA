@@ -24,6 +24,7 @@ const ensureLoggedIn = require('./config/ensureLoggedIn');
 // API routes here
 app.use('/api/users', require('./routes/api/users'));
 app.use('/api/books', require('./routes/api/books'));
+app.use('/api/posts', require('./routes/api/posts'));
 
 
 // "Catch all" route
