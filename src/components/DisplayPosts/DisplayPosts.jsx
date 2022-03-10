@@ -1,8 +1,9 @@
 import './DisplayPosts.css';
 import DisplayBookOption from '../DisplayBookOption/DisplayBookOption';
 import { useState } from 'react';
+import DisplayPostCard from '../DisplayPostCard/DisplayPostCard';
 
-export default function DisplayPosts({ library, createPost }) {
+export default function DisplayPosts({ library, createPost, userPosts }) {
 
     const [formData, setFormData] = useState({
         title: '',
@@ -12,12 +13,17 @@ export default function DisplayPosts({ library, createPost }) {
     });
 
     const options = library.map((b, idx) => (
-        <DisplayBookOption b={b} key={b._id} />
+        <DisplayBookOption b={b} key={b._id} handleChange={handleChange} />
     ));
+
+    const allUserPosts = userPosts.map((post) => (
+        <DisplayPostCard post={post} key={post._id} />
+    )); 
 
 
     function handleChange(evt) {
         setFormData({ ...formData, [evt.target.name]: evt.target.value });
+        console.log(formData)
     }
 
     function handleCreatePost(evt) {
@@ -51,22 +57,24 @@ export default function DisplayPosts({ library, createPost }) {
                 </label>
                 <label>
                     Choose Your Book!
-                    <select name="book" value={formData.book} onChange={handleChange}>
+                    <select name="book" onChange={handleChange}>
                         {options}
                     </select>
                 </label>
                 <button type="submit">Create Post</button>
             </form>
         </div>
+        
+
+        <>
+            {allUserPosts}
         </>
-        
-        )
-        
+
+
+        </>
+
+)
+
+
     }
     
-    {/* <div className='grid'>
-    {option}
-</div> */}
-{/* <div className="gridTwo">
-    {option}
-</div> */}

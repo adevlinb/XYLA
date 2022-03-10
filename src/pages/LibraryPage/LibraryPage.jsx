@@ -13,22 +13,34 @@ export default function LibraryPage({ library, setLibrary }) {
   const [myShelf, setMyShelf] = useState(true);
   const [recShelf, setRecShelf] = useState(false);
   const [favShelf, setFavShelf] = useState(false);
-  const [post, setPostShelf] = useState(false);
+  const [postShelf, setPostShelf] = useState(false);
   const [profile, setProfileShelf] = useState(false);
   const [settings, setSettingsShelf] = useState(false);
 
+  //array of user posts..
+  const [userPosts, setUserPosts] = useState(false);
+
   useEffect(() => {
-      async function getData () {
+      async function getUserBooks () {
         const books = await booksAPI.getLibrary();
         setLibrary(books);
       }
-      getData();  
+      getUserBooks();  
     }, []);
 
     async function createPost(formData) {
       const posts = await postsAPI.addNewPost(formData)
-      setPostShelf(posts);
+      setUserPosts(posts);
+      console.log(posts);
     }
+
+  useEffect(() => {
+      async function getPosts () {
+        const userPosts = await postsAPI.getUserPosts();
+        setUserPosts(userPosts);
+      }
+      getPosts();  
+    }, []);
 
     function handleSetBooks() {
       setMyShelf(true)
@@ -97,7 +109,7 @@ export default function LibraryPage({ library, setLibrary }) {
         {myShelf ? <DisplayLibrary library={library} /> : <></>}
         {recShelf ? <DisplayRecs /> : <></>}
         {favShelf ? <DisplayFavorites/> : <></>}
-        {post ? <DisplayPosts library={library} createPost={createPost}/> : <></>}
+        {postShelf ? <DisplayPosts library={library} createPost={createPost} userPosts={userPosts}/> : <></>}
         {profile ? <DisplayProfile /> : <></>}
         {settings ? <DisplaySettings /> : <></>}
       </div>

@@ -11,19 +11,28 @@ module.exports = {
 };
 
 async function create(req, res) {
-    console.log("made it to the controller");
-    console.log(req.body.book);
+    console.log(req.body.book)
+    const postBook = Book.findById(req.body.book).exec();
     const newPost = await Post.formatPostInfo(req);
+    console.log(newPost)
     const post = await new Post(newPost)
-    post.save();
-    console.log(post)
+    await post.save();
+    const allUserPosts = await Post.find({ user: req.user._id }).populate('book').exec()
+    console.log(allUserPosts)
+    res.json(allUserPosts)
 
 }
 
-function getAllPosts(req, res) {
-
+async function getAllPosts(req, res) {
+    console.log('all posts')
+    const allPosts = await Post.find({}).populate('user').populate('book').exec()
+    console.log(allPosts)
+    res.json(allPosts);
 }
 
-function getUserPosts(req, res) {
-
+async function getUserPosts(req, res) {
+    console.log('user Posts')
+    const allUserPosts = await Post.find({ user: req.user._id }).populate('book').populate('user').exec()
+    console.log(allUserPosts)
+    res.json(allUserPosts)
 }

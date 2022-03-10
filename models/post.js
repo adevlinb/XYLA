@@ -7,8 +7,8 @@ const commentSchema = new Schema({
 }, { timestamps: true });
 
 const postSchema = new Schema({
-    user: { type: Schema.Types.ObjectId, ref: 'User' },
-    book: { type: Schema.Types.ObjectId, ref: 'Book' },
+    user: { type: Schema.Types.ObjectId, ref: 'User'},
+    book: { type: Schema.Types.ObjectId, ref: 'Book', required: true},
     title: {type: String, default: ''},
     description: {type: String, default: ''},
     rating: {
