@@ -1,38 +1,66 @@
 import './DisplayPostCard.css'
 import { useState } from 'react'
 
-export default function DisplayPostCard({post}) {
+export default function DisplayPostCard({post, addComment}) {
 
     const [cardFlip, setcardFlip] = useState(true);
+    const [commentData, setCommentData] = useState({
+        content: '',
+        postId: ''
+    });
     
+    function handleChange(evt) {
+        setCommentData({ ...commentData, [evt.target.name]: evt.target.value });
+        console.log(commentData)
+    }
+
+    function handleAddComment(evt) {
+        // evt.preventDefault()
+        // console.log(evt.target.id)
+        
+        console.log(commentData);
+        // addComment(commentData)
+        setCommentData("")
+    }
+
     return (
     <>
         {cardFlip ?
-            <div className="card">
-                <div className="image">
-                    {post && (post.book.thumbnail ?
-                        <>
-                                {post && <h3> {post.user.name} </h3>}
-                            <img src={`${post.book.thumbnail}`} alt={`${post.book.title}`} className="apiImage" name="thumbnail" />
-                            <button onClick={() => setcardFlip(!cardFlip)}>Details</button>
-                        </>
-                        :
-                        <>
-                                {post && <h3> {post.user.name} </h3>}
-                            <img src="http://i.imgur.com/J5LVHEL.jpg" alt={`${post.book.title}`} name="thumbnail" />
-                            <button onClick={() => setcardFlip(!cardFlip)}>Details</button>
-                        </>
-                    )}
+            <div className="postCard">
+                <div className='postRow'>
+                    <div className="image">
+                        {post && (post.book.thumbnail ?
+                            <>
+                                {post && <h3> {post.user.name}</h3>}
+                                {post && <p> {new Date(post.createdAt).toLocaleDateString()}</p>}
+                                <img src={`${post.book.thumbnail}`} alt={`${post.book.title}`} className="apiImage" name="thumbnail" />
+                                <button onClick={() => setcardFlip(!cardFlip)}>Details</button>
+                            </>
+                            :
+                            <>
+                                    {post && <h3> {post.user.name} </h3>}
+                                <img src="http://i.imgur.com/J5LVHEL.jpg" alt={`${post.book.title}`} name="thumbnail" />
+                                <button onClick={() => setcardFlip(!cardFlip)}>Details</button>
+                            </>
+                        )}
+                    </div>
+                    <div className="text">
+                        {post && post.book.title ? <div name="Title" value={`${post.book.title}`} >{post.book.title}</div> : <div>N/A</div>}
+                        {post && post.book.authors ? <div name="Authors" value={`${post.book.authors}`}>{post.book.authors}</div> : <div>N/A</div>}
+                        {post && post.book.subjects ? <div name="Subjects" value={`${post.book.subjects}`}>{post.book.subjects}</div> : <div>N/A</div>}
+                        {post && post.book.publishers ? <div name="Publishers">{post.book.publishers}</div> : <div>N/A</div>}
+                        {post && post.book.pageCount ? <div name="pageCount">{post.book.pageCount}</div> : <div>N/A</div>}
+                        {post && post.book.isbnNum ? <div name="isbnNum">{post.book.isbnNum}</div> : <div>N/A</div>}
+                        {post && post.book.rating ? <div name="rating">{post.book.rating}</div> : <div>N/A</div>}
+                    </div>
                 </div>
-                <div className="text">
-                    {post && post.book.title ? <div name="Title" value={`${post.book.title}`} >{post.book.title}</div> : <div>N/A</div>}
-                    {post && post.book.authors ? <div name="Authors" value={`${post.book.authors}`}>{post.book.authors}</div> : <div>N/A</div>}
-                    {post && post.book.subjects ? <div name="Subjects" value={`${post.book.subjects}`}>{post.book.subjects}</div> : <div>N/A</div>}
-                    {post && post.book.publishers ? <div name="Publishers">{post.book.publishers}</div> : <div>N/A</div>}
-                    {post && post.book.pageCount ? <div name="pageCount">{post.book.pageCount}</div> : <div>N/A</div>}
-                    {post && post.book.isbnNum ? <div name="isbnNum">{post.book.isbnNum}</div> : <div>N/A</div>}
-                    {post && post.book.rating ? <div name="rating">{post.book.rating}</div> : <div>N/A</div>}
-                </div>
+                    <form onSubmit={handleAddComment}>
+                    <div className="comment">
+                            <input name="content" onChange={handleChange} type="text" placeholder='Add Comment!'/>
+                            <input name="postId" value={`${post._id}`} type="hidden" />
+                            <button id="commentButton" type="submit">+</button>
+                    </div>
+                </form>
             </div>
             :
 

@@ -1,13 +1,19 @@
-.card {
+.postCard {
     display: flex;
-    flex-direction: row;
+    flex-direction: column;
     border-width: 3px;
-    border-color: blue;
+    border-color: var(--blue);
     border-style: solid;
+    border-radius: 10px;
     margin: 20px;
     background-color: rgb(255, 255, 255);
     overflow: scroll;
     object-fit: contain;
+}
+
+.postRow {
+    display: flex;
+    flex-direction: row;
 }
 
 .image {
@@ -34,4 +40,22 @@
     max-height: 35vh;
     padding: 10px;
     border-radius: 10px;
+}
+
+.comment {
+    display: flex;
+    flex-direction: row;
+    border-radius: 8px;
+    border-color: var(--pink-2);
+    border-style: solid;
+    border-width: 2px;
+    justify-content: center;
+    align-content: center;
+}
+
+#commentButton {
+    height: 100%;
+    border-radius: 15%;
+    color: var(--pink-2);
+    background-color: var(--blue);
 }
