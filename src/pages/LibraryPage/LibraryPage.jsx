@@ -10,15 +10,28 @@ import DisplayProfile from '../../components/DisplayProfile/DisplayProfile';
 import DisplaySettings from '../../components/DisplaySettings/DisplaySettings';
 
 export default function LibraryPage({ library, setLibrary }) {
-  const [myShelf, setMyShelf] = useState(true);
-  const [recShelf, setRecShelf] = useState(false);
-  const [favShelf, setFavShelf] = useState(false);
-  const [postShelf, setPostShelf] = useState(false);
-  const [profile, setProfileShelf] = useState(false);
-  const [settings, setSettingsShelf] = useState(false);
 
+  const [show, setShow] = useState({
+    myShelf: true, 
+    recShelf: false,
+    favShelf: false,
+    postShelf: false,
+    profile: false,
+    settings: false
+  })
+  
   //array of user posts..
   const [userPosts, setUserPosts] = useState(false);
+
+  function toggleShow(shelf) {
+    const newShowState = {...show};
+    for (let key in newShowState) {
+      newShowState[key] = false;
+    }
+    newShowState[shelf] = true;
+    setShow(newShowState);
+  }
+
 
   useEffect(() => {
       async function getUserBooks () {
@@ -42,76 +55,25 @@ export default function LibraryPage({ library, setLibrary }) {
       getPosts();  
     }, []);
 
-    function handleSetBooks() {
-      setMyShelf(true)
-      setRecShelf(false)
-      setFavShelf(false)
-      setPostShelf(false)
-      setProfileShelf(false)
-      setSettingsShelf(false)
-    }
-
-    function handleSetRecs() {
-      setMyShelf(false)
-      setRecShelf(true)
-      setFavShelf(false)
-      setPostShelf(false)
-      setProfileShelf(false)
-      setSettingsShelf(false)
-    }
-    function handleSetFavs() {
-      setMyShelf(false)
-      setRecShelf(false)
-      setFavShelf(true)
-      setPostShelf(false)
-      setProfileShelf(false)
-      setSettingsShelf(false)
-    }
-    function handleSetPosts() {
-      setMyShelf(false)
-      setRecShelf(false)
-      setFavShelf(false)
-      setPostShelf(true)
-      setProfileShelf(false)
-      setSettingsShelf(false)
-    }
-    function handleSetProfile() {
-      setMyShelf(false)
-      setRecShelf(false)
-      setFavShelf(false)
-      setPostShelf(false)
-      setProfileShelf(true)
-      setSettingsShelf(false)
-    }
-    function handleSetSettings() {
-      setMyShelf(false)
-      setRecShelf(false)
-      setFavShelf(false)
-      setPostShelf(false)
-      setProfileShelf(false)
-      setSettingsShelf(true)
-    }
-
-
   return (
     <div className="horizontal">
       <div className="verticalOne">
         {/* <img src="/images/XYLA_LOGO.png" alt="XYLA" className='logo' /> */}
         <h3>MY BOOKSHELF</h3>
-        <button onClick={handleSetBooks}>My Books</button>
-        <button onClick={handleSetRecs}>Recommendations</button>
-        <button onClick={handleSetFavs}>My Favorites</button>
-        <button onClick={handleSetPosts}>Make a post!</button>
-        <button onClick={handleSetProfile}>My Profile</button>
-        <button onClick={handleSetSettings}>Settings</button>
+        <button onClick={() => toggleShow('myShelf')}> My Books</button>
+        <button onClick={() => toggleShow('recShelf')}> Recommendations</button>
+        <button onClick={() => toggleShow('favShelf')}> My Favorites</button>
+        <button onClick={() => toggleShow('postShelf')}>  Make a post!</button>
+        <button onClick={() => toggleShow('profile')}> My Profile</button>
+        <button onClick={() => toggleShow('settings')}>  Settings</button>
       </div>
       <div className="verticalTwo">
-        {myShelf ? <DisplayLibrary library={library} /> : <></>}
-        {recShelf ? <DisplayRecs /> : <></>}
-        {favShelf ? <DisplayFavorites/> : <></>}
-        {postShelf ? <DisplayPosts library={library} createPost={createPost} userPosts={userPosts}/> : <></>}
-        {profile ? <DisplayProfile /> : <></>}
-        {settings ? <DisplaySettings /> : <></>}
+        {show.myShelf && <DisplayLibrary library={library} />}
+        {show.recShelf && <DisplayRecs />}
+        {show.favShelf && <DisplayFavorites/>}
+        {show.postShelf && <DisplayPosts library={library} createPost={createPost} userPosts={userPosts}/>}
+        {show.profile && <DisplayProfile />}
+        {show.settings && <DisplaySettings />}
       </div>
     </div>
   );
