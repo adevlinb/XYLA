@@ -43,9 +43,7 @@ async function googleSearchAPI(req, res) {
 }
 
 async function populateUserShelf(req, res) {
-    console.log("get my books")
     const shelf = await Bookshelf.findOne({ userId: req.user._id }).populate('userBooks.book').exec();
     let books = shelf.userBooks
-    console.log(books)
     res.json(books);
 }

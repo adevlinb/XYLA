@@ -1,6 +1,21 @@
 import './SocialWallPage.css'
+import * as postsAPI from '../../utilities/posts-api';
+import DisplayAllPosts from '../../components/DisplayAllPosts/DisplayAllPosts';
+import { useState, useEffect } from 'react'
 
 export default function SocialWallPage() {
+    const [allPosts, setAllPosts] = useState([])
+
+    useEffect(() => {
+        async function getPosts() {
+            const allPosts = await postsAPI.getAllPosts();
+            setAllPosts(allPosts);
+        }
+        getPosts();
+    }, []);
+
+
+
 
     return (
         <div className="horizontal">
@@ -12,7 +27,8 @@ export default function SocialWallPage() {
             </div>
             <div className="verticalTwo">
                 <h1>Social Feed</h1>
-              
+                <DisplayAllPosts allPosts={allPosts} />
+
             </div>
         </div>
     );
