@@ -66,9 +66,9 @@ export default function DisplayPosts({ library, createPost, userPosts }) {
         </div>
         
 
-        <>
+        <div className="grid">
             {allUserPosts}
-        </>
+        </div>
 
 
         </>

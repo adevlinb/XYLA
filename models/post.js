@@ -17,6 +17,7 @@ const postSchema = new Schema({
         max: 5,
         default: 5
     },
+    comment: [commentSchema],
 }, { timestamps: true });
 
 postSchema.statics.formatPostInfo = function (req) {

@@ -12,11 +12,13 @@ export default function DisplayPostCard({post}) {
                 <div className="image">
                     {post && (post.book.thumbnail ?
                         <>
+                                {post && <h3> {post.user.name} </h3>}
                             <img src={`${post.book.thumbnail}`} alt={`${post.book.title}`} className="apiImage" name="thumbnail" />
                             <button onClick={() => setcardFlip(!cardFlip)}>Details</button>
                         </>
                         :
                         <>
+                                {post && <h3> {post.user.name} </h3>}
                             <img src="http://i.imgur.com/J5LVHEL.jpg" alt={`${post.book.title}`} name="thumbnail" />
                             <button onClick={() => setcardFlip(!cardFlip)}>Details</button>
                         </>
@@ -35,7 +37,8 @@ export default function DisplayPostCard({post}) {
             :
 
             <div className="cardTwo">
-                {post && <div name="description">{post.book.description}</div>}
+                {post && <div> {post.user.name} </div>}
+                {post && <div name="description">{post.description}</div>}
                 <button onClick={() => setcardFlip(!cardFlip)}>Return</button>
             </div>
         }

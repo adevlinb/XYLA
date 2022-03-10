@@ -7,10 +7,9 @@ export default function DisplayAllPosts({allPosts}) {
 
     return (
 
-        <>
-        <h1>Hello All Posts</h1>
-        { allUsersPosts }
-        </>
+        <div className="grid">
+            {allUsersPosts}
+        </div>
 
     );
 }
