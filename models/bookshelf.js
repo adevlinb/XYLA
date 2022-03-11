@@ -24,7 +24,7 @@ const recommendationSchema = new Schema({
 const bookshelfSchema = new Schema({
     userId: { type: Schema.Types.ObjectId, ref: 'User' },
     userBooks: [userBookSchema],
-    recommendedFromFriends: [recommendationSchema],
+    recommended: [recommendationSchema],
 }, {timestamps: true});
 
 

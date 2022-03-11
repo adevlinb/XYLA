@@ -7,7 +7,7 @@ import DisplayFindFriends from '../../components/DisplayFindFriends/DisplayFindF
 import DisplayProfileDetail from '../../components/DisplayProfileDetail/DisplayProfileDetail';
 import { useState, useEffect } from 'react'
 
-export default function SocialWallPage() {
+export default function SocialWallPage({ library }) {
     const [allPosts, setAllPosts] = useState([]);
     const [allProfiles, setAllProfiles] = useState([]);
     const [profile, setProfile] = useState({});
@@ -30,23 +30,11 @@ export default function SocialWallPage() {
             console.log('find profile/books by id', id)
             const pro = await profilesAPI.findProfile(id)
             const books = await booksAPI.getUserLibrary(id);
+            // const recs = await booksAPI.getUserRecs(id);
             setProfile(pro);
             setUserLibrary(books);
         }
     }
-
-    // useEffect(() => {
-    //     async function getUserBooks() {
-            
-    //         console.log('i got profile books', books)
-    //         setUserLibrary(books);
-    //     }
-    //     getUserBooks();
-    // }, []);
-
-    // async function findProfile(id) {
-    //     const profileToFind = await profilesAPI.findProfile()
-    // }
 
     useEffect(() => {
         async function getPosts() {
@@ -70,6 +58,11 @@ export default function SocialWallPage() {
         setAllPosts(updatePosts);
     }
 
+    async function addRecommendation(data, id) {
+        const updateBooks = await booksAPI.addRecToFriend(data, id)
+        setUserLibrary(updateBooks)
+    }
+
 
     return (
         <div className="horizontal">
@@ -83,7 +76,7 @@ export default function SocialWallPage() {
             <div className="verticalTwo">
                 {show.displayAllPosts && <DisplayAllPosts allPosts={allPosts} addComment={addComment} />}
                 {show.findFriends && <DisplayFindFriends allProfiles={allProfiles} toggleShow={toggleShow}/>}
-                {show.profileDetail && <DisplayProfileDetail profile={profile} userLibrary={userLibrary}/>}
+                {show.profileDetail && <DisplayProfileDetail profile={profile} userLibrary={userLibrary} library={library} addRecommendation={addRecommendation}/>}
             </div>
         </div>
     );

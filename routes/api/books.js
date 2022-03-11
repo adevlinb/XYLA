@@ -12,5 +12,9 @@ router.get('/search', ensureLoggedIn, booksCtrl.googleSearchAPI);
 router.post('/add', ensureLoggedIn, booksCtrl.addBook);
 // GET /api/books/users/:id
 router.get('/users/:id', ensureLoggedIn, booksCtrl.getUserLibrary);
+// GET /api/books/users/:id
+router.get('/users/recs/:id', ensureLoggedIn, booksCtrl.getUserRecs);
+// GET /api/books/users/:id
+router.post('/users/addRecToFriend/:id', ensureLoggedIn, booksCtrl.addRecToFriend);
 
 module.exports = router;

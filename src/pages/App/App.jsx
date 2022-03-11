@@ -38,7 +38,7 @@ export default function App() {
               {/* Route components in here */}
               <Route path="/library" element={<LibraryPage library={library} setLibrary={setLibrary} />} />
               <Route path="/search" element={<SearchBooksPage queryResults={queryResults} setQueryResults={setQueryResults} searchForBooks={searchForBooks} addBook={addBook}/>} />
-              <Route path="/wall" element={<SocialWallPage />} />
+              <Route path="/wall" element={<SocialWallPage library={library} />} />
               <Route path="/clubs" element={<ClubPage />} />
               <Route path="/*" element={<Navigate to="/library" />} />
             </Routes>

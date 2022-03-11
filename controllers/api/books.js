@@ -9,7 +9,9 @@ module.exports = {
     addBook,
     googleSearchAPI,
     populateUserShelf,
-    getUserLibrary
+    getUserLibrary,
+    getUserRecs,
+    addRecToFriend
 };
 
 async function addBook(req, res) {
@@ -55,4 +57,39 @@ async function getUserLibrary(req, res) {
     console.log(userShelf)
     let books = userShelf.userBooks;
     res.json(books);
+}
+
+async function getUserRecs(req, res) {
+    console.log('profile books controller', req.params.id)
+    const userRecShelf = await Bookshelf.findOne({ userId: req.params.id }).populate('recommended.recommendation:').populate('recommended.personRecommending:').exec();
+    console.log(userRecShelf);
+    let recs = userRecShelf.recommendation;
+    res.json(recs);
+}
+
+
+
+async function addRecToFriend(req, res) {
+    console.log('addRecController', req.params.id, req.body)
+    const userShelf = await Bookshelf.findOne({ userId: req.params.id }).exec();
+    req.body.personRecommending = user._id
+    console.log(req.body)
+    
+    userShelf.recommended.push(req.body)
+    await userShelf.save()
+
+
+
+    const formattedBook = await Book.newBook(newBook);
+    let inShelf = shelf.userBooks.some(userBook => userBook.book._id.equals(formattedBook._id));
+    if (inShelf) {
+        const updatedInShelf = await Bookshelf.findOne({ userId: req.user._id })
+            .populate('userBooks.book').exec();
+        return res.json(updatedInShelf);
+    }
+    shelf.userBooks.push({ book: formattedBook._id })
+    await shelf.save()
+    const updatedNotInShelf = await Bookshelf.findOne({ userId: req.user._id })
+        .populate('userBooks.book').exec();
+    res.json(updatedNotInShelf);
 }

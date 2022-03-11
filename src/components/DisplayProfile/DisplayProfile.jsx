@@ -1,7 +1,7 @@
-import './DisplayProfile.css'
+// import './DisplayProfile.css'
 
-export default function DisplayProfile() {
+// export default function DisplayProfile() {
 
-    return <h1>DisplayProfile</h1>
+//     return <h1>DisplayProfile</h1>
 
-}
+// }
