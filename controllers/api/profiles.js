@@ -14,7 +14,7 @@ async function getAllProfiles(req, res) {
 }
 
 async function findProfile(req, res) {
-    console.log(req.params.id)
+    console.log("find profile controller", req.params.id)
     const profile = await User.findById(req.params.id).select('name');
     console.log(profile);
     return res.json(profile);

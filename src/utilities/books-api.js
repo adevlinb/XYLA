@@ -7,6 +7,11 @@ export function getLibrary() {
     return sendRequest(`${BASE_URL}/populateShelf`);
 }
 
+// populate all users bookshelf when looking at Profile detail
+export function getUserLibrary(id) {
+    return sendRequest(`${BASE_URL}/users/${id}`);
+}
+
 // search for books via google.books API
 export function searchBooks(query) {
     return sendRequest(`${BASE_URL}/search?q=${query}`);
