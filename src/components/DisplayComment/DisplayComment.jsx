@@ -1,10 +1,10 @@
 
 
-export default function DisplayComment({comment}) {
-    console.log(comment.content)
+export default function DisplayComment({c}) {
+
     return (
         <>
-            {comment.content}
+            {c.content}
         </>
     )
 }

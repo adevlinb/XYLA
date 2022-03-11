@@ -1,6 +1,7 @@
 import './DisplayPostCard.css'
 // import DisplayComment from '../DisplayComment/DisplayComment';
 import { useState } from 'react'
+import DisplayComment from '../DisplayComment/DisplayComment';
 
 export default function DisplayPostCard({post, addComment}) {
     const [cardFlip, setcardFlip] = useState(true);
@@ -21,9 +22,9 @@ export default function DisplayPostCard({post, addComment}) {
         setCommentData({content: ''})
     }
 
-    // const comments = post.comment.map(function(comment){
-    //     console.log(comment.content)  
-    // })
+    const comments = post.comment.map((c, idx) => (
+        <DisplayComment c={c} key={idx} /> 
+    ))
 
 
     return (
@@ -55,7 +56,7 @@ export default function DisplayPostCard({post, addComment}) {
                         {post && post.book.pageCount ? <div name="pageCount">{post.book.pageCount}</div> : <div>N/A</div>}
                         {post && post.book.isbnNum ? <div name="isbnNum">{post.book.isbnNum}</div> : <div>N/A</div>}
                         {post && post.book.rating ? <div name="rating">{post.book.rating}</div> : <div>N/A</div>}
-                        {/* {comments} */}
+                  
                     </div>
                 </div>
                 <div className="comment">
@@ -68,9 +69,7 @@ export default function DisplayPostCard({post, addComment}) {
             :
             
             <div className="cardTwo">
-                {/* <>{post.comment.map(function(comment) {
-                    <>{comment.content}</>
-                })}</> */}
+                {comments}
                 {post && <div> {post.user.name} </div>}
                 {post && <div name="description">{post.description}</div>}
                 <button onClick={() => setcardFlip(!cardFlip)}>Return</button>
