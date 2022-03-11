@@ -9,8 +9,7 @@ import DisplayPosts from '../../components/DisplayPosts/DisplayPosts';
 import DisplayProfile from '../../components/DisplayProfile/DisplayProfile';
 import DisplaySettings from '../../components/DisplaySettings/DisplaySettings';
 
-export default function LibraryPage({ library, setLibrary }) {
-
+export default function LibraryPage({library, setLibrary}) {
   const [show, setShow] = useState({
     myShelf: true, 
     recShelf: false,
@@ -55,6 +54,12 @@ export default function LibraryPage({ library, setLibrary }) {
       getPosts();  
     }, []);
 
+  async function addComment(commentData) {
+    await postsAPI.addCommentToPost(commentData);
+    const userPosts = await postsAPI.getUserPosts();
+    setUserPosts(userPosts);
+  }
+
   return (
     <div className="horizontal">
       <div className="verticalOne">
@@ -71,7 +76,7 @@ export default function LibraryPage({ library, setLibrary }) {
         {show.myShelf && <DisplayLibrary library={library} />}
         {show.recShelf && <DisplayRecs />}
         {show.favShelf && <DisplayFavorites/>}
-        {show.postShelf && <DisplayPosts library={library} createPost={createPost} userPosts={userPosts}/>}
+        {show.postShelf && <DisplayPosts library={library} createPost={createPost} userPosts={userPosts} addComment={addComment}/>}
         {show.profile && <DisplayProfile />}
         {show.settings && <DisplaySettings />}
       </div>

@@ -15,12 +15,12 @@ export default function LandingPage({ setUser }) {
     <main>
       {showLanding ? 
         <>
-        <button onClick={() => setShowLanding(!showLanding)}>Join XYLA!</button>
-        <RealLandingPage />
+          <button onClick={() => setShowLanding(!showLanding)}>Join XYLA!</button>
+          <RealLandingPage />
         </>
         :
         <>
-        <button onClick={() => setShowLanding(!showLanding)}>Back to Landing Page</button>
+          <button onClick={() => setShowLanding(!showLanding)}>Back to Landing Page</button>
           <AuthPage setUser={setUser} />
         </>
       }

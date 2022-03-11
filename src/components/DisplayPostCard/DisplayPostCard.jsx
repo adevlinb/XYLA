@@ -1,12 +1,11 @@
 import './DisplayPostCard.css'
+// import DisplayComment from '../DisplayComment/DisplayComment';
 import { useState } from 'react'
 
 export default function DisplayPostCard({post, addComment}) {
-
     const [cardFlip, setcardFlip] = useState(true);
     const [commentData, setCommentData] = useState({
-        content: '',
-        postId: ''
+        content: ''
     });
     
     function handleChange(evt) {
@@ -14,14 +13,18 @@ export default function DisplayPostCard({post, addComment}) {
         console.log(commentData)
     }
 
-    function handleAddComment(evt) {
-        // evt.preventDefault()
-        // console.log(evt.target.id)
-        
-        console.log(commentData);
-        // addComment(commentData)
-        setCommentData("")
+    function handleAddComment(id, evt) {
+        evt.preventDefault()
+        commentData.postId = id
+        console.log(commentData)
+        addComment(commentData)
+        setCommentData({content: ''})
     }
+
+    // const comments = post.comment.map(function(comment){
+    //     console.log(comment.content)  
+    // })
+
 
     return (
     <>
@@ -52,24 +55,28 @@ export default function DisplayPostCard({post, addComment}) {
                         {post && post.book.pageCount ? <div name="pageCount">{post.book.pageCount}</div> : <div>N/A</div>}
                         {post && post.book.isbnNum ? <div name="isbnNum">{post.book.isbnNum}</div> : <div>N/A</div>}
                         {post && post.book.rating ? <div name="rating">{post.book.rating}</div> : <div>N/A</div>}
+                        {/* {comments} */}
                     </div>
                 </div>
-                    <form onSubmit={handleAddComment}>
-                    <div className="comment">
-                            <input name="content" onChange={handleChange} type="text" placeholder='Add Comment!'/>
-                            <input name="postId" value={`${post._id}`} type="hidden" />
+                <div className="comment">
+                    <form onSubmit={(evt) => handleAddComment(`${post._id}`, evt)}>
+                            <input name="content" value={commentData.content} onChange={handleChange} type="text" placeholder='Add Comment!'/>
                             <button id="commentButton" type="submit">+</button>
-                    </div>
-                </form>
+                    </form>
+                </div>
             </div>
             :
-
+            
             <div className="cardTwo">
+                {/* <>{post.comment.map(function(comment) {
+                    <>{comment.content}</>
+                })}</> */}
                 {post && <div> {post.user.name} </div>}
                 {post && <div name="description">{post.description}</div>}
                 <button onClick={() => setcardFlip(!cardFlip)}>Return</button>
             </div>
         }
+
     </>
     );
 }

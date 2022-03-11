@@ -3,7 +3,7 @@ import DisplayBookOption from '../DisplayBookOption/DisplayBookOption';
 import { useState } from 'react';
 import DisplayPostCard from '../DisplayPostCard/DisplayPostCard';
 
-export default function DisplayPosts({ library, createPost, userPosts }) {
+export default function DisplayPosts({ library, createPost, userPosts, addComment}) {
 
     const [formData, setFormData] = useState({
         title: '',
@@ -17,7 +17,7 @@ export default function DisplayPosts({ library, createPost, userPosts }) {
     ));
 
     const allUserPosts = userPosts.map((post) => (
-        <DisplayPostCard post={post} key={post._id} />
+        <DisplayPostCard post={post} key={post._id} addComment={addComment}/>
     )); 
 
 

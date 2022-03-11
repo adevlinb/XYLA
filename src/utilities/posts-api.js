@@ -17,4 +17,10 @@ export function addNewPost(post) {
     return sendRequest(`${BASE_URL}/add`, 'POST', post);
 }
 
+export function addCommentToPost(post) {
+    return sendRequest(`${BASE_URL}/addComment`, 'POST', post);
+}
+
+
+
 // (`${BASE_URL}/posts?search=${title}`);
