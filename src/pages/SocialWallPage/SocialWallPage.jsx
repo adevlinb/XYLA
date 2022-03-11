@@ -33,8 +33,9 @@ export default function SocialWallPage() {
 
     useEffect(() => {
         async function getProfiles() {
-            const allProfiles = await profilesAPI.getAllProfiles();
-            setAllProfiles(allProfiles);
+            const profiles = await profilesAPI.getAllProfiles();
+            console.log(profiles)
+            setAllProfiles(profiles);
         }
         getProfiles();
     }, []);

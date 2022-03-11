@@ -1,12 +1,11 @@
 
 
-export default function DisplayProfilePage({ allProfiles }) {
+export default function DisplayProfilePage({p}) {
     return (
     
        <>
-       <h1>I'm a Profile</h1>
-       
-       
+            <button onClick={() => console.log('hi')}>{p.name}</button>
+            
        </> 
 
     )
