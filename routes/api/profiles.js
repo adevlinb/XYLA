@@ -7,5 +7,8 @@ const ensureLoggedIn = require('../../config/ensureLoggedIn')
 // GET /api/profiles/    initial populate user bookshelf
 router.get('/allProfiles', ensureLoggedIn, profilesCtrl.getAllProfiles);
 
+// GET /api/profiles/find/:id
+router.get('/find/:id', ensureLoggedIn, profilesCtrl.findProfile);
+
 
 module.exports = router;

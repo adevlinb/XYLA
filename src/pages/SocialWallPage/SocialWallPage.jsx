@@ -3,24 +3,37 @@ import * as postsAPI from '../../utilities/posts-api';
 import * as profilesAPI from '../../utilities/profiles-api';
 import DisplayAllPosts from '../../components/DisplayAllPosts/DisplayAllPosts';
 import DisplayFindFriends from '../../components/DisplayFindFriends/DisplayFindFriends';
+import DisplayProfileDetail from '../../components/DisplayProfileDetail/DisplayProfileDetail';
 import { useState, useEffect } from 'react'
 
 export default function SocialWallPage() {
     const [allPosts, setAllPosts] = useState([])
     const [allProfiles, setAllProfiles] = useState([])
+    const [profile, setProfile] = useState({})
 
     const [show, setShow] = useState({
         displayAllPosts: true,
         findFriends: false,
+        profileDetail: false
     })
 
-    function toggleShow(shelf) {
+    async function toggleShow(shelf, id) {
         const newShowState = { ...show };
         for (let key in newShowState) {
             newShowState[key] = false;
         }
         newShowState[shelf] = true;
         setShow(newShowState);
+        console.log(id)
+        if (id) {
+            const pro = await profilesAPI.findProfile(id)
+            setProfile(pro)
+            console.log('inside find profile')
+        }
+    }
+
+    async function findProfile(id) {
+        const profileToFind = await profilesAPI.findProfile()
     }
 
     useEffect(() => {
@@ -57,8 +70,8 @@ export default function SocialWallPage() {
             </div>
             <div className="verticalTwo">
                 {show.displayAllPosts && <DisplayAllPosts allPosts={allPosts} addComment={addComment} />}
-                {show.findFriends && <DisplayFindFriends allProfiles={allProfiles}/>}
-
+                {show.findFriends && <DisplayFindFriends allProfiles={allProfiles} toggleShow={toggleShow}/>}
+                {show.profileDetail && <DisplayProfileDetail profile={profile}/>}
             </div>
         </div>
     );

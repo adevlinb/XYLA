@@ -6,3 +6,7 @@ const BASE_URL = '/api/profiles';
 export function getAllProfiles() {
     return sendRequest(`${BASE_URL}/allProfiles`);
 }
+
+export function findProfile(id) {
+    return sendRequest(`${BASE_URL}/find/${id}`);
+}

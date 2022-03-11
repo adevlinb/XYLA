@@ -1,11 +1,11 @@
 
 
-export default function DisplayProfilePage({p}) {
+export default function DisplayProfilePage({p, toggleShow}) {
     return (
     
        <>
-            <button onClick={() => console.log('hi')}>{p.name}</button>
-            
+            <button onClick={() => toggleShow('profileDetail', p._id)}>{p.name}</button>
+
        </> 
 
     )

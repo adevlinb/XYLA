@@ -2,6 +2,6 @@ import './DisplayRecs.css'
 
 export default function DisplayRecs() {
 
-    return <h1>DisplayRecommendations</h1>
+    return <h1>Recommended Books</h1>
 
 }
