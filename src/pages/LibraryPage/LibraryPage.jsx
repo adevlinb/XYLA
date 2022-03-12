@@ -46,17 +46,17 @@ export default function LibraryPage({library, setLibrary}) {
       console.log(posts);
     }
 
-  useEffect(() => {
-      async function getPosts () {
-        const userPosts = await postsAPI.getUserPosts();
-        setUserPosts(userPosts);
-      }
-      getPosts();  
-    }, []);
+    useEffect(() => {
+        async function getPosts () {
+          const userPosts = await postsAPI.getUserPosts();
+          setUserPosts(userPosts);
+        }
+        getPosts();  
+      }, []);
 
   async function addComment(commentData) {
     await postsAPI.addCommentToPost(commentData);
-    const userPosts = await postsAPI.getUserPosts();
+    // const userPosts = await postsAPI.getUserPosts();
     setUserPosts(userPosts);
   }
 

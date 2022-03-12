@@ -19,7 +19,7 @@ export default function DisplayProfileDetail({ profile, userLibrary, library, ad
 
     function handleRecChange(evt) {
         setRecData({ ...recData, [evt.target.name]: evt.target.value });
-        console.log(recData)
+        console.log(recData, "hello rec data")
     }
 
     function handleAddRec(evt) {

@@ -46,14 +46,20 @@ async function googleSearchAPI(req, res) {
 }
 
 async function populateUserShelf(req, res) {
-    const shelf = await Bookshelf.findOne({ userId: req.user._id }).populate('userBooks.book').exec();
-    let books = shelf.userBooks
-    res.json(books);
+    try{ 
+        const shelf = await Bookshelf.findOne({userId: req.user._id}).populate('userBooks.book').exec();
+        console.log(shelf)
+        let books = shelf.userBooks
+        if(!books) throw new Error();
+        res.json(books);
+    }   catch (err) {  
+        console.log(err)
+    }
 }
 
 async function getUserLibrary(req, res) {
     console.log('profile books controller', req.params.id)
-    const userShelf = await Bookshelf.findOne({ userId: req.params.id }).populate('userBooks.book').exec();
+    const userShelf = await Bookshelf.findOne({userId: req.params.id}).populate('userBooks.book').exec();
     console.log(userShelf)
     let books = userShelf.userBooks;
     res.json(books);
@@ -72,24 +78,24 @@ async function getUserRecs(req, res) {
 async function addRecToFriend(req, res) {
     console.log('addRecController', req.params.id, req.body)
     const userShelf = await Bookshelf.findOne({ userId: req.params.id }).exec();
-    req.body.personRecommending = user._id
+    req.body.personRecommending = req.user._id
     console.log(req.body)
-    
+    let inRecShelf = userShelf.recommendedFromFriends.some(userBook => userBook.book._id.equals(formattedBook._id));
+    if (inRecShelf) {
+
+
+
+    }
     userShelf.recommended.push(req.body)
     await userShelf.save()
-
-
-
-    const formattedBook = await Book.newBook(newBook);
-    let inShelf = shelf.userBooks.some(userBook => userBook.book._id.equals(formattedBook._id));
-    if (inShelf) {
-        const updatedInShelf = await Bookshelf.findOne({ userId: req.user._id })
-            .populate('userBooks.book').exec();
-        return res.json(updatedInShelf);
-    }
-    shelf.userBooks.push({ book: formattedBook._id })
-    await shelf.save()
     const updatedNotInShelf = await Bookshelf.findOne({ userId: req.user._id })
         .populate('userBooks.book').exec();
     res.json(updatedNotInShelf);
 }
+
+    // const formattedBook = await Book.newBook(newBook);
+    // let inShelf = shelf.userBooks.some(userBook => userBook.book._id.equals(formattedBook._id));
+    // if (inShelf) {
+    //     const updatedInShelf = await Bookshelf.findOne({ userId: req.user._id })
+    //         .populate('userBooks.book').exec();
+    //     return res.json(updatedInShelf);

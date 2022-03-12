@@ -23,7 +23,7 @@ const postSchema = new Schema({
 postSchema.statics.formatPostInfo = function (req) {
     let newBook = {
         user: req.user._id,
-        book: req.body.book,
+        book: req.body.book.value,
         title: req.body.title,
         description: req.body.description,
         rating: req.body.rating

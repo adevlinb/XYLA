@@ -12,23 +12,38 @@ module.exports = {
 };
 
 async function create(req, res) {
-    const postBook = Book.findById(req.body.book).exec();
-    const newPost = await Post.formatPostInfo(req);
-    const post = await new Post(newPost)
-    await post.save();
-    const allUserPosts = await Post.find({ user: req.user._id }).populate('book').exec()
-    res.json(allUserPosts)
+    try {
+        const postBook = await Book.findById(req.body.book.value).exec();
+        console.log(postBook, req.body.book.value)
+        if (!postBook) throw new Error ();
+        const newPost = await Post.formatPostInfo(req);
+        const post = await new Post(newPost)
+        await post.save();
+        const allUserPosts = await Post.find({ user: req.user._id }).populate('book').exec()
+        if (!allUserPosts) throw new Error ();
+        res.json(allUserPosts)
+    } catch (err) {
+        console.log(err)
+    }
 
 }
 
 async function getAllPosts(req, res) {
-    const allPosts = await Post.find({}).populate('user').populate('book').exec()
-    res.json(allPosts);
+    try{
+        const allPosts = await Post.find({}).populate('user').populate('book').exec()
+        res.json(allPosts);
+    } catch (err) {
+        console.log(err)
+    }
 }
 
 async function getUserPosts(req, res) {
-    const allUserPosts = await Post.find({ user: req.user._id }).populate('book').populate('user').exec()
-    res.json(allUserPosts)
+    try{
+        const allUserPosts = await Post.find({ user: req.user._id }).populate('book').populate('user').exec()
+        res.json(allUserPosts)
+    } catch (err) {
+        console.log(err)
+    }
 }
 
 async function addComment(req, res) {

@@ -1,25 +1,38 @@
 import './DisplayPosts.css';
 import DisplayBookOption from '../DisplayBookOption/DisplayBookOption';
-import { useState } from 'react';
+import { useState, useRef } from 'react';
 import DisplayPostCard from '../DisplayPostCard/DisplayPostCard';
 
 export default function DisplayPosts({ library, createPost, userPosts, addComment}) {
-
+    const [optionValue, setOptionValue] = useState();
     const [formData, setFormData] = useState({
         title: '',
         description: '',
         rating: 3,
-        book: 0
+        book: ''
     });
 
-    const options = library.map((b, idx) => (
-        <DisplayBookOption b={b} key={b._id} handleChange={handleChange} />
+    // let optionsEl = useRef(null)
+
+    let bookOptions = library.map((b, idx) => (
+      {value: b.book._id, label: b.book.title}
     ));
+
+    // console.log(bookOptions)
+    // const options = library.map((b, idx) => (
+    //     <DisplayBookOption b={b} key={b._id} handleChange={handleChange} />
+    // ));
 
     const allUserPosts = userPosts.map((post) => (
         <DisplayPostCard post={post} key={post._id} addComment={addComment}/>
     )); 
 
+    function handleOption(evt) {
+        formData.book = bookOptions[evt.target.options.selectedIndex]
+       
+        console.log(formData)
+        console.log('hello click')
+    }
 
     function handleChange(evt) {
         setFormData({ ...formData, [evt.target.name]: evt.target.value });
@@ -28,6 +41,7 @@ export default function DisplayPosts({ library, createPost, userPosts, addCommen
 
     function handleCreatePost(evt) {
         evt.preventDefault()
+        if (formData.book === '') return;
         console.log(formData);
         createPost(formData)
         setFormData({
@@ -57,8 +71,10 @@ export default function DisplayPosts({ library, createPost, userPosts, addCommen
                 </label>
                 <label>
                     Choose Your Book!
-                    <select name="book" onChange={handleChange}>
-                        {options}
+                        <select onChangeCapture={handleOption}>
+                        {bookOptions.map((option, ind) => {
+                            return <option value={option.value} onMouseDown={handleOption} key={option.value} name={option.value}>{option.label}</option>;
+                        })}
                     </select>
                 </label>
                 <button type="submit">Create Post</button>
