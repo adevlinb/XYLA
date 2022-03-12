@@ -7,11 +7,12 @@ import DisplayFindFriends from '../../components/DisplayFindFriends/DisplayFindF
 import DisplayProfileDetail from '../../components/DisplayProfileDetail/DisplayProfileDetail';
 import { useState, useEffect } from 'react'
 
-export default function SocialWallPage({ library }) {
+export default function SocialWallPage() {
     const [allPosts, setAllPosts] = useState([]);
     const [allProfiles, setAllProfiles] = useState([]);
     const [profile, setProfile] = useState({});
     const [userLibrary, setUserLibrary] = useState([]);
+    const [library, setLibrary] = useState([]);
 
     const [show, setShow] = useState({
         displayAllPosts: true,
@@ -35,6 +36,14 @@ export default function SocialWallPage({ library }) {
             setUserLibrary(books);
         }
     }
+
+    useEffect(() => {
+        async function getUserBooks() {
+            const books = await booksAPI.getLibrary();
+            setLibrary(books);
+        }
+        getUserBooks();
+    }, []);
 
     useEffect(() => {
         async function getPosts() {
@@ -75,7 +84,7 @@ export default function SocialWallPage({ library }) {
             </div>
             <div className="verticalTwo">
                 {show.displayAllPosts && <DisplayAllPosts allPosts={allPosts} addComment={addComment} />}
-                {show.findFriends && <DisplayFindFriends allProfiles={allProfiles} toggleShow={toggleShow}/>}
+                {show.findFriends && <DisplayFindFriends allProfiles={allProfiles} toggleShow={toggleShow} library={library}/>}
                 {show.profileDetail && <DisplayProfileDetail profile={profile} userLibrary={userLibrary} library={library} addRecommendation={addRecommendation}/>}
             </div>
         </div>

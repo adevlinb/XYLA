@@ -76,26 +76,21 @@ async function getUserRecs(req, res) {
 
 
 async function addRecToFriend(req, res) {
-    console.log('addRecController', req.params.id, req.body)
-    const userShelf = await Bookshelf.findOne({ userId: req.params.id }).exec();
-    req.body.personRecommending = req.user._id
-    console.log(req.body)
-    let inRecShelf = userShelf.recommendedFromFriends.some(userBook => userBook.book._id.equals(formattedBook._id));
-    if (inRecShelf) {
-
-
-
+    try{ 
+        const userShelf = await Bookshelf.findOne({ userId: req.params.id }).exec();
+        req.body.personRecommending = req.user._id
+        const bookRec = req.body
+        let inRecShelf = userShelf.recommended.some(recommendation => recommendation.recommendation._id.equals(req.body.recommendation));
+            if (inRecShelf) {
+                const updatedInShelf = await Bookshelf.findOne({ userId: req.params.id }).populate('userBooks.book').exec();
+                return res.json(updatedInShelf);
+            }
+        userShelf.recommended.push(bookRec)
+        await userShelf.save()
+        const updatedNotInShelf = await Bookshelf.findOne({ userId: req.params.id }).populate('userBooks.book').exec();
+        console.log('updatesShelf', updatedNotInShelf)
+        res.json(updatedNotInShelf);
+    } catch (err) {
+        console.log(err)
     }
-    userShelf.recommended.push(req.body)
-    await userShelf.save()
-    const updatedNotInShelf = await Bookshelf.findOne({ userId: req.user._id })
-        .populate('userBooks.book').exec();
-    res.json(updatedNotInShelf);
 }
-
-    // const formattedBook = await Book.newBook(newBook);
-    // let inShelf = shelf.userBooks.some(userBook => userBook.book._id.equals(formattedBook._id));
-    // if (inShelf) {
-    //     const updatedInShelf = await Bookshelf.findOne({ userId: req.user._id })
-    //         .populate('userBooks.book').exec();
-    //     return res.json(updatedInShelf);

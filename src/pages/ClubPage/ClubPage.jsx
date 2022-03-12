@@ -10,7 +10,7 @@ export default function ClubPage() {
                 <h5>Find Clubs</h5>
             </div>
             <div className="verticalTwo">
-                <h1>BOOK CLUBS FEATURES COMING SOON</h1>
+                <h1>BOOK CLUBS COMING SOON</h1>
             </div>
         </div>
     );

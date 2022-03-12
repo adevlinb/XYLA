@@ -12,16 +12,9 @@ export default function DisplayPosts({ library, createPost, userPosts, addCommen
         book: ''
     });
 
-    // let optionsEl = useRef(null)
-
     let bookOptions = library.map((b, idx) => (
       {value: b.book._id, label: b.book.title}
     ));
-
-    // console.log(bookOptions)
-    // const options = library.map((b, idx) => (
-    //     <DisplayBookOption b={b} key={b._id} handleChange={handleChange} />
-    // ));
 
     const allUserPosts = userPosts.map((post) => (
         <DisplayPostCard post={post} key={post._id} addComment={addComment}/>
@@ -29,9 +22,6 @@ export default function DisplayPosts({ library, createPost, userPosts, addCommen
 
     function handleOption(evt) {
         formData.book = bookOptions[evt.target.options.selectedIndex]
-       
-        console.log(formData)
-        console.log('hello click')
     }
 
     function handleChange(evt) {
@@ -41,7 +31,10 @@ export default function DisplayPosts({ library, createPost, userPosts, addCommen
 
     function handleCreatePost(evt) {
         evt.preventDefault()
-        if (formData.book === '') return;
+        if (formData.book === '') {
+            if(bookOptions[0] === null) return;
+            else formData.book = bookOptions[0]
+        }
         console.log(formData);
         createPost(formData)
         setFormData({
@@ -71,7 +64,7 @@ export default function DisplayPosts({ library, createPost, userPosts, addCommen
                 </label>
                 <label>
                     Choose Your Book!
-                        <select onChangeCapture={handleOption}>
+                    <select onChangeCapture={handleOption}>
                         {bookOptions.map((option, ind) => {
                             return <option value={option.value} onMouseDown={handleOption} key={option.value} name={option.value}>{option.label}</option>;
                         })}

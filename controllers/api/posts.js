@@ -47,9 +47,13 @@ async function getUserPosts(req, res) {
 }
 
 async function addComment(req, res) {
-    const currentPost = await Post.findById(req.body.postId).exec()
-    currentPost.comment.push({ content: req.body.content, user: req.user._id});
-    currentPost.save();
-    const allPosts = await Post.find({}).populate('comment').populate('user').exec()
-    res.json(allPosts);
+    try {
+        const currentPost = await Post.findById(req.body.postId).exec()
+        currentPost.comment.push({ content: req.body.content, user: req.user._id});
+        currentPost.save();
+        const allPosts = await Post.find({}).populate('comment').populate('user').exec()
+        res.json(allPosts);
+    } catch (err) {
+        console.log(err)
+    }
 }

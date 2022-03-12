@@ -7,15 +7,19 @@ module.exports = {
 };
 
 async function getAllProfiles(req, res) {
-    console.log("im looking for profiles")
-    const allProfiles = await User.find({}).select('name')
-    console.log(allProfiles)
-    res.json(allProfiles);
+    try {
+        const allProfiles = await User.find({}).select('name')
+        res.json(allProfiles);
+    } catch (err) {
+        console.log(err)
+    }
 }
 
 async function findProfile(req, res) {
-    console.log("find profile controller", req.params.id)
-    const profile = await User.findById(req.params.id).select('name');
-    console.log(profile);
-    return res.json(profile);
+    try {
+        const profile = await User.findById(req.params.id).select('name');
+        return res.json(profile);
+    } catch (err) {
+        console.log(err)
+    }
 }

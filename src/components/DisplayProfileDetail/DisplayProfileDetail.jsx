@@ -13,17 +13,24 @@ export default function DisplayProfileDetail({ profile, userLibrary, library, ad
         <DisplayLibraryItem b={b} key={b._id} />
     ));
 
-    const options = library.map((b) => (
-        <DisplayRecOption b={b} key={b._id} handleRecChange={handleRecChange} />
+    let bookOptions = library.map((b, idx) => (
+        { value: b.book._id, label: b.book.title }
     ));
 
+    console.log(bookOptions[0].value, "hello value")
+
     function handleRecChange(evt) {
-        setRecData({ ...recData, [evt.target.name]: evt.target.value });
+        recData.recommendation = bookOptions[evt.target.options.selectedIndex].value
         console.log(recData, "hello rec data")
     }
 
     function handleAddRec(evt) {
         evt.preventDefault()
+        if (recData.recommendation === "" || recData.recommendation === undefined) {
+            if (bookOptions[0] === null) return;
+            else recData.recommendation = bookOptions[0].value
+        }
+        console.log(recData, "rec attempt");
         addRecommendation(recData, profile._id)
     }
 
@@ -32,8 +39,10 @@ export default function DisplayProfileDetail({ profile, userLibrary, library, ad
         <form onSubmit={handleAddRec}>
             <label >
             <h5>Recommend a book to {profile.name}:</h5>
-                <select name="recommendation" onChange={handleRecChange}>
-                    {options}
+                <select onChangeCapture={handleRecChange}>
+                    {bookOptions.map((option, ind) => {
+                        return <option value={option.value} key={option.value} name={option.value}>{option.label}</option>;
+                    })}
                 </select>
             </label>
             <button type="submit">Recommend!</button>
