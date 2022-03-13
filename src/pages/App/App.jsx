@@ -12,10 +12,7 @@ import * as booksAPI from '../../utilities/books-api';
 
 export default function App() {
   const [user, setUser] = useState(getUser());
-  const [queryResults, setQueryResults] = useState([]);
   const [library, setLibrary] = useState([]);
-
-  
 
   async function addBook(newBook) {
     const books = await booksAPI.addNewBook(newBook)
@@ -23,10 +20,7 @@ export default function App() {
     setLibrary(books.userBooks)
   }
 
-  async function searchForBooks(query) {
-    const bookSearchResult = await booksAPI.searchBooks(query);
-    setQueryResults(bookSearchResult.items)
-  }
+
 
 
   return (
@@ -37,7 +31,7 @@ export default function App() {
             <Routes>
               {/* Route components in here */}
               <Route path="/library" element={<LibraryPage library={library} setLibrary={setLibrary} />} />
-              <Route path="/search" element={<SearchBooksPage queryResults={queryResults} setQueryResults={setQueryResults} searchForBooks={searchForBooks} addBook={addBook}/>} />
+              <Route path="/search" element={<SearchBooksPage addBook={addBook}/>} />
               <Route path="/wall" element={<SocialWallPage library={library} />} />
               <Route path="/clubs" element={<ClubPage />} />
               <Route path="/*" element={<Navigate to="/library" />} />

@@ -1,10 +1,16 @@
-// import * as userService from '../../utilities/users-service';
-import SearchBar from '../../components/SearchBar/SearchBar'
+import SearchBar from '../../components/SearchBar/SearchBar';
 import DisplayResults from '../../components/DisplayResults/DisplayResults';
+import * as booksAPI from '../../utilities/books-api';
+import { useState } from 'react';
 
-export default function SearchBooksPage({ queryResults, setQueryResults, searchForBooks, addBook }) {
+export default function SearchBooksPage({ addBook }) {
 
+  const [queryResults, setQueryResults] = useState([]);
 
+  async function searchForBooks(query) {
+    const bookSearchResult = await booksAPI.searchBooks(query);
+    setQueryResults(bookSearchResult.items);
+  }
 
   return (
     <div className="horizontal">

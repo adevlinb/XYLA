@@ -1,13 +1,12 @@
-import { useState, useEffect } from 'react'
 import DisplayLibraryItem from '../DisplayLibraryItem/DisplayLibraryItem';
 import DisplayRecs from '../DisplayRecs/DisplayRecs';
 
-export default function DisplayProfileDetail({ profile, userRecs, userLibrary, library, addRecommendation}) {
+export default function DisplayProfileDetail({ profile, userRecs, userLibrary, myLibrary, addRecommendation}) {
 
-    const [recData, setRecData] = useState({
+    const recData = {
         recommendation: "",
         personRecommending: ""
-    });
+    };
 
     const book = userLibrary.map((b) => (
         <DisplayLibraryItem b={b} key={b._id} />
@@ -17,7 +16,7 @@ export default function DisplayProfileDetail({ profile, userRecs, userLibrary, l
         <DisplayRecs r={r} key={r._id} />
     ));
 
-    let bookOptions = library.map((b, idx) => (
+    let bookOptions = myLibrary.map((b) => (
         { value: b.book._id, label: b.book.title }
     ));
 

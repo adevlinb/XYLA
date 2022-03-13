@@ -1,10 +1,10 @@
 import './DisplayPosts.css';
-import DisplayBookOption from '../DisplayBookOption/DisplayBookOption';
-import { useState, useRef } from 'react';
+
+import { useState } from 'react';
 import DisplayPostCard from '../DisplayPostCard/DisplayPostCard';
 
 export default function DisplayPosts({ library, createPost, userPosts, addComment}) {
-    const [optionValue, setOptionValue] = useState();
+    
     const [formData, setFormData] = useState({
         title: '',
         description: '',

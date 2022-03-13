@@ -16,5 +16,7 @@ router.get('/users/:id', ensureLoggedIn, booksCtrl.getUserLibrary);
 router.get('/users/recs/:id', ensureLoggedIn, booksCtrl.getUserRecs);
 // GET /api/books/users/:id
 router.post('/users/addRecToFriend/:id', ensureLoggedIn, booksCtrl.addRecToFriend);
+// GET /api/books/myRecs
+router.get('/myRecs', ensureLoggedIn, booksCtrl.getMyRecs);
 
 module.exports = router;

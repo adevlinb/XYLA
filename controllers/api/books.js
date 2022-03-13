@@ -11,7 +11,8 @@ module.exports = {
     populateUserShelf,
     getUserLibrary,
     getUserRecs,
-    addRecToFriend
+    addRecToFriend,
+    getMyRecs
 };
 
 async function addBook(req, res) {
@@ -70,8 +71,16 @@ async function getUserLibrary(req, res) {
 async function getUserRecs(req, res) {
     try {
         const userRecShelf = await Bookshelf.findOne({ userId: req.params.id }).populate('recommended.recommendation').populate('recommended.personRecommending').exec();
-        console.log(userRecShelf, "user rec controller")
-        res.json(userRecShelf);
+        res.json(userRecShelf.recommended);
+    } catch (err) {
+        console.log(err);
+    }
+}
+
+async function getMyRecs(req, res) {
+    try {
+        const myRecShelf = await Bookshelf.findOne({ userId: req.user._id }).populate('recommended.recommendation').populate('recommended.personRecommending').exec();
+        res.json(myRecShelf.recommended);
     } catch (err) {
         console.log(err);
     }

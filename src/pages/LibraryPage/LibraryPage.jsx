@@ -21,6 +21,7 @@ export default function LibraryPage({library, setLibrary}) {
   
   //array of user posts..
   const [userPosts, setUserPosts] = useState(false);
+  const [myRecs, setMyRecs] = useState(false);
 
   function toggleShow(shelf) {
     const newShowState = {...show};
@@ -38,7 +39,9 @@ export default function LibraryPage({library, setLibrary}) {
         setLibrary(books);
         const userPosts = await postsAPI.getUserPosts();
         setUserPosts(userPosts);
-
+        const recs = await booksAPI.getMyRecs();
+        console.log(recs, "myshelf recs")
+        setMyRecs(recs);
 
       }
       getMyShelf();  
@@ -50,16 +53,8 @@ export default function LibraryPage({library, setLibrary}) {
       console.log(posts);
     }
 
-    // useEffect(() => {
-    //     async function getPosts () {
-    //     }
-    //     getPosts();  
-    //   }, []);
-
   async function addComment(commentData) {
     await postsAPI.addCommentToPost(commentData);
-    // const userPosts = await postsAPI.getUserPosts();
-    // setUserPosts(userPosts);
   }
 
   return (
@@ -76,7 +71,7 @@ export default function LibraryPage({library, setLibrary}) {
       </div>
       <div className="verticalTwo">
         {show.myShelf && <DisplayLibrary library={library} />}
-        {show.recShelf && <DisplayRecs />}
+        {show.recShelf && <DisplayRecs myRecs={myRecs} />}
         {show.favShelf && <DisplayFavorites/>}
         {show.postShelf && <DisplayPosts library={library} createPost={createPost} userPosts={userPosts} addComment={addComment}/>}
         {show.profile && <DisplayProfile />}

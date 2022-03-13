@@ -2,9 +2,9 @@ import DisplayProfilePage from "../DisplayProfilePage/DisplayProfilePage"
 
 
 
-export default function DisplayFindFriends({ allProfiles, toggleShow, library }) {
+export default function DisplayFindFriends({ allProfiles, toggleShow }) {
     const profiles = allProfiles.map((p) => (
-        <DisplayProfilePage p={p} key={p._id} toggleShow={toggleShow} library={library}/>
+        <DisplayProfilePage p={p} key={p._id} toggleShow={toggleShow}/>
     ));
 
     return (

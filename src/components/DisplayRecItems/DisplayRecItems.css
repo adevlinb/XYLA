@@ -1,0 +1,37 @@
+.card {
+    display: flex;
+    flex-direction: row;
+    border-width: 3px;
+    border-color: blue;
+    border-style: solid;
+    margin: 20px;
+    background-color: rgb(255, 255, 255);
+    overflow: scroll;
+    object-fit: contain;
+}
+
+.image {
+    display: flex;
+    flex-direction: column;
+}
+
+.text {
+    display: flex;
+    flex-direction: column;
+    max-width: 50vw;
+}
+
+.cardTwo {
+    display: flex;
+    flex-direction: column;
+    border-width: 3px;
+    border-color: blue;
+    border-style: solid;
+    margin: 20px;
+    background-color: rgb(255, 255, 255);
+    overflow: scroll;
+    object-fit: contain;
+    max-height: 35vh;
+    padding: 10px;
+    border-radius: 10px;
+}

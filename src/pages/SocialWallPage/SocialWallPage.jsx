@@ -12,7 +12,7 @@ export default function SocialWallPage() {
     const [allProfiles, setAllProfiles] = useState([]);
     const [profile, setProfile] = useState({});
     const [userLibrary, setUserLibrary] = useState([]);
-    const [library, setLibrary] = useState([]);
+    const [myLibrary, setMyLibrary] = useState([]);
     const [userRecs, setUserRecs] = useState([]);
 
     const [show, setShow] = useState({
@@ -40,7 +40,7 @@ export default function SocialWallPage() {
     useEffect(() => {
         async function getUserBooks() {
             const books = await booksAPI.getLibrary();
-            setLibrary(books);
+            setMyLibrary(books);
         }
         getUserBooks();
     }, []);
@@ -86,8 +86,8 @@ export default function SocialWallPage() {
             </div>
             <div className="verticalTwo">
                 {show.displayAllPosts && <DisplayAllPosts allPosts={allPosts} addComment={addComment} />}
-                {show.findFriends && <DisplayFindFriends allProfiles={allProfiles} toggleShow={toggleShow} library={library}/>}
-                {show.profileDetail && <DisplayProfileDetail profile={profile} userRecs={userRecs} userLibrary={userLibrary} library={library} addRecommendation={addRecommendation}/>}
+                {show.findFriends && <DisplayFindFriends allProfiles={allProfiles} toggleShow={toggleShow} />}
+                {show.profileDetail && <DisplayProfileDetail profile={profile} userRecs={userRecs} userLibrary={userLibrary} myLibrary={myLibrary} addRecommendation={addRecommendation}/>}
             </div>
         </div>
     );

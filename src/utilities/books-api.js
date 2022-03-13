@@ -12,6 +12,10 @@ export function getUserLibrary(id) {
     return sendRequest(`${BASE_URL}/users/${id}`);
 }
 
+export function getMyRecs() {
+    return sendRequest(`${BASE_URL}/myRecs`);
+}
+
 // populate all users recommended shelf when looking at Profile detail
 export function getUserRecs(id) {
     return sendRequest(`${BASE_URL}/users/recs/${id}`);
