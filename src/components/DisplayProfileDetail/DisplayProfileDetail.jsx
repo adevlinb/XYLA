@@ -1,5 +1,5 @@
 import DisplayLibraryItem from '../DisplayLibraryItem/DisplayLibraryItem';
-import DisplayRecs from '../DisplayRecs/DisplayRecs';
+import DisplayRecItems from '../DisplayRecItems/DisplayRecItems';
 
 export default function DisplayProfileDetail({ profile, userRecs, userLibrary, myLibrary, addRecommendation}) {
 
@@ -13,7 +13,7 @@ export default function DisplayProfileDetail({ profile, userRecs, userLibrary, m
     ));
 
     const rec = userRecs.map((r) => (
-        <DisplayRecs r={r} key={r._id} />
+        <DisplayRecItems r={r} key={r._id} />
     ));
 
     let bookOptions = myLibrary.map((b) => (

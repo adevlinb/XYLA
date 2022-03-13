@@ -21,28 +21,31 @@ export default function SocialWallPage() {
         profileDetail: false
     })
 
+    //toggle component and get other users' profile / shelf info
     async function toggleShow(shelf, id) {
         const newShowState = { ...show };
         for (let key in newShowState) {
             newShowState[key] = false;
         }
-        newShowState[shelf] = true;
-        setShow(newShowState);
         if (id) {
             const pro = await profilesAPI.findProfile(id)
             const books = await booksAPI.getUserLibrary(id);
-            // const recs = await booksAPI.getUserRecs(id);
+            const recs = await booksAPI.getUserRecs(id);
+            console.log(recs)
             setProfile(pro);
             setUserLibrary(books);
+            setUserRecs(recs);
         }
+        newShowState[shelf] = true;
+        setShow(newShowState);
     }
 
     useEffect(() => {
-        async function getUserBooks() {
+        async function getMyBooks() {
             const books = await booksAPI.getLibrary();
             setMyLibrary(books);
         }
-        getUserBooks();
+        getMyBooks();
     }, []);
 
     useEffect(() => {
