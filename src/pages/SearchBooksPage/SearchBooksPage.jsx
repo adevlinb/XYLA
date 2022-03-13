@@ -13,21 +13,24 @@ export default function SearchBooksPage({ addBook }) {
   }
 
   return (
+    <>
     <div className="horizontal">
       <div className="verticalOne">
-          <h3>QUICK SEARCHES</h3>
-          <h5>Shortcut Link</h5>
-          <h5>Shortcut Link</h5>
-          <h5>Shortcut Link</h5>
-          <h5>Shortcut Link</h5>
-          <h5>Shortcut Link</h5>
-        </div>
-        <div className="verticalTwo">
-          <h1>Search for new books!</h1>
-          <SearchBar searchForBooks={searchForBooks} />
-          <DisplayResults queryResults={queryResults} addBook={addBook} />
+        <h3>QUICK LINKS</h3>
+        <h5><a href="https://www.google.com/search?q=local+bookstore" target="_blank">Find Local Bookstores</a></h5>
+        <h5><a href="https://www.goodreads.com/" target="_blank">Goodreads</a></h5>
+        <h5><a href="https://books.google.com/" target="_blank">Google Books</a></h5>
+        <h5><a href="https://www.nytimes.com/books/best-sellers/" target="_blank">NYT Best Sellers</a></h5>
+        <h5><a href="https://apps.npr.org/best-books/#view=covers&year=2021" target="_blank">NPR Favorites</a></h5>
+      </div>
+      <div className="verticalTwo">
+        <h1>Search for new books!</h1>
+        <SearchBar searchForBooks={searchForBooks} />
+        <DisplayResults queryResults={queryResults} addBook={addBook} />
       </div>
     </div>
-  
+    <footer>ALL RIGHTS RESERVED</footer>
+    </>
   );
 }
+

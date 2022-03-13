@@ -1,6 +1,4 @@
 import { useState } from 'react';
-// import SignUpForm from '../../components/SignUpForm/SignUpForm';
-// import LoginForm from '../../components/LoginForm/LoginForm';
 import AuthPage from '../../components/AuthPage/AuthPage';
 import RealLandingPage from '../../components/RealLandingPage/RealLandingPage';
 

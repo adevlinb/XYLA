@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { Routes, Route, Navigate } from 'react-router-dom';
+import { Routes, Route, Navigate, useNavigate } from 'react-router-dom';
 import './App.css';
 import LandingPage from '../LandingPage/LandingPage';
 import LibraryPage from '../LibraryPage/LibraryPage';
@@ -13,15 +13,13 @@ import * as booksAPI from '../../utilities/books-api';
 export default function App() {
   const [user, setUser] = useState(getUser());
   const [library, setLibrary] = useState([]);
+  let navigate = useNavigate();
 
   async function addBook(newBook) {
-    const books = await booksAPI.addNewBook(newBook)
-    console.log(books.userBooks, "im home")
-    setLibrary(books.userBooks)
+    const books = await booksAPI.addNewBook(newBook);
+    setLibrary(books.userBooks);
+    navigate('/library');
   }
-
-
-
 
   return (
     <main className="App">
@@ -43,7 +41,7 @@ export default function App() {
           <img src="/images/XYLA_LOGO.png" alt="XYLA" id='logo' />
           </>
       }
-      <footer>ALL RIGHTS RESERVED</footer>
+      {/* <footer>ALL RIGHTS RESERVED</footer> */}
     </main>
   
   );

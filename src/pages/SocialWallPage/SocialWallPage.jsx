@@ -79,6 +79,7 @@ export default function SocialWallPage() {
 
 
     return (
+        <>
         <div className="horizontal">
             <div className="verticalOne">
                 {/* <img src="/images/XYLA_LOGO.png" alt="XYLA" className='logo' /> */}
@@ -93,6 +94,8 @@ export default function SocialWallPage() {
                 {show.profileDetail && <DisplayProfileDetail profile={profile} userRecs={userRecs} userLibrary={userLibrary} myLibrary={myLibrary} addRecommendation={addRecommendation}/>}
             </div>
         </div>
+        <footer>ALL RIGHTS RESERVED</footer>
+      </>
     );
 }
 

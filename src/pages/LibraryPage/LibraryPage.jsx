@@ -58,6 +58,7 @@ export default function LibraryPage({library, setLibrary}) {
   }
 
   return (
+    <>
     <div className="horizontal">
       <div className="verticalOne">
         {/* <img src="/images/XYLA_LOGO.png" alt="XYLA" className='logo' /> */}
@@ -77,6 +78,9 @@ export default function LibraryPage({library, setLibrary}) {
         {show.profile && <DisplayProfile />}
         {show.settings && <DisplaySettings />}
       </div>
+      <div className="space"></div>
     </div>
+      <footer>ALL RIGHTS RESERVED</footer>
+      </>
   );
 }

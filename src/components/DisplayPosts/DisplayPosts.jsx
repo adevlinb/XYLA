@@ -4,7 +4,7 @@ import { useState } from 'react';
 import DisplayPostCard from '../DisplayPostCard/DisplayPostCard';
 
 export default function DisplayPosts({ library, createPost, userPosts, addComment}) {
-    
+
     const [formData, setFormData] = useState({
         title: '',
         description: '',
@@ -49,7 +49,7 @@ export default function DisplayPosts({ library, createPost, userPosts, addCommen
         <>
         <h1>DisplayPosts</h1>
         <div className='verticalTwo'>
-            <form onSubmit={handleCreatePost}>
+            <form onSubmit={handleCreatePost} className="postForm">
                 <input type="text" name="title" onChange={handleChange} value={formData.title} placeholder='headline'/>
                     <input type="text" name="description" onChange={handleChange} value={formData.description} placeholder='description'/>
                 <label>
