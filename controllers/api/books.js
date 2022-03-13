@@ -58,19 +58,23 @@ async function populateUserShelf(req, res) {
 }
 
 async function getUserLibrary(req, res) {
-    console.log('profile books controller', req.params.id)
-    const userShelf = await Bookshelf.findOne({userId: req.params.id}).populate('userBooks.book').exec();
-    console.log(userShelf)
-    let books = userShelf.userBooks;
-    res.json(books);
+    try {
+        const userShelf = await Bookshelf.findOne({userId: req.params.id}).populate('userBooks.book').exec();
+        let books = userShelf.userBooks;
+        res.json(books);
+    } catch (err) {
+        console.log(err);
+    }
 }
 
 async function getUserRecs(req, res) {
-    console.log('profile books controller', req.params.id)
-    const userRecShelf = await Bookshelf.findOne({ userId: req.params.id }).populate('recommended.recommendation:').populate('recommended.personRecommending:').exec();
-    console.log(userRecShelf);
-    let recs = userRecShelf.recommendation;
-    res.json(recs);
+    try {
+        const userRecShelf = await Bookshelf.findOne({ userId: req.params.id }).populate('recommended.recommendation').populate('recommended.personRecommending').exec();
+        console.log(userRecShelf, "user rec controller")
+        res.json(userRecShelf);
+    } catch (err) {
+        console.log(err);
+    }
 }
 
 
@@ -88,8 +92,8 @@ async function addRecToFriend(req, res) {
         userShelf.recommended.push(bookRec)
         await userShelf.save()
         const updatedNotInShelf = await Bookshelf.findOne({ userId: req.params.id }).populate('userBooks.book').exec();
-        console.log('updatesShelf', updatedNotInShelf)
-        res.json(updatedNotInShelf);
+        let books = updatedNotInShelf.userBooks;
+        res.json(books);
     } catch (err) {
         console.log(err)
     }

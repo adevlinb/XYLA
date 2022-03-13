@@ -1,3 +1,4 @@
+import './SearchBar.css'
 import { useState } from 'react';
 
 
@@ -12,8 +13,8 @@ export default function SearchBar({ searchForBooks }) {
 
 
     return (
-        <>
-            <form onSubmit={handleQuery}>
+        <div className="searchBar">
+            <form onSubmit={handleQuery} className='searchBar'>
                 <input
                     value={query}
                     onChange={(evt) => setQuery(evt.target.value)}
@@ -21,6 +22,6 @@ export default function SearchBar({ searchForBooks }) {
                 />
                 <button type="submit">Search for Books!</button>
             </form>
-        </>
+        </div>
     );
 }

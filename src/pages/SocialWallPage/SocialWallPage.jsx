@@ -13,6 +13,7 @@ export default function SocialWallPage() {
     const [profile, setProfile] = useState({});
     const [userLibrary, setUserLibrary] = useState([]);
     const [library, setLibrary] = useState([]);
+    const [userRecs, setUserRecs] = useState([]);
 
     const [show, setShow] = useState({
         displayAllPosts: true,
@@ -28,7 +29,6 @@ export default function SocialWallPage() {
         newShowState[shelf] = true;
         setShow(newShowState);
         if (id) {
-            console.log('find profile/books by id', id)
             const pro = await profilesAPI.findProfile(id)
             const books = await booksAPI.getUserLibrary(id);
             // const recs = await booksAPI.getUserRecs(id);
@@ -56,7 +56,6 @@ export default function SocialWallPage() {
     useEffect(() => {
         async function getProfiles() {
             const profiles = await profilesAPI.getAllProfiles();
-            console.log(profiles)
             setAllProfiles(profiles);
         }
         getProfiles();
@@ -69,7 +68,11 @@ export default function SocialWallPage() {
 
     async function addRecommendation(data, id) {
         const updateBooks = await booksAPI.addRecToFriend(data, id)
+        const recs = await booksAPI.getUserRecs(id)
+        console.log(updateBooks)
+        console.log(recs)
         setUserLibrary(updateBooks)
+        setUserRecs(recs)
     }
 
 

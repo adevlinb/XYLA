@@ -17,11 +17,8 @@ export default function DisplayProfileDetail({ profile, userLibrary, library, ad
         { value: b.book._id, label: b.book.title }
     ));
 
-    console.log(bookOptions[0].value, "hello value")
-
     function handleRecChange(evt) {
         recData.recommendation = bookOptions[evt.target.options.selectedIndex].value
-        console.log(recData, "hello rec data")
     }
 
     function handleAddRec(evt) {
@@ -30,7 +27,6 @@ export default function DisplayProfileDetail({ profile, userLibrary, library, ad
             if (bookOptions[0] === null) return;
             else recData.recommendation = bookOptions[0].value
         }
-        console.log(recData, "rec attempt");
         addRecommendation(recData, profile._id)
     }
 
