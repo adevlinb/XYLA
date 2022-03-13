@@ -95,14 +95,14 @@ async function addRecToFriend(req, res) {
         const bookRec = req.body
         let inRecShelf = userShelf.recommended.some(recommendation => recommendation.recommendation._id.equals(req.body.recommendation));
             if (inRecShelf) {
-                const updatedInShelf = await Bookshelf.findOne({ userId: req.params.id }).populate('userBooks.book').exec();
+                const updatedInShelf = await Bookshelf.findOne({ userId: req.params.id }).populate('userBooks.book').populate('recommended.recommendation').populate('recommended.personRecommending').exec();
                 return res.json(updatedInShelf);
             }
         userShelf.recommended.push(bookRec)
         await userShelf.save()
-        const updatedNotInShelf = await Bookshelf.findOne({ userId: req.params.id }).populate('userBooks.book').exec();
-        let books = updatedNotInShelf.userBooks;
-        res.json(books);
+        const updatedNotInShelf = await Bookshelf.findOne({ userId: req.params.id }).populate('userBooks.book').populate('recommended.recommendation').populate('recommended.personRecommending').exec();
+        // let books = updatedNotInShelf.userBooks;
+        res.json(updatedNotInShelf);
     } catch (err) {
         console.log(err)
     }

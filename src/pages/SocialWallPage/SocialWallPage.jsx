@@ -70,11 +70,11 @@ export default function SocialWallPage() {
     }
 
     async function addRecommendation(data, id) {
-        const updateBooks = await booksAPI.addRecToFriend(data, id)
-        console.log(updateBooks)
+        const updateBooksShelf = await booksAPI.addRecToFriend(data, id)
+        console.log(updateBooksShelf)
         // console.log(recs)
-        setUserLibrary(updateBooks.userBooks)
-        setUserRecs(updateBooks.recommended)
+        setUserLibrary(updateBooksShelf.userBooks)
+        setUserRecs(updateBooksShelf.recommended)
     }
 
 
