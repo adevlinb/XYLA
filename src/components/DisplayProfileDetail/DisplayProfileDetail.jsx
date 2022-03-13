@@ -1,21 +1,27 @@
 import { useState, useEffect } from 'react'
 import DisplayLibraryItem from '../DisplayLibraryItem/DisplayLibraryItem';
-import DisplayRecOption from '../DisplayRecOption/DisplayRecOption';
+import DisplayRecs from '../DisplayRecs/DisplayRecs';
 
-export default function DisplayProfileDetail({ profile, userLibrary, library, addRecommendation}) {
+export default function DisplayProfileDetail({ profile, userRecs, userLibrary, library, addRecommendation}) {
 
     const [recData, setRecData] = useState({
         recommendation: "",
         personRecommending: ""
     });
 
-    const book = userLibrary.map((b, idx) => (
+    const book = userLibrary.map((b) => (
         <DisplayLibraryItem b={b} key={b._id} />
+    ));
+
+    const rec = userRecs.map((r) => (
+        <DisplayRecs r={r} key={r._id} />
     ));
 
     let bookOptions = library.map((b, idx) => (
         { value: b.book._id, label: b.book.title }
     ));
+
+
 
     function handleRecChange(evt) {
         recData.recommendation = bookOptions[evt.target.options.selectedIndex].value
@@ -46,6 +52,10 @@ export default function DisplayProfileDetail({ profile, userLibrary, library, ad
         <h1>{profile.name}'s Books</h1>
         <div className="grid">
             {book}
+        </div>
+        <h1>Books Recommended to {profile.name}</h1>
+        <div className="grid">
+            {rec}
         </div>
         </>
 

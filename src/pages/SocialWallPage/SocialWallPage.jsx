@@ -68,11 +68,10 @@ export default function SocialWallPage() {
 
     async function addRecommendation(data, id) {
         const updateBooks = await booksAPI.addRecToFriend(data, id)
-        const recs = await booksAPI.getUserRecs(id)
         console.log(updateBooks)
-        console.log(recs)
-        setUserLibrary(updateBooks)
-        setUserRecs(recs)
+        // console.log(recs)
+        setUserLibrary(updateBooks.userBooks)
+        setUserRecs(updateBooks.recommended)
     }
 
 
@@ -88,7 +87,7 @@ export default function SocialWallPage() {
             <div className="verticalTwo">
                 {show.displayAllPosts && <DisplayAllPosts allPosts={allPosts} addComment={addComment} />}
                 {show.findFriends && <DisplayFindFriends allProfiles={allProfiles} toggleShow={toggleShow} library={library}/>}
-                {show.profileDetail && <DisplayProfileDetail profile={profile} userLibrary={userLibrary} library={library} addRecommendation={addRecommendation}/>}
+                {show.profileDetail && <DisplayProfileDetail profile={profile} userRecs={userRecs} userLibrary={userLibrary} library={library} addRecommendation={addRecommendation}/>}
             </div>
         </div>
     );

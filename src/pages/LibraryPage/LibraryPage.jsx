@@ -33,11 +33,15 @@ export default function LibraryPage({library, setLibrary}) {
 
 
   useEffect(() => {
-      async function getUserBooks () {
+      async function getMyShelf () {
         const books = await booksAPI.getLibrary();
         setLibrary(books);
+        const userPosts = await postsAPI.getUserPosts();
+        setUserPosts(userPosts);
+
+
       }
-      getUserBooks();  
+      getMyShelf();  
     }, []);
 
     async function createPost(formData) {
@@ -46,18 +50,16 @@ export default function LibraryPage({library, setLibrary}) {
       console.log(posts);
     }
 
-    useEffect(() => {
-        async function getPosts () {
-          const userPosts = await postsAPI.getUserPosts();
-          setUserPosts(userPosts);
-        }
-        getPosts();  
-      }, []);
+    // useEffect(() => {
+    //     async function getPosts () {
+    //     }
+    //     getPosts();  
+    //   }, []);
 
   async function addComment(commentData) {
     await postsAPI.addCommentToPost(commentData);
     // const userPosts = await postsAPI.getUserPosts();
-    setUserPosts(userPosts);
+    // setUserPosts(userPosts);
   }
 
   return (
