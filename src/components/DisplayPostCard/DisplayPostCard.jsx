@@ -58,7 +58,7 @@ export default function DisplayPostCard({post, addComment}) {
                   
                     </div>
                 </div>
-                <div className="comment">
+                <div className="commentForm">
                     <form onSubmit={(evt) => handleAddComment(`${post._id}`, evt)}>
                             <input name="content" value={commentData.content} onChange={handleChange} type="text" placeholder='Add Comment!'/>
                             <button id="commentButton" type="submit">+</button>

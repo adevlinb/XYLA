@@ -42,7 +42,7 @@
     border-radius: 10px;
 }
 
-.comment {
+.commentForm {
     display: flex;
     flex-direction: row;
     border-radius: 8px;
