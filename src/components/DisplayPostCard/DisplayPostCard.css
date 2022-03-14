@@ -2,13 +2,13 @@
     display: flex;
     flex-direction: column;
     border-width: 3px;
-    border-color: var(--blue);
     border-style: solid;
     border-radius: 10px;
     margin: 20px;
-    background-color: rgb(255, 255, 255);
     overflow: scroll;
     object-fit: contain;
+    background-color: rgb(241, 235, 235);
+    max-height: 50vh;
 }
 
 .postRow {
@@ -27,7 +27,13 @@
     max-width: 50vw;
 }
 
-.cardTwo {
+.commentContainer {
+    display: flex;
+    flex-direction: column;
+    overflow: scroll;
+}
+
+.postCardTwo {
     display: flex;
     flex-direction: column;
     border-width: 2px;

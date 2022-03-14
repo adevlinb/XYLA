@@ -1,18 +1,23 @@
+.container2 {
+    display: flex;
+}
+
 .comment {
     background-color: rgb(226, 226, 226);
     display: flex;
-    font-size: x-large;
-}
-
-.commentContainer {
-    display: flex;
-    align-items: center;
+    font-size: large;
+    width: 75%;
+    margin: 5px;
+    border-radius: 5px;
+    padding: 5px;
 }
 
 #personIcon {
-    font-size: 6vh !important;
+    font-size: 4vh !important;
     height: 30px;
     color: grey;
+    display: inline;
+    vertical-align: middle;
 }
 
 .floatLeft {

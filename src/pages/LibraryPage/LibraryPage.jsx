@@ -79,6 +79,9 @@ export default function LibraryPage({library, setLibrary}) {
         {show.settings && <DisplaySettings />}
       </div>
       <div className="space"></div>
+      <div className="verticalThree">
+
+      </div>
     </div>
       <footer>ALL RIGHTS RESERVED</footer>
       </>

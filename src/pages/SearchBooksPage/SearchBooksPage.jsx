@@ -28,6 +28,9 @@ export default function SearchBooksPage({ addBook }) {
         <SearchBar searchForBooks={searchForBooks} />
         <DisplayResults queryResults={queryResults} addBook={addBook} />
       </div>
+      <div className="verticalThree">
+
+      </div>
     </div>
     <footer>ALL RIGHTS RESERVED</footer>
    

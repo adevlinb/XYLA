@@ -79,7 +79,6 @@ export default function SocialWallPage() {
 
     var dateTime = new Date();
     console.log(dateTime);
-    
     return (
         <>
         <div className="horizontal">
@@ -94,6 +93,9 @@ export default function SocialWallPage() {
                 {show.displayAllPosts && <DisplayAllPosts allPosts={allPosts} addComment={addComment} />}
                 {show.findFriends && <DisplayFindFriends allProfiles={allProfiles} toggleShow={toggleShow} />}
                 {show.profileDetail && <DisplayProfileDetail profile={profile} userRecs={userRecs} userLibrary={userLibrary} myLibrary={myLibrary} addRecommendation={addRecommendation}/>}
+            </div>
+            <div className="verticalThree">
+              
             </div>
         </div>
         <footer>ALL RIGHTS RESERVED</footer>

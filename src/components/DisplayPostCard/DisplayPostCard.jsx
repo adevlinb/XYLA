@@ -1,5 +1,4 @@
 import './DisplayPostCard.css'
-// import DisplayComment from '../DisplayComment/DisplayComment';
 import { useState } from 'react'
 import DisplayComment from '../DisplayComment/DisplayComment';
 
@@ -64,11 +63,13 @@ export default function DisplayPostCard({post, addComment}) {
                             <button id="commentButton" type="submit">+</button>
                     </form>
                 </div>
-                        {comments}
+                <div className="commentContainer">
+                    {comments}
+                </div>
             </div>
             :
             
-            <div className="cardTwo">
+            <div className="postCardTwo">
                 
                 {post && <div> {post.user.name} </div>}
                 {post && <div name="description">{post.description}</div>}

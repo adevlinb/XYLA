@@ -1,3 +1,6 @@
 .allPostsGrid {
-    background-color: burlywood;
+    display: grid;
+    flex-direction: column;
+    justify-content: center !important;
+    background-color: cadetblue;
 }
