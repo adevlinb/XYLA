@@ -20,7 +20,7 @@ export default function SearchBar({ searchForBooks }) {
                     onChange={(evt) => setQuery(evt.target.value)}
                     placeholder='Search For Books!'
                 />
-                <button type="submit">Search for Books!</button>
+                <button type="submit"><i class="material-icons" id="personIconProfile">search</i></button>
             </form>
         </div>
     );

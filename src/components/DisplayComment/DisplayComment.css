@@ -20,15 +20,7 @@
     vertical-align: middle;
 }
 
-#personIconBook {
-    font-size: 4vh !important;
-    height: 30px;
-    -webkit-text-stroke: 1px black;
-    color: var(--pink);
-    outline: black;
-    display: inline;
-    vertical-align: middle;
-}
+
 
 .floatLeft {
     display: flex;

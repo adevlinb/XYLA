@@ -1,9 +1,9 @@
-import './DisplayPostCard.css'
-import { useState } from 'react'
+import './DisplayPostCard.css';
+import { useState } from 'react';
 import DisplayComment from '../DisplayComment/DisplayComment';
 
 export default function DisplayPostCard({post, addComment}) {
-    const [cardFlip, setcardFlip] = useState(true);
+
     const [commentData, setCommentData] = useState({
         content: ''
     });
@@ -26,17 +26,18 @@ export default function DisplayPostCard({post, addComment}) {
 
 
     return (
-    <>
-        {cardFlip ?
+        <>
             <div className="postCard">
                 <div className='postRow'>
                     <div className="textRow">
-                        {/* <div className="personIcon"> */}
                             <i class="material-icons" id="personIconProfile">account_circle</i>
-                        {/* </div> */}
-                        {post && <h5> {post.user.name}</h5>}
-                        {post && <h5> {new Date(post.createdAt).toLocaleDateString()}</h5>}
+                            <div id="userName">{post && <h5> {post.user.name}</h5>}</div>
+                        <div className="postTitle">
+                            {post && <h5> {new Date(post.createdAt).toLocaleDateString()}</h5>}
+                        </div>
+                        <div className="bookIcon">
                             <i class="material-icons" id="personIconBook">menu_book</i>
+                        </div>
                     </div>
                     <div id="imageDescBox">
                         <div className="image">
@@ -51,33 +52,28 @@ export default function DisplayPostCard({post, addComment}) {
                                 </>
                             )}
                         </div>
-                        <div className="description">
-                            {post && post.book.title ? <h5 name="Title" value={`${post.book.title}`} >{post.book.title}</h5> : <h5>N/A</h5>}
-                            {post && <div name="description">{post.description}</div>}
+                        <div id="postDescription">
+                       
+                                {post && post.book.title ? <h3 id="postBookTitle" name="Title" value={`${post.book.title}`} >{post.book.title}</h3> : <h3>N/A</h3>}
+                      
+                            <div id="postBookDescription">
+                                {post && <div name="description">{post.description}</div>}
+                            </div>
                         </div>
                     </div>
                 </div>
                 <div className="commentForm">
                     <form onSubmit={(evt) => handleAddComment(`${post._id}`, evt)}>
-                            <input id="commentInput" name="content" value={commentData.content} onChange={handleChange} type="text" placeholder='Add Comment!'/>
                             <button id="commentButton" type="submit">+</button>
+                            <input id="commentInput" name="content" value={commentData.content} onChange={handleChange} type="text" placeholder='Add Comment!'/>
                     </form>
                 </div>
-                <div className="commentContainer">
+                <div id="commentContainer">
                     {comments}
                 </div>
             </div>
-            :
-            
-            <div className="postCardTwo">
-                
-                {/* {post && <div> {post.user.name} </div>} */}
-                {/* {post && <div name="description">{post.description}</div>} */}
-                {/* <button onClick={() => setcardFlip(!cardFlip)}>Return</button> */}
-            </div>
-        }
 
-    </>
+        </>
     );
 }
 

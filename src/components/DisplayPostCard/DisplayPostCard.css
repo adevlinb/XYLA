@@ -8,7 +8,9 @@
     overflow: scroll;
     object-fit: contain;
     background-color: var(--blue-2);
-    max-height: 55vh;
+    max-height: 60vh;
+    max-width: 45vw;
+    box-shadow: 3px 5px 5px rgb(155, 155, 155);
 }
 
 .postRow {
@@ -16,13 +18,20 @@
     flex-direction: column;
 }
 
+.postTitle > h5 {
+    margin: 0;
+    margin-right: 10vw;
+    margin-left: 10vw;
+}
+
 .textRow {
     display: flex;
     flex-direction: row;
+    justify-content: space-between;
     border-radius: 8px;
     background-color: var(--grey);
-    justify-content: left;
-    align-content: center;
+    align-items: center;
+    padding: 5px;
     transform: translateX(-10px);
     height: 5vh;
     margin-right: 6vw;
@@ -32,22 +41,45 @@
     margin-bottom: 10px;
 }
 
+#personIconProfile {
+    margin-left: 1vw;
+}
+
+#personIconBook {
+    font-size: 4vh !important;
+    height: 30px;
+    -webkit-text-stroke: 1px black;
+    color: var(--pink);
+    outline: black;
+    display: flex;
+    vertical-align: middle;
+}
+
 #imageDescBox{
     display: flex;
     flex-direction: row;
 }
 
-.description {
+#postDescription {
     display: flex;
     flex-direction: column;
+    width: 100%;
+}
+
+#postBookTitle {
+    margin-bottom: 3px !important;
+}
+
+#postBookDescription {
+    text-align: left;
 }
 
 .image {
     display: flex;
     flex-direction: column;
     max-width: 10vw;
-    margin-left: 10px;
-
+    margin: 15px;
+    box-shadow: 3px 3px 3px rgb(155, 155, 155);
 }
 
 .text {
@@ -56,7 +88,7 @@
     max-width: 50vw;
 }
 
-.commentContainer {
+#commentContainer {
     display: flex;
     flex-direction: column;
     overflow: scroll;
@@ -86,7 +118,7 @@
     justify-content: left;
     align-content: center;
     transform: translateX(10px);
-    height: 10vh;
+    max-height: 8vh;
     margin-left: 6vw;
     margin-top: 10px;
     border: 1px solid black;
@@ -95,9 +127,13 @@
 
 #commentButton {
     height: 100%;
-    border-radius: 15%;
+    border-radius: 8px;
     color: var(--pink);
-    background-color: var(--blue);
+    font-size: large;
+    background-color: var(--blue-2);
+    border: none;
+    outline: none;
+    border-right: 1px solid black;
 }
 
 #commentInput {
@@ -105,4 +141,10 @@
    border: none !important;
    outline: none;
    padding: 5px;
+   overflow: hidden;
+   font-size: large;
+}
+
+#userName {
+    text-transform: uppercase;
 }
