@@ -11,6 +11,7 @@ export default function LandingPage({ setUser }) {
 
   return (
     <main>
+      <img className="landingPic" src="/images/Landing1.png" alt="BooksLandingPhoto" />
       {showLanding ? 
         <>
           <button onClick={() => setShowLanding(!showLanding)}>Join XYLA!</button>

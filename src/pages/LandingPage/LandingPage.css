@@ -1,3 +1,8 @@
 .signUp {
     margin-top: 10vh;
 }
+
+.landingPic {
+    max-width: 100vw;
+    transform: translateY(-32.5%);
+}
