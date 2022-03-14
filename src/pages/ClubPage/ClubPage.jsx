@@ -12,6 +12,7 @@ export default function ClubPage() {
             <div className="verticalTwo">
                 <h1>BOOK CLUBS COMING SOON</h1>
             </div>
+            <footer>ALL RIGHTS RESERVED</footer>
         </div>
     );
 }

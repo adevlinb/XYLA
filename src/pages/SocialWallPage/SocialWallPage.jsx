@@ -66,18 +66,20 @@ export default function SocialWallPage() {
 
     async function addComment(commentData) {
         const updatePosts = await postsAPI.addCommentToPost(commentData);
+        console.log(updatePosts)
         setAllPosts(updatePosts);
     }
 
     async function addRecommendation(data, id) {
         const updateBooksShelf = await booksAPI.addRecToFriend(data, id)
         console.log(updateBooksShelf)
-        // console.log(recs)
         setUserLibrary(updateBooksShelf.userBooks)
         setUserRecs(updateBooksShelf.recommended)
     }
 
-
+    var dateTime = new Date();
+    console.log(dateTime);
+    
     return (
         <>
         <div className="horizontal">

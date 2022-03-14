@@ -24,8 +24,8 @@
 .cardTwo {
     display: flex;
     flex-direction: column;
-    border-width: 3px;
-    border-color: blue;
+    border-width: 2px;
+    border-color: black;
     border-style: solid;
     margin: 20px;
     background-color: rgb(255, 255, 255);

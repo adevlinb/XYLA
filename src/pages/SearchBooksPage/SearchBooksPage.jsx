@@ -30,6 +30,7 @@ export default function SearchBooksPage({ addBook }) {
       </div>
     </div>
     <footer>ALL RIGHTS RESERVED</footer>
+   
     </>
   );
 }

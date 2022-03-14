@@ -11,7 +11,6 @@ export default function DisplayPostCard({post, addComment}) {
     
     function handleChange(evt) {
         setCommentData({ ...commentData, [evt.target.name]: evt.target.value });
-        console.log(commentData)
     }
 
     function handleAddComment(id, evt) {
@@ -65,11 +64,12 @@ export default function DisplayPostCard({post, addComment}) {
                             <button id="commentButton" type="submit">+</button>
                     </form>
                 </div>
+                        {comments}
             </div>
             :
             
             <div className="cardTwo">
-                {comments}
+                
                 {post && <div> {post.user.name} </div>}
                 {post && <div name="description">{post.description}</div>}
                 <button onClick={() => setcardFlip(!cardFlip)}>Return</button>

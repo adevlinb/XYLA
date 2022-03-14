@@ -8,7 +8,7 @@ export default function DisplayAllPosts({allPosts, addComment}) {
     return (
         <>
         <h1>SOCIAL WALL</h1>
-        <div className="grid">
+        <div className="allPostsGrid">
             {allUsersPosts}
         </div>
         </>

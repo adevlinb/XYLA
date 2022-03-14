@@ -35,7 +35,7 @@ async function addBook(req, res) {
 async function googleSearchAPI(req, res) {
     let query = req.query.q
     try{
-      let results = await fetch(`https://www.googleapis.com/books/v1/volumes?q=${query}&key=${API_KEY}`, {
+      let results = await fetch(`https://www.googleapis.com/books/v1/volumes?q=${query}&maxResults=25&key=${API_KEY}`, {
         method: 'GET'
       })
       const books = await results.json();

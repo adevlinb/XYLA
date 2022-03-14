@@ -30,7 +30,7 @@ async function create(req, res) {
 
 async function getAllPosts(req, res) {
     try{
-        const allPosts = await Post.find({}).populate('user').populate('book').exec()
+        const allPosts = await Post.find({}).populate('user').populate('book').populate('comment').populate('comment.user').exec()
         res.json(allPosts);
     } catch (err) {
         console.log(err)
@@ -39,7 +39,7 @@ async function getAllPosts(req, res) {
 
 async function getUserPosts(req, res) {
     try{
-        const allUserPosts = await Post.find({ user: req.user._id }).populate('book').populate('user').exec()
+        const allUserPosts = await Post.find({ user: req.user._id }).populate('book').populate('user').populate('comment').populate('comment.user').exec()
         res.json(allUserPosts)
     } catch (err) {
         console.log(err)
@@ -49,9 +49,11 @@ async function getUserPosts(req, res) {
 async function addComment(req, res) {
     try {
         const currentPost = await Post.findById(req.body.postId).exec()
+
         currentPost.comment.push({ content: req.body.content, user: req.user._id});
-        currentPost.save();
-        const allPosts = await Post.find({}).populate('comment').populate('user').exec()
+        console.log(currentPost.comment)
+        await currentPost.save();
+        const allPosts = await Post.find({}).populate('comment').populate('user').populate('book').populate('comment.user').exec()
         res.json(allPosts);
     } catch (err) {
         console.log(err)
