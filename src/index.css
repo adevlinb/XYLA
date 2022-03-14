@@ -3,11 +3,11 @@
 }
 
 :root {
-  --blue: #FFFFFF;
-  --blue-2: #FBF9F6;
-  --tan-2: #E7E2DD;
-  --tan-3: #E2D9D1;
-  --tan-4: #D3C1AE;
+  --blue: #0083FF;
+  --blue-2: #C7E6FF;
+  --pink: #F100AD;
+  --grey: #E2E2E2;
+  --grey-2: #c9c9c9;
   --orange: #F67F00;
   --text-light: #968c84;
   --text-dark: #615954;
