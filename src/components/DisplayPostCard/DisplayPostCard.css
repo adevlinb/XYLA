@@ -18,10 +18,9 @@
     flex-direction: column;
 }
 
-.postTitle > h5 {
+.postTitle {
     margin: 0;
-    margin-right: 10vw;
-    margin-left: 10vw;
+    position: relative;
 }
 
 .textRow {
@@ -39,6 +38,11 @@
     border: 1px solid black;
     box-shadow: 3px 5px 5px rgb(155, 155, 155);
     margin-bottom: 10px;
+}
+
+.textRow > div:nth-child(1n) {
+    display: flex;
+    text-align: center;
 }
 
 #personIconProfile {
@@ -149,4 +153,10 @@
 
 #userName {
     text-transform: uppercase;
+    margin: 0;
+    align-self: center;
+}
+
+.bookIcon {
+    vertical-align: middle;
 }

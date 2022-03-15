@@ -10,8 +10,8 @@ export default function DisplayRecItems({ r }) {
                 <div className="card">
                     <div className="bookOnlyTextRow">
                         <div name="title" value={`${r.recommendation.title}`} ><strong>{r.recommendation.title}</strong></div>
-                        <h5>Recommended By: {r.personRecommending.name}</h5>
                     </div>
+                    <h5 id="recUser">Recommended By: {r.personRecommending.name}</h5>
                     <div className="imageAndInfo">
                         <img src={`${r.recommendation.thumbnail}`} alt={`${r.recommendation.title}`} name="thumbnail" />
                         <div className="text">

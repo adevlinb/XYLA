@@ -30,10 +30,12 @@ export default function DisplayPostCard({post, addComment}) {
             <div className="postCard">
                 <div className='postRow'>
                     <div className="textRow">
+                        <div>
                             <i className="material-icons" id="personIconProfile">account_circle</i>
-                            <div id="userName">{post && <h5> {post.user.name}</h5>}</div>
+                            {post && <p id="userName"> {post.user.name}</p>}
+                        </div>
                         <div className="postTitle">
-                            {post && <h5> {new Date(post.createdAt).toLocaleDateString()}</h5>}
+                            {post && <p id="postDate"> {new Date(post.createdAt).toLocaleDateString()}</p>}
                         </div>
                         <div className="bookIcon">
                             <i class="material-icons" id="personIconBook">menu_book</i>

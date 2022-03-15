@@ -72,12 +72,12 @@ export default function DisplayPosts({ library, createPost, userPosts, addCommen
                 </label>
                 <button type="submit">Create Post</button>
             </form>
+        <div className="gridTwo">
+            {allUserPosts}
+        </div>
         </div>
         
 
-        <div className="grid">
-            {allUserPosts}
-        </div>
 
 
         </>
