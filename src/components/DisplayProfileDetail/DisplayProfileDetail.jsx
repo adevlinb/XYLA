@@ -47,7 +47,7 @@ export default function DisplayProfileDetail({ profile, userRecs, userLibrary, m
             {book}
         </div>
         <h1>Books Recommended to {profile.name}</h1>
-        <form onSubmit={handleAddRec}>
+        <form onSubmit={handleAddRec} id="recForm">
             <label >
             <h5>Recommend a book to {profile.name}:</h5>
                 <select onChangeCapture={handleRecChange}>

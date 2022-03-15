@@ -3,3 +3,12 @@
     width: 100%;
     max-height: 15vh;
 }
+
+#recForm {
+    display: flex;
+    flex-direction: column;
+    background-color: var(--blue-2);
+    transform: translateY(-25%);
+    border: 1px solid black;
+    padding: 1vh;
+}

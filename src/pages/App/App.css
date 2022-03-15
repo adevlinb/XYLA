@@ -59,6 +59,10 @@
     overflow: scroll;
 }
 
+/* .verticalThree > a {
+
+} */
+
 .space {
     height: 100px;
     margin-top: 20px;
@@ -68,3 +72,16 @@
   color: var(--pink);
 }
 
+#profileStats {
+  background-color: var(--blue-2);
+  padding: 10px;
+  border: 1px solid black;
+  border-radius: 8px;
+  margin-bottom: 2vh;
+}
+
+#profileStats > h5 {
+  margin-top: 8px;
+  margin-bottom: 8px;
+
+}

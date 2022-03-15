@@ -28,7 +28,7 @@ export default function RealLandingPage({setShowLanding, showLanding}) {
                     <h5>From there, you can join and create groups to meet with and have events within those groups that could meet as often as you like!</h5>
                 </div>
             </div>
-            <button onClick={() => setShowLanding(!showLanding)}>Join XYLA!</button>
+            <button onClick={() => setShowLanding(!showLanding)}>JOIN XYLA!</button>
         </div>
     )
 }

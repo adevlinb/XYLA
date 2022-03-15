@@ -57,8 +57,13 @@ export default function LibraryPage({library, setLibrary, user}) {
     <>
     <div className="horizontal">
       <div className="verticalOne">
+          <div id="profileStats">
           <h3>{user.name}'s <span>XYLA</span></h3>
           <i className="material-icons" id="landingIcons1">account_circle</i>
+            <h5># of books: <span>21</span></h5>
+            <h5># of recs: <span>21</span></h5>
+            <h5># of posts: <span>21</span></h5>
+          </div>
         <button onClick={() => toggleShow('myShelf')}> My Books</button>
         <button onClick={() => toggleShow('recShelf')}> Recommendations</button>
         <button onClick={() => toggleShow('favShelf')}> My Favorites</button>

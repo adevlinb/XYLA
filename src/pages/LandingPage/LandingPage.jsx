@@ -23,10 +23,10 @@ export default function LandingPage({ setUser }) {
               :
               <>
                 <img className="landingPic" src="/images/Landing1.png" alt="BooksLandingPhoto" />
-                <RealLandingPage />
+                <RealLandingPage setShowLanding={setShowLanding} showLanding={showLanding} />
                 <div id="horizontal">
-                  <img src="/images/XYLA_LOGO.png" alt="XYLA" id='logo' />
-                  <AuthPage setUser={setUser} />
+                    <img src="/images/XYLA_LOGO.png" alt="XYLA" id='logo' />
+                    <AuthPage setUser={setUser} />
                 </div>
            
               </>

@@ -49,34 +49,39 @@ export default function DisplayPosts({ library, createPost, userPosts, addCommen
         <>
         <h3>{user.name}'s Posts</h3>
         <img className="bookshelfPic" src="/images/Bookshelf_Pano.png" alt="BooksLandingPhoto" />
-        <div className='verticalTwo'>
-            <form onSubmit={handleCreatePost} className="postForm">
-                <input type="text" name="title" onChange={handleChange} value={formData.title} placeholder='headline'/>
+
+            <form onSubmit={handleCreatePost} id="postForm">
+            <h3>Make a post!</h3>
+                <div id="topForm">
+                    <label>
+                        Choose Your Book!
+                        <select onChangeCapture={handleOption}>
+                            {bookOptions.map((option, ind) => {
+                                return <option value={option.value} onMouseDown={handleOption} key={option.value} name={option.value}>{option.label}</option>;
+                            })}
+                        </select>
+                    </label>
+                    <label>
+                        Rating:
+                        <select name="rating" value={formData.rating} onChange={handleChange}>
+                            <option value={1}>1</option>
+                            <option value={2}>2</option>
+                            <option value={3}>3</option>
+                            <option value={4}>4</option>
+                            <option value={5}>5</option>
+                        </select>
+                    </label>
+                </div>
+                <div id="bottomForm">
+                    <input type="text" name="title" onChange={handleChange} value={formData.title} placeholder='headline'/>
                     <input type="text" name="description" onChange={handleChange} value={formData.description} placeholder='description'/>
-                <label>
-                    Rating:
-                    <select name="rating" value={formData.rating} onChange={handleChange}>
-                        <option value={1}>1</option>
-                        <option value={2}>2</option>
-                        <option value={3}>3</option>
-                        <option value={4}>4</option>
-                        <option value={5}>5</option>
-                    </select>
-                </label>
-                <label>
-                    Choose Your Book!
-                    <select onChangeCapture={handleOption}>
-                        {bookOptions.map((option, ind) => {
-                            return <option value={option.value} onMouseDown={handleOption} key={option.value} name={option.value}>{option.label}</option>;
-                        })}
-                    </select>
-                </label>
-                <button type="submit">Create Post</button>
+                    <button type="submit">Create Post</button>
+                </div>
             </form>
         <div className="gridTwo">
             {allUserPosts}
         </div>
-        </div>
+      
         
 
 

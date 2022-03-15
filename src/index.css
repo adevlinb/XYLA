@@ -62,3 +62,14 @@ input {
   padding: 3vmin;
   border-radius: 1vmin;
 }
+
+.vertical {
+  display: flex;
+  flex-direction: column;
+}
+
+.vertical > button {
+  color: var(--pink);
+  max-width: 10vw;
+  align-self: center;
+}
