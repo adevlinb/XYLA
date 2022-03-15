@@ -19,10 +19,6 @@ export default function LibraryPage({library, setLibrary, user}) {
   const [userPosts, setUserPosts] = useState(false);
   const [myRecs, setMyRecs] = useState(false);
 
-  let libCount = library.length;
-  let recCount = myRecs.length;
-  let postCount = userPosts.length;
-
   function toggleShow(shelf) {
     const newShowState = {...show};
     for (let key in newShowState) {
@@ -63,9 +59,9 @@ export default function LibraryPage({library, setLibrary, user}) {
           <div id="profileStats">
           <h3>{user.name}'s <span>XYLA</span></h3>
           <i className="material-icons" id="landingIcons1">account_circle</i>
-            <h5># of books: <span>{libCount}</span></h5>
-            <h5># of recs: <span>{recCount}</span></h5>
-            <h5># of posts: <span>{postCount}</span></h5>
+            <h5># of books: <span>{library.length}</span></h5>
+            <h5># of recs: <span>{myRecs.length}</span></h5>
+            <h5># of posts: <span>{userPosts.length}</span></h5>
           </div>
         <button onClick={() => toggleShow('myShelf')}> My Books</button>
         <button onClick={() => toggleShow('recShelf')}> Recommendations</button>

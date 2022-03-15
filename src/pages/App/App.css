@@ -59,9 +59,19 @@
     overflow: scroll;
 }
 
-/* .verticalThree > a {
+a {
+  color: var(--pink);
+  text-decoration: none;
+}
 
-} */
+a:hover {
+  color: black;
+}
+
+.verticalThree > h5 {
+  background-color: var(--blue-2);
+  height: 3vh;
+}
 
 .space {
     height: 100px;
