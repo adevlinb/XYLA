@@ -58,6 +58,8 @@
 #imageDescBox{
     display: flex;
     flex-direction: row;
+    border: 1px solid black;
+    background-color: var(--blue-3)
 }
 
 #postDescription {

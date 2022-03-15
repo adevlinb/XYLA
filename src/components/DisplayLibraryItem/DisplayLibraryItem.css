@@ -1,37 +1,75 @@
 .card {
     display: flex;
-    flex-direction: row;
+    flex-direction: column;
+    justify-content: space-between;
     border-width: 3px;
-    border-color: blue;
-    border-style: solid;
-    margin: 20px;
-    background-color: rgb(255, 255, 255);
-    overflow: scroll;
-    object-fit: contain;
-}
-
-.image {
-    display: flex;
-    flex-direction: column;
-}
-
-.text {
-    display: flex;
-    flex-direction: column;
-    max-width: 50vw;
-}
-
-.cardTwo {
-    display: flex;
-    flex-direction: column;
-    border-width: 2px;
     border-color: black;
     border-style: solid;
     margin: 20px;
     background-color: rgb(255, 255, 255);
     overflow: scroll;
     object-fit: contain;
+    box-shadow: 3px 5px 5px rgb(155, 155, 155);
+    background-color: var(--blue-2);
+    border-radius: 15px;
+}
+
+.bookOnlyTextRow {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    border-radius: 8px;
+    background-color: var(--grey);
+    align-items: center;
+    padding: 5px;
+    transform: translateX(-10px);
+    height: 5vh;
+    margin-right: 6vw;
+    margin-top: 10px;
+    border: 1px solid black;
+    box-shadow: 3px 5px 5px rgb(155, 155, 155);
+    margin-bottom: 10px;
+}
+
+.cardImage {
+    display: flex;
+    flex-direction: column;
+}
+
+.imageAndInfo {
+    display: flex;
+    flex-direction: row;
+}
+
+.text {
+    display: flex;
+    flex-direction: column;
+    max-width: 25vw;
+}
+
+.cardTwo {
+    display: flex;
+    flex-direction: column;
+    max-height: 35vh !important;
+    border-width: 2px;
+    border-color: black;
+    border-style: solid;
+    margin: 20px;
+    background-color: var(--blue-2);
+    overflow: scroll;
+    object-fit: contain;
     max-height: 35vh;
     padding: 10px;
     border-radius: 10px;
+    box-shadow: 3px 5px 5px rgb(155, 155, 155);
+}
+
+.buttonForm {
+    border-radius: 8px;
+    background-color: var(--grey);
+    max-height: 8vh;
+    margin-left: 6vw;
+    margin-top: 10px;
+    border: 1px solid black;
+    box-shadow: 10px 5px 5px rgb(155, 155, 155);
 }

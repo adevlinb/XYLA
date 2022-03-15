@@ -1,5 +1,6 @@
 *, *:before, *:after {
   box-sizing: border-box;
+  font-family: 'Fredoka', sans-serif;
 }
 
 :root {
@@ -8,7 +9,7 @@
   --pink: #F100AD;
   --grey: #E2E2E2;
   --grey-2: #c9c9c9;
-  --orange: #F67F00;
+  --blue-3: #e2f2ff;
   --text-light: #968c84;
   --text-dark: #615954;
 }

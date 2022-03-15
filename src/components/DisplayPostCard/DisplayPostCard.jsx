@@ -30,7 +30,7 @@ export default function DisplayPostCard({post, addComment}) {
             <div className="postCard">
                 <div className='postRow'>
                     <div className="textRow">
-                            <i class="material-icons" id="personIconProfile">account_circle</i>
+                            <i className="material-icons" id="personIconProfile">account_circle</i>
                             <div id="userName">{post && <h5> {post.user.name}</h5>}</div>
                         <div className="postTitle">
                             {post && <h5> {new Date(post.createdAt).toLocaleDateString()}</h5>}
@@ -53,7 +53,6 @@ export default function DisplayPostCard({post, addComment}) {
                             )}
                         </div>
                         <div id="postDescription">
-                       
                                 {post && post.book.title ? <h3 id="postBookTitle" name="Title" value={`${post.book.title}`} >{post.book.title}</h3> : <h3>N/A</h3>}
                       
                             <div id="postBookDescription">
