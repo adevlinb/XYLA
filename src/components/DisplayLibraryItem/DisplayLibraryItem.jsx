@@ -9,7 +9,7 @@ export default function DisplayLibraryItem({ b }) {
             { cardFlip ? 
             <div className="card">
                 <div className="bookOnlyTextRow">
-                        <div name="title" value={`${b.book.title}`} ><strong>{b.book.title}</strong></div>
+                        <div id="bookOnlyTitle" name="title" value={`${b.book.title}`} ><strong>{b.book.title}</strong></div>
                 </div>
                 <div className="imageAndInfo">
                     <div className="cardImage">

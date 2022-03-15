@@ -1,4 +1,9 @@
 #recUser {
     margin-top: 3px;
     margin-bottom: 6px;
+    float: left;
+}
+
+#bookOnlyTitleRec {
+    margin-left: 2vw;
 }

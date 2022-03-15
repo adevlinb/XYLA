@@ -9,7 +9,7 @@ export default function DisplayRecItems({ r }) {
             {cardFlip ?
                 <div className="card">
                     <div className="bookOnlyTextRow">
-                        <div name="title" value={`${r.recommendation.title}`} ><strong>{r.recommendation.title}</strong></div>
+                        <div id="bookOnlyTitleRec" name="title" value={`${r.recommendation.title}`} ><strong>{r.recommendation.title}</strong></div>
                     </div>
                     <h5 id="recUser">Recommended By: {r.personRecommending.name}</h5>
                     <div className="imageAndInfo">
