@@ -1,3 +1,4 @@
 span {
     color: var(--pink);
+    /* -webkit-text-stroke: 0.05px black; */
 }

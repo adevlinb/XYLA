@@ -38,7 +38,6 @@ export default function App() {
           :
           <>
           <LandingPage setUser={setUser} />
-          {/* <img src="/images/XYLA_LOGO.png" alt="XYLA" id='logo' /> */}
           </>
       }
     </main>

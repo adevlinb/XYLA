@@ -83,8 +83,7 @@ export default function SocialWallPage() {
         <>
         <div className="horizontal">
             <div className="verticalOne">
-                {/* <img src="/images/XYLA_LOGO.png" alt="XYLA" className='logo' /> */}
-                <h3>QUICK LINKS</h3>
+                    <h3>Social Links <i className="material-icons" id="landingIcons1">record_voice_over</i></h3>
 
                 <button onClick={() => toggleShow('displayAllPosts')}> Social Wall</button>
                 <button onClick={() => toggleShow('findFriends')}> Find Friends</button>

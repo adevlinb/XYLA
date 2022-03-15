@@ -1,8 +1,8 @@
 import './RealLandingPage.css'
 
-export default function RealLandingPage() {
+export default function RealLandingPage({setShowLanding, showLanding}) {
     return (
-        <>
+        <div id="landDiv">
             <h1>FINALLY!</h1>
             <h2>A <span>SOCIAL APP</span> FOR <strong><span>BOOKLOVERS</span></strong> IS HERE:</h2>
             <div className="landingInfo">
@@ -27,9 +27,8 @@ export default function RealLandingPage() {
                     <h3>Join / Create Clubs</h3>
                     <h5>From there, you can join and create groups to meet with and have events within those groups that could meet as often as you like!</h5>
                 </div>
-
             </div>
-        
-        </>
+            <button onClick={() => setShowLanding(!showLanding)}>Join XYLA!</button>
+        </div>
     )
 }

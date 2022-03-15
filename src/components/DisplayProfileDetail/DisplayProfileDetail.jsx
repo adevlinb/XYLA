@@ -1,5 +1,6 @@
 import DisplayLibraryItem from '../DisplayLibraryItem/DisplayLibraryItem';
 import DisplayRecItems from '../DisplayRecItems/DisplayRecItems';
+import "./DisplayProfileDetail.css"
 
 export default function DisplayProfileDetail({ profile, userRecs, userLibrary, myLibrary, addRecommendation}) {
 
@@ -37,6 +38,15 @@ export default function DisplayProfileDetail({ profile, userRecs, userLibrary, m
 
     return (
         <>
+        <h1>{profile.name}'s Books</h1>
+        <div id="profilePano">
+            <img className="bookshelfPic" id="profileSplash" src="/images/profilePano.jpeg" alt="BooksLandingPhoto" />
+        </div>
+
+        <div className="grid">
+            {book}
+        </div>
+        <h1>Books Recommended to {profile.name}</h1>
         <form onSubmit={handleAddRec}>
             <label >
             <h5>Recommend a book to {profile.name}:</h5>
@@ -48,11 +58,6 @@ export default function DisplayProfileDetail({ profile, userRecs, userLibrary, m
             </label>
             <button type="submit">Recommend!</button>
         </form>
-        <h1>{profile.name}'s Books</h1>
-        <div className="grid">
-            {book}
-        </div>
-        <h1>Books Recommended to {profile.name}</h1>
         <div className="grid">
             {rec}
         </div>

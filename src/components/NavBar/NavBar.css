@@ -19,4 +19,6 @@ nav > div:nth-child(3) {
 
 .logo {
     float: left;
+    height: 7vh;
+    margin-bottom: 5px;
 }

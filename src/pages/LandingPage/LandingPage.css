@@ -8,5 +8,28 @@
 }
 
 .mainDiv {
+    display: flex;
+    flex-direction: column;
+    transform: translateY(-16.5%);
+    align-items: center;
+}
+
+#mainLogo {
+    display: flex;
+    flex-direction: column;
+    max-width: 50vw;
+    align-content: center;
+    justify-content: center;
     transform: translateY(-16.5%);
 }
+
+#mainLogo > button {
+    max-width: 10vw;
+   align-self: center;
+   margin-bottom: 2vh;
+}
+
+#horizontal {
+    display: flex;
+}
+

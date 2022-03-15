@@ -11,5 +11,12 @@
 
 .landingInfo > div {
     max-width: 17vw;
-    margin: 2vw;
+    margin-top: 2vh;
+    margin-bottom: 0;
+    margin-right: 2vw;
+    margin-left: 2vw;
+}
+
+#landDiv {
+     transform: translateY(-15%);
 }

@@ -1,0 +1,18 @@
+#profilePageGrid {
+    display: grid;
+    grid-template-columns: repeat(6, 1fr);
+}
+
+#profileButton {
+    margin: 10px;
+}
+
+#buttonName {
+    margin: 0;
+}
+
+#profileButton > button {
+    border-radius: 15px;
+    background-color: var(--blue-2);
+    height: 15vh;
+}

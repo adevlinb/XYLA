@@ -15,17 +15,19 @@ export default function LandingPage({ setUser }) {
             {showLanding ? 
               <>
                 <img className="landingPic" src="/images/Landing1.png" alt="BooksLandingPhoto" />
-                <RealLandingPage />
-                <button onClick={() => setShowLanding(!showLanding)}>Join XYLA!</button>
-                <img src="/images/XYLA_LOGO.png" alt="XYLA" id='logo' />
-           
+                <RealLandingPage setShowLanding={setShowLanding} showLanding={showLanding} />
+                <div id="mainLogo">
+                  <img src="/images/XYLA_LOGO.png" alt="XYLA" id='logo' />
+                </div>
               </>
               :
               <>
                 <img className="landingPic" src="/images/Landing1.png" alt="BooksLandingPhoto" />
                 <RealLandingPage />
-                <button onClick={() => setShowLanding(!showLanding)}>Back to Landing Page</button>
-                <AuthPage setUser={setUser} />
+                <div id="horizontal">
+                  <img src="/images/XYLA_LOGO.png" alt="XYLA" id='logo' />
+                  <AuthPage setUser={setUser} />
+                </div>
            
               </>
             }
@@ -33,13 +35,3 @@ export default function LandingPage({ setUser }) {
     </main>
   );
 }
-
-
-
-
-{/* <button onClick={() => setShowLogin(!showLogin)}>{showLogin ? 'Sign Up' : 'Log In'}</button>
-  { showLogin ?
-    <LoginForm setUser={setUser} />
-    :
-    <SignUpForm setUser={setUser} />
-  } */}

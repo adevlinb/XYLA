@@ -9,9 +9,11 @@ export default function DisplayFindFriends({ allProfiles, toggleShow }) {
 
     return (
         <>
-            < h1 > I'm a Profile</h1>
-            {profiles}
-
+            <h3><span>XYLA</span> FRIENDS</h3>
+            <img className="bookshelfPic" src="/images/SocialWall.png" alt="BooksLandingPhoto" />
+            <div id="profilePageGrid">
+                {profiles}
+            </div>
         </>
 
     )
