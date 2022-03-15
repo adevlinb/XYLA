@@ -13,7 +13,7 @@ export default function DisplayResultsItem({ book, addBook }) {
             {cardFlip ?
                 <div className="card">
                     <div className="bookOnlyTextRow">
-                        {book && book.volumeInfo.title ? <div name="Title" value={`${book.volumeInfo.title}`} >{book.volumeInfo.title}</div> : <div>N/A</div>}
+                        {book && book.volumeInfo.title ? <div id="bookOnlyTitle" name="Title" value={`${book.volumeInfo.title}`} >{book.volumeInfo.title}</div> : <div>N/A</div>}
                     </div>
                     <div className="imageAndInfo">
                         <div className="cardImage">
@@ -23,7 +23,7 @@ export default function DisplayResultsItem({ book, addBook }) {
                                 </>
                                 :
                                 <>
-                                <img src="http://i.imgur.com/J5LVHEL.jpg" alt={`${book.volumeInfo.title}`} name="thumbnail" />
+                                <img id="unavailable" src="http://i.imgur.com/J5LVHEL.jpg" alt={`${book.volumeInfo.title}`} name="thumbnail" />
                                 </>
                             )}
                         </div>

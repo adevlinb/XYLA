@@ -7,6 +7,7 @@ export default function SearchBar({ searchForBooks }) {
 
     function handleQuery(evt){
         evt.preventDefault()
+        if (query === '' || query === null || query === undefined) return;
         searchForBooks(query)
         setQuery('')
     }

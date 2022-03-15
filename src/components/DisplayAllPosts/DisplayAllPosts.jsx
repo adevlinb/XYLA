@@ -8,8 +8,9 @@ export default function DisplayAllPosts({allPosts, addComment}) {
 
     return (
         <>
+        <h3>SOCIAL FEED</h3>
+        <img className="bookshelfPic" src="/images/SocialWall.png" alt="BooksLandingPhoto" />
         <div className="allPostsGrid">
-            <h1>SOCIAL WALL</h1>
             {allUsersPosts}
         </div>
         </>

@@ -2,16 +2,24 @@ import SearchBar from '../../components/SearchBar/SearchBar';
 import DisplayResults from '../../components/DisplayResults/DisplayResults';
 import SearchBooksScroll from "../../components/SearchBooksScroll/SearchBooksScroll"
 import * as booksAPI from '../../utilities/books-api';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 
-export default function SearchBooksPage({ addBook, user, library }) {
-
+export default function SearchBooksPage({ addBook, user }) {
+  const [library, setLibrary] = useState([]);
   const [queryResults, setQueryResults] = useState([]);
 
   async function searchForBooks(query) {
     const bookSearchResult = await booksAPI.searchBooks(query);
     setQueryResults(bookSearchResult.items);
   }
+
+  useEffect(() => {
+    async function getMyShelf() {
+      const books = await booksAPI.getLibrary();
+      setLibrary(books);
+    }
+    getMyShelf();
+  }, []);
 
   const book = library.map((b) => (
     <SearchBooksScroll b={b} key={b._id} />
