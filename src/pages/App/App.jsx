@@ -29,7 +29,7 @@ export default function App() {
             <Routes>
               {/* Route components in here */}
               <Route path="/library" element={<LibraryPage library={library} setLibrary={setLibrary} user={user}/>} />
-              <Route path="/search" element={<SearchBooksPage addBook={addBook}/>} />
+            <Route path="/search" element={<SearchBooksPage addBook={addBook} user={user} library={library}/>}  />
               <Route path="/wall" element={<SocialWallPage library={library} />} />
               <Route path="/clubs" element={<ClubPage />} />
               <Route path="/*" element={<Navigate to="/library" />} />
@@ -38,7 +38,7 @@ export default function App() {
           :
           <>
           <LandingPage setUser={setUser} />
-          <img src="/images/XYLA_LOGO.png" alt="XYLA" id='logo' />
+          {/* <img src="/images/XYLA_LOGO.png" alt="XYLA" id='logo' /> */}
           </>
       }
     </main>

@@ -11,20 +11,25 @@ export default function LandingPage({ setUser }) {
 
   return (
     <main>
-   
-        <img className="landingPic" src="/images/Landing1.png" alt="BooksLandingPhoto" />
-        {showLanding ? 
-          <>
-            <button onClick={() => setShowLanding(!showLanding)}>Join XYLA!</button>
-            <RealLandingPage />
-          </>
-          :
-          <>
-            <button onClick={() => setShowLanding(!showLanding)}>Back to Landing Page</button>
-            <AuthPage setUser={setUser} />
-          </>
-        }
-
+        <div className="mainDiv">
+            {showLanding ? 
+              <>
+                <img className="landingPic" src="/images/Landing1.png" alt="BooksLandingPhoto" />
+                <RealLandingPage />
+                <button onClick={() => setShowLanding(!showLanding)}>Join XYLA!</button>
+                <img src="/images/XYLA_LOGO.png" alt="XYLA" id='logo' />
+           
+              </>
+              :
+              <>
+                <img className="landingPic" src="/images/Landing1.png" alt="BooksLandingPhoto" />
+                <RealLandingPage />
+                <button onClick={() => setShowLanding(!showLanding)}>Back to Landing Page</button>
+                <AuthPage setUser={setUser} />
+           
+              </>
+            }
+        </div>
     </main>
   );
 }

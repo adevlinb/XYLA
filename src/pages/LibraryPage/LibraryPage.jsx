@@ -6,8 +6,6 @@ import { useState, useEffect } from 'react';
 import DisplayFavorites from '../../components/DisplayFavorites/DisplayFavorites';
 import DisplayRecs from '../../components/DisplayRecs/DisplayRecs';
 import DisplayPosts from '../../components/DisplayPosts/DisplayPosts';
-import DisplayProfile from '../../components/DisplayProfile/DisplayProfile';
-import DisplaySettings from '../../components/DisplaySettings/DisplaySettings';
 
 export default function LibraryPage({library, setLibrary, user}) {
   const [show, setShow] = useState({
@@ -15,8 +13,6 @@ export default function LibraryPage({library, setLibrary, user}) {
     recShelf: false,
     favShelf: false,
     postShelf: false,
-    profile: false,
-    settings: false
   })
   
   //array of user posts..
@@ -61,26 +57,27 @@ export default function LibraryPage({library, setLibrary, user}) {
     <>
     <div className="horizontal">
       <div className="verticalOne">
-        {/* <img src="/images/XYLA_LOGO.png" alt="XYLA" className='logo' /> */}
           <h3>{user.name}'s <span>XYLA</span></h3>
+          <i className="material-icons" id="landingIcons1">account_circle</i>
         <button onClick={() => toggleShow('myShelf')}> My Books</button>
         <button onClick={() => toggleShow('recShelf')}> Recommendations</button>
         <button onClick={() => toggleShow('favShelf')}> My Favorites</button>
         <button onClick={() => toggleShow('postShelf')}>  Make a post!</button>
-        <button onClick={() => toggleShow('profile')}> My Profile</button>
-        <button onClick={() => toggleShow('settings')}>  Settings</button>
       </div>
       <div className="verticalTwo">
         {show.myShelf && <DisplayLibrary library={library} user={user}/>}
-        {show.recShelf && <DisplayRecs myRecs={myRecs} />}
-        {show.favShelf && <DisplayFavorites/>}
-        {show.postShelf && <DisplayPosts library={library} createPost={createPost} userPosts={userPosts} addComment={addComment}/>}
-        {show.profile && <DisplayProfile />}
-        {show.settings && <DisplaySettings />}
+          {show.recShelf && <DisplayRecs myRecs={myRecs} user={user}/>}
+          {show.favShelf && <DisplayFavorites user={user}/>}
+          {show.postShelf && <DisplayPosts library={library} createPost={createPost} userPosts={userPosts} addComment={addComment} user={user}/>}
       </div>
       <div className="space"></div>
       <div className="verticalThree">
-
+          <h3>QUICK LINKS</h3>
+          <h5><a href="https://www.google.com/search?q=local+bookstore" target="_blank">Find Local Bookstores</a></h5>
+          <h5><a href="https://www.goodreads.com/" target="_blank">Goodreads</a></h5>
+          <h5><a href="https://books.google.com/" target="_blank">Google Books</a></h5>
+          <h5><a href="https://www.nytimes.com/books/best-sellers/" target="_blank">NYT Best Sellers</a></h5>
+          <h5><a href="https://apps.npr.org/best-books/#view=covers&year=2021" target="_blank">NPR Favorites</a></h5>
       </div>
     </div>
       <footer>ALL RIGHTS RESERVED</footer>

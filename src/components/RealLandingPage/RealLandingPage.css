@@ -1,0 +1,15 @@
+.landingInfo {
+    display: flex;
+    justify-content: center;
+}
+
+#landingIcons1, #landingIcons2, #landingIcons3, #landingIcons4 {
+    color: var(--pink);
+    font-size: 75px;
+    -webkit-text-stroke: 1px black;
+}
+
+.landingInfo > div {
+    max-width: 17vw;
+    margin: 2vw;
+}

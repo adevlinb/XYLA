@@ -3,7 +3,7 @@ import './DisplayPosts.css';
 import { useState } from 'react';
 import DisplayPostCard from '../DisplayPostCard/DisplayPostCard';
 
-export default function DisplayPosts({ library, createPost, userPosts, addComment}) {
+export default function DisplayPosts({ library, createPost, userPosts, addComment, user}) {
 
     const [formData, setFormData] = useState({
         title: '',
@@ -47,7 +47,8 @@ export default function DisplayPosts({ library, createPost, userPosts, addCommen
 
     return (
         <>
-        <h1>DisplayPosts</h1>
+        <h3>{user.name}'s Posts</h3>
+        <img className="bookshelfPic" src="/images/Bookshelf_Pano.png" alt="BooksLandingPhoto" />
         <div className='verticalTwo'>
             <form onSubmit={handleCreatePost} className="postForm">
                 <input type="text" name="title" onChange={handleChange} value={formData.title} placeholder='headline'/>

@@ -33,7 +33,9 @@
     background-color: rgba(0, 0, 0, 0.4);
     padding: 2vmin;
     max-width: 12vw;
-    min-width: 12vw;
+    min-width: 12vw !important;
+    max-height: 100vh;
+    overflow: scroll;
 }
 
 .verticalTwo {
@@ -60,5 +62,9 @@
 .space {
     height: 100px;
     margin-top: 20px;
+}
+
+.landingIcons {
+  color: var(--pink)
 }
 

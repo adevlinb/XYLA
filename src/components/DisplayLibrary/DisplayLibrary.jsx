@@ -10,7 +10,7 @@ export default function DisplayLibrary({ library, user }) {
         <>
         <h3>{user.name}'s' BOOKSHELF</h3>
         <img className="bookshelfPic" src="/images/Bookshelf_Pano.png" alt="BooksLandingPhoto" />
-        <div className="grid">
+        <div className="grid" id="libraryGrid">
             {book}
         </div>
         </>

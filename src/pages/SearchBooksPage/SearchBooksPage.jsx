@@ -1,9 +1,10 @@
 import SearchBar from '../../components/SearchBar/SearchBar';
 import DisplayResults from '../../components/DisplayResults/DisplayResults';
+import SearchBooksScroll from "../../components/SearchBooksScroll/SearchBooksScroll"
 import * as booksAPI from '../../utilities/books-api';
 import { useState } from 'react';
 
-export default function SearchBooksPage({ addBook }) {
+export default function SearchBooksPage({ addBook, user, library }) {
 
   const [queryResults, setQueryResults] = useState([]);
 
@@ -12,16 +13,18 @@ export default function SearchBooksPage({ addBook }) {
     setQueryResults(bookSearchResult.items);
   }
 
+  const book = library.map((b) => (
+    <SearchBooksScroll b={b} key={b._id} />
+  ));
+
+
   return (
     <>
     <div className="horizontal">
       <div className="verticalOne">
-        <h3>QUICK LINKS</h3>
-        <h5><a href="https://www.google.com/search?q=local+bookstore" target="_blank">Find Local Bookstores</a></h5>
-        <h5><a href="https://www.goodreads.com/" target="_blank">Goodreads</a></h5>
-        <h5><a href="https://books.google.com/" target="_blank">Google Books</a></h5>
-        <h5><a href="https://www.nytimes.com/books/best-sellers/" target="_blank">NYT Best Sellers</a></h5>
-        <h5><a href="https://apps.npr.org/best-books/#view=covers&year=2021" target="_blank">NPR Favorites</a></h5>
+          <i className="material-icons" id="landingIcons1">auto_stories</i>
+          <h3>{user.name}'s BOOKS:</h3>
+          {book}
       </div>
       <div className="verticalTwo">
         <h1>Search for new books!</h1>
@@ -29,7 +32,12 @@ export default function SearchBooksPage({ addBook }) {
         <DisplayResults queryResults={queryResults} addBook={addBook} />
       </div>
       <div className="verticalThree">
-
+          <h3>QUICK LINKS</h3>
+          <h5><a href="https://www.google.com/search?q=local+bookstore" target="_blank">Find Local Bookstores</a></h5>
+          <h5><a href="https://www.goodreads.com/" target="_blank">Goodreads</a></h5>
+          <h5><a href="https://books.google.com/" target="_blank">Google Books</a></h5>
+          <h5><a href="https://www.nytimes.com/books/best-sellers/" target="_blank">NYT Best Sellers</a></h5>
+          <h5><a href="https://apps.npr.org/best-books/#view=covers&year=2021" target="_blank">NPR Favorites</a></h5>
       </div>
     </div>
     <footer>ALL RIGHTS RESERVED</footer>

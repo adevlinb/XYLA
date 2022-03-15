@@ -14,13 +14,13 @@ export default function NavBar({ user, setUser }) {
           <img src="/images/XYLA_LOGO.png" alt="XYLA" className='logo' />
         </div>
         <div>
-          <Link to="/library">My Bookshelf</Link>
+        <Link to="/library">HOME</Link>
           &nbsp; | &nbsp;
-          <Link to="/search">Find Books</Link>
+          <Link to="/search">FIND BOOKS</Link>
           &nbsp; | &nbsp;
-          <Link to="/wall">Social Wall</Link>
+          <Link to="/wall">SOCIALIZE</Link>
           &nbsp; | &nbsp;
-          <Link to="/clubs">Clubs!</Link>
+          <Link to="/clubs">CLUBS!</Link>
           &nbsp; | &nbsp;
           <span>Welcome, {user.name}</span>
           &nbsp; | &nbsp;

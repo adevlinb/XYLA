@@ -5,7 +5,7 @@ export default function ClubPage() {
     return (
         <div className="horizontal">
             <div className="verticalOne">
-                <h3>Quick Links</h3>
+                <h3>Tree House <i className="material-icons" id="landingIcons1">groups</i></h3>
                 <h5>My Clubs</h5>
                 <h5>Find Clubs</h5>
             </div>
@@ -13,7 +13,12 @@ export default function ClubPage() {
                 <h1>BOOK CLUBS COMING SOON</h1>
             </div>
             <div className="verticalThree">
-
+                <h3>QUICK LINKS</h3>
+                <h5><a href="https://www.google.com/search?q=local+bookstore" target="_blank">Find Local Bookstores</a></h5>
+                <h5><a href="https://www.goodreads.com/" target="_blank">Goodreads</a></h5>
+                <h5><a href="https://books.google.com/" target="_blank">Google Books</a></h5>
+                <h5><a href="https://www.nytimes.com/books/best-sellers/" target="_blank">NYT Best Sellers</a></h5>
+                <h5><a href="https://apps.npr.org/best-books/#view=covers&year=2021" target="_blank">NPR Favorites</a></h5>
             </div>
             <footer>ALL RIGHTS RESERVED</footer>
         </div>
