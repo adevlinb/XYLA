@@ -10,7 +10,7 @@ nav {
     height: 7vh;
     border-bottom: 2px solid black; 
     position: sticky;
-    
+    background-color: var(--blue-2);
 }
 
 nav > div:nth-child(3) {

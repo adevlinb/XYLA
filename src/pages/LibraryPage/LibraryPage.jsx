@@ -9,7 +9,7 @@ import DisplayPosts from '../../components/DisplayPosts/DisplayPosts';
 import DisplayProfile from '../../components/DisplayProfile/DisplayProfile';
 import DisplaySettings from '../../components/DisplaySettings/DisplaySettings';
 
-export default function LibraryPage({library, setLibrary}) {
+export default function LibraryPage({library, setLibrary, user}) {
   const [show, setShow] = useState({
     myShelf: true, 
     recShelf: false,
@@ -62,7 +62,7 @@ export default function LibraryPage({library, setLibrary}) {
     <div className="horizontal">
       <div className="verticalOne">
         {/* <img src="/images/XYLA_LOGO.png" alt="XYLA" className='logo' /> */}
-        <h3>MY BOOKSHELF</h3>
+          <h3>{user.name}'s <span>XYLA</span></h3>
         <button onClick={() => toggleShow('myShelf')}> My Books</button>
         <button onClick={() => toggleShow('recShelf')}> Recommendations</button>
         <button onClick={() => toggleShow('favShelf')}> My Favorites</button>
@@ -71,7 +71,7 @@ export default function LibraryPage({library, setLibrary}) {
         <button onClick={() => toggleShow('settings')}>  Settings</button>
       </div>
       <div className="verticalTwo">
-        {show.myShelf && <DisplayLibrary library={library} />}
+        {show.myShelf && <DisplayLibrary library={library} user={user}/>}
         {show.recShelf && <DisplayRecs myRecs={myRecs} />}
         {show.favShelf && <DisplayFavorites/>}
         {show.postShelf && <DisplayPosts library={library} createPost={createPost} userPosts={userPosts} addComment={addComment}/>}

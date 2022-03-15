@@ -28,7 +28,7 @@ export default function App() {
             <NavBar user={user} setUser={setUser} />
             <Routes>
               {/* Route components in here */}
-              <Route path="/library" element={<LibraryPage library={library} setLibrary={setLibrary} />} />
+              <Route path="/library" element={<LibraryPage library={library} setLibrary={setLibrary} user={user}/>} />
               <Route path="/search" element={<SearchBooksPage addBook={addBook}/>} />
               <Route path="/wall" element={<SocialWallPage library={library} />} />
               <Route path="/clubs" element={<ClubPage />} />

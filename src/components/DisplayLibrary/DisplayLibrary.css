@@ -1,9 +1,3 @@
-.grid {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-}
-
-.sortLinks {
-    display: flex;
-
+.bookshelfPic {
+    transform: translateY(-20%);
 }
