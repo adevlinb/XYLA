@@ -77,15 +77,3 @@ export default function DisplayPostCard({post, addComment}) {
         </>
     );
 }
-
-
-// { post && post.book.authors ? <div name="Authors" value={`${post.book.authors}`}>{post.book.authors}</div> : <div>N/A</div> }
-// { post && post.book.subjects ? <div name="Subjects" value={`${post.book.subjects}`}>{post.book.subjects}</div> : <div>N/A</div> }
-// { post && post.book.publishers ? <div name="Publishers">{post.book.publishers}</div> : <div>N/A</div> }
-// { post && post.book.pageCount ? <div name="pageCount">{post.book.pageCount}</div> : <div>N/A</div> }
-// { post && post.book.isbnNum ? <div name="isbnNum">{post.book.isbnNum}</div> : <div>N/A</div> }
-// { post && post.book.rating ? <div name="rating">{post.book.rating}</div> : <div>N/A</div> }
-
-{/* <button onClick={() => setcardFlip(!cardFlip)}>Details</button> */ }
-
-{/* <button onClick={() => setcardFlip(!cardFlip)}>Details</button> */ }

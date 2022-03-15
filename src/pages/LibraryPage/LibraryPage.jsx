@@ -38,7 +38,6 @@ export default function LibraryPage({library, setLibrary, user}) {
         const recs = await booksAPI.getMyRecs();
         console.log(recs, "myshelf recs")
         setMyRecs(recs);
-
       }
       getMyShelf();  
     }, []);
@@ -78,11 +77,11 @@ export default function LibraryPage({library, setLibrary, user}) {
       <div className="space"></div>
       <div className="verticalThree">
           <h3>QUICK LINKS</h3>
-          <h5><a href="https://www.google.com/search?q=local+bookstore" target="_blank">Find Local Bookstores</a></h5>
-          <h5><a href="https://www.goodreads.com/" target="_blank">Goodreads</a></h5>
-          <h5><a href="https://books.google.com/" target="_blank">Google Books</a></h5>
-          <h5><a href="https://www.nytimes.com/books/best-sellers/" target="_blank">NYT Best Sellers</a></h5>
-          <h5><a href="https://apps.npr.org/best-books/#view=covers&year=2021" target="_blank">NPR Favorites</a></h5>
+          <h5><a href="https://www.google.com/search?q=local+bookstore" rel="noreferrer" target="_blank">Find Local Bookstores</a></h5>
+          <h5><a href="https://www.goodreads.com/" rel="noreferrer" target="_blank">Goodreads</a></h5>
+          <h5><a href="https://books.google.com/" rel="noreferrer" target="_blank">Google Books</a></h5>
+          <h5><a href="https://www.nytimes.com/books/best-sellers/" rel="noreferrer" target="_blank">NYT Best Sellers</a></h5>
+          <h5><a href="https://apps.npr.org/best-books/#view=covers&year=2021" rel="noreferrer" target="_blank">NPR Favorites</a></h5>
       </div>
     </div>
       <footer>ALL RIGHTS RESERVED</footer>
