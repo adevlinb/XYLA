@@ -30,7 +30,7 @@ async function create(req, res) {
 
 async function getAllPosts(req, res) {
     try{
-        const allPosts = await Post.find({}).populate('user').populate('book').populate('comment').populate('comment.user').exec()
+        const allPosts = await Post.find({}).populate('user').populate('book').populate('comment').populate('comment.user').sort({createdAt: 'desc'}).exec()
         res.json(allPosts);
     } catch (err) {
         console.log(err)
@@ -53,7 +53,7 @@ async function addComment(req, res) {
         currentPost.comment.push({ content: req.body.content, user: req.user._id});
         console.log(currentPost.comment)
         await currentPost.save();
-        const allPosts = await Post.find({}).populate('comment').populate('user').populate('book').populate('comment.user').exec()
+        const allPosts = await Post.find({}).populate('comment').populate('user').populate('book').populate('comment.user').sort({comment: 'asc'}).exec()
         res.json(allPosts);
     } catch (err) {
         console.log(err)
