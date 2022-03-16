@@ -23,7 +23,7 @@ async function create(req, res) {
         if (!allUserPosts) throw new Error ();
         res.json(allUserPosts)
     } catch (err) {
-        console.log(err)
+        res.status(400).json(err);
     }
 
 }
@@ -33,7 +33,7 @@ async function getAllPosts(req, res) {
         const allPosts = await Post.find({}).populate('user').populate('book').populate('comment').populate('comment.user').sort({createdAt: 'desc'}).exec()
         res.json(allPosts);
     } catch (err) {
-        console.log(err)
+        res.status(400).json(err);
     }
 }
 
@@ -42,7 +42,7 @@ async function getUserPosts(req, res) {
         const allUserPosts = await Post.find({ user: req.user._id }).populate('book').populate('user').populate('comment').populate('comment.user').exec()
         res.json(allUserPosts)
     } catch (err) {
-        console.log(err)
+        res.status(400).json(err);
     }
 }
 
@@ -56,6 +56,6 @@ async function addComment(req, res) {
         const allPosts = await Post.find({}).populate('comment').populate('user').populate('book').populate('comment.user').sort({comment: 'asc'}).exec()
         res.json(allPosts);
     } catch (err) {
-        console.log(err)
+        res.status(400).json(err);
     }
 }

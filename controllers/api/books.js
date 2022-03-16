@@ -42,7 +42,7 @@ async function googleSearchAPI(req, res) {
       res.json(books);
 
     } catch (error) {
-      console.log(error);
+        res.status(400).json(err);
     }
 }
 
@@ -54,7 +54,7 @@ async function populateUserShelf(req, res) {
         if(!books) throw new Error();
         res.json(books);
     }   catch (err) {  
-        console.log(err)
+        res.status(400).json(err);
     }
 }
 
@@ -64,7 +64,7 @@ async function getUserLibrary(req, res) {
         let books = userShelf.userBooks;
         res.json(books);
     } catch (err) {
-        console.log(err);
+        res.status(400).json(err);
     }
 }
 
@@ -73,7 +73,7 @@ async function getUserRecs(req, res) {
         const userRecShelf = await Bookshelf.findOne({ userId: req.params.id }).populate('recommended.recommendation').populate('recommended.personRecommending').exec();
         res.json(userRecShelf.recommended);
     } catch (err) {
-        console.log(err);
+        res.status(400).json(err);
     }
 }
 
@@ -82,7 +82,7 @@ async function getMyRecs(req, res) {
         const myRecShelf = await Bookshelf.findOne({ userId: req.user._id }).populate('recommended.recommendation').populate('recommended.personRecommending').exec();
         res.json(myRecShelf.recommended);
     } catch (err) {
-        console.log(err);
+        res.status(400).json(err);
     }
 }
 
@@ -104,6 +104,6 @@ async function addRecToFriend(req, res) {
         // let books = updatedNotInShelf.userBooks;
         res.json(updatedNotInShelf);
     } catch (err) {
-        console.log(err)
+        res.status(400).json(err);
     }
 }
