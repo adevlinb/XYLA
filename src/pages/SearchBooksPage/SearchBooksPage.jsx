@@ -3,6 +3,7 @@ import DisplayResults from '../../components/DisplayResults/DisplayResults';
 import SearchBooksScroll from "../../components/SearchBooksScroll/SearchBooksScroll"
 import * as booksAPI from '../../utilities/books-api';
 import { useState, useEffect } from 'react';
+import './SearchBooksPage.css'
 
 export default function SearchBooksPage({ addBook, user }) {
   const [library, setLibrary] = useState([]);
@@ -30,8 +31,11 @@ export default function SearchBooksPage({ addBook, user }) {
     <>
     <div className="horizontal">
       <div className="verticalOne">
+
+        <div id="bookStats">
           <i className="material-icons" id="landingIcons1">auto_stories</i>
-          <h3>{user.name}'s BOOKS:</h3>
+            <h3>{user.name}'s BOOKS: <span>{library.length}</span></h3>
+        </div>
           {book}
       </div>
       <div className="verticalTwo">
@@ -40,12 +44,15 @@ export default function SearchBooksPage({ addBook, user }) {
         <DisplayResults queryResults={queryResults} addBook={addBook} />
       </div>
       <div className="verticalThree">
-          <h3>QUICK LINKS</h3>
-          <h5><a href="https://www.google.com/search?q=local+bookstore" rel="noreferrer" target="_blank">Find Local Bookstores</a></h5>
-          <h5><a href="https://www.goodreads.com/" rel="noreferrer" target="_blank">Goodreads</a></h5>
-          <h5><a href="https://books.google.com/" rel="noreferrer" target="_blank">Google Books</a></h5>
-          <h5><a href="https://www.nytimes.com/books/best-sellers/" rel="noreferrer" target="_blank">NYT Best Sellers</a></h5>
-          <h5><a href="https://apps.npr.org/best-books/#view=covers&year=2021" rel="noreferrer" target="_blank">NPR Favorites</a></h5>
+          <div className="quickLinks">
+            <h3>QUICK LINKS</h3>
+            <i className="material-icons" id="link">link</i>
+            <h5><a href="https://www.google.com/search?q=local+bookstore" rel="noreferrer" target="_blank">Find Local Bookstores</a></h5>
+            <h5><a href="https://www.goodreads.com/" rel="noreferrer" target="_blank">Goodreads</a></h5>
+            <h5><a href="https://books.google.com/" rel="noreferrer" target="_blank">Google Books</a></h5>
+            <h5><a href="https://www.nytimes.com/books/best-sellers/" rel="noreferrer" target="_blank">NYT Best Sellers</a></h5>
+            <h5><a href="https://apps.npr.org/best-books/#view=covers&year=2021" rel="noreferrer" target="_blank">NPR Favorites</a></h5>
+          </div>
       </div>
     </div>
     <footer>ALL RIGHTS RESERVED</footer>

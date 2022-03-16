@@ -83,10 +83,11 @@ export default function SocialWallPage() {
         <>
         <div className="horizontal">
             <div className="verticalOne">
+                <div id="socialStats">
                     <h3>Social Links <i className="material-icons" id="landingIcons1">record_voice_over</i></h3>
-
-                <button onClick={() => toggleShow('displayAllPosts')}> Social Wall</button>
-                <button onClick={() => toggleShow('findFriends')}> Find Friends</button>
+                </div>
+                <button className="sideButtons" onClick={() => toggleShow('displayAllPosts')}> Social Wall</button>
+                <button className="sideButtons" onClick={() => toggleShow('findFriends')}> Find Friends</button>
             </div>
             <div className="verticalTwo">
                 {show.displayAllPosts && <DisplayAllPosts allPosts={allPosts} addComment={addComment} />}
@@ -94,12 +95,15 @@ export default function SocialWallPage() {
                 {show.profileDetail && <DisplayProfileDetail profile={profile} userRecs={userRecs} userLibrary={userLibrary} myLibrary={myLibrary} addRecommendation={addRecommendation}/>}
             </div>
             <div className="verticalThree">
-                <h3>QUICK LINKS</h3>
-                <h5><a href="https://www.google.com/search?q=local+bookstore" rel="noreferrer" target="_blank">Find Local Bookstores</a></h5>
-                <h5><a href="https://www.goodreads.com/" rel="noreferrer" target="_blank">Goodreads</a></h5>
-                <h5><a href="https://books.google.com/" rel="noreferrer" target="_blank">Google Books</a></h5>
-                <h5><a href="https://www.nytimes.com/books/best-sellers/" rel="noreferrer" target="_blank">NYT Best Sellers</a></h5>
-                <h5><a href="https://apps.npr.org/best-books/#view=covers&year=2021" rel="noreferrer" target="_blank">NPR Favorites</a></h5>
+                <div className="quickLinks">
+                    <h3>QUICK LINKS</h3>
+                    <i className="material-icons" id="link">link</i>
+                    <h5><a href="https://www.google.com/search?q=local+bookstore" rel="noreferrer" target="_blank">Find Local Bookstores</a></h5>
+                    <h5><a href="https://www.goodreads.com/" rel="noreferrer" target="_blank">Goodreads</a></h5>
+                    <h5><a href="https://books.google.com/" rel="noreferrer" target="_blank">Google Books</a></h5>
+                    <h5><a href="https://www.nytimes.com/books/best-sellers/" rel="noreferrer" target="_blank">NYT Best Sellers</a></h5>
+                    <h5><a href="https://apps.npr.org/best-books/#view=covers&year=2021" rel="noreferrer" target="_blank">NPR Favorites</a></h5>
+                </div>
             </div>
         </div>
         <footer>ALL RIGHTS RESERVED</footer>

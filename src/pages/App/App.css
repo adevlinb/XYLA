@@ -93,5 +93,21 @@ a:hover {
 #profileStats > h5 {
   margin-top: 8px;
   margin-bottom: 8px;
+}
 
+.sideButtons {
+  background-color: var(--blue-2);
+  color: var(--pink);
+  -webkit-text-stroke: 0.25px black;
+  border-radius: 8px;
+  width: 10vw;
+  margin-top: 1vh;
+}
+
+.quickLinks {
+    background-color: var(--blue-2);
+    padding: 10px;
+    border: 1px solid black;
+    border-radius: 8px;
+    margin-bottom: 2vh;
 }

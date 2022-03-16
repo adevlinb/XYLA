@@ -1,0 +1,7 @@
+#socialStats {
+    background-color: var(--blue-2);
+    padding: 10px;
+    border: 1px solid black;
+    border-radius: 8px;
+    margin-bottom: 2vh;
+}

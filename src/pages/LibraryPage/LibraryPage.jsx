@@ -57,16 +57,16 @@ export default function LibraryPage({library, setLibrary, user}) {
     <div className="horizontal">
       <div className="verticalOne">
           <div id="profileStats">
-          <h3>{user.name}'s <span>XYLA</span></h3>
-          <i className="material-icons" id="landingIcons1">account_circle</i>
+            <h3>{user.name}'s <span>XYLA</span></h3>
+            <i className="material-icons" id="landingIcons1">account_circle</i>
             <h5># of books: <span>{library.length}</span></h5>
             <h5># of recs: <span>{myRecs.length}</span></h5>
             <h5># of posts: <span>{userPosts.length}</span></h5>
           </div>
-        <button onClick={() => toggleShow('myShelf')}> My Books</button>
-        <button onClick={() => toggleShow('recShelf')}> Recommendations</button>
-        <button onClick={() => toggleShow('favShelf')}> My Favorites</button>
-        <button onClick={() => toggleShow('postShelf')}>  Make a post!</button>
+        <button className="sideButtons" onClick={() => toggleShow('myShelf')}> My Books</button>
+        <button className="sideButtons" onClick={() => toggleShow('recShelf')}> Recommendations</button>
+        <button className="sideButtons" onClick={() => toggleShow('favShelf')}> My Favorites</button>
+        <button className="sideButtons" onClick={() => toggleShow('postShelf')}>  Make a post!</button>
       </div>
       <div className="verticalTwo">
         {show.myShelf && <DisplayLibrary library={library} user={user}/>}
@@ -76,12 +76,15 @@ export default function LibraryPage({library, setLibrary, user}) {
       </div>
       <div className="space"></div>
       <div className="verticalThree">
-          <h3>QUICK LINKS</h3>
-          <h5><a href="https://www.google.com/search?q=local+bookstore" rel="noreferrer" target="_blank">Find Local Bookstores</a></h5>
-          <h5><a href="https://www.goodreads.com/" rel="noreferrer" target="_blank">Goodreads</a></h5>
-          <h5><a href="https://books.google.com/" rel="noreferrer" target="_blank">Google Books</a></h5>
-          <h5><a href="https://www.nytimes.com/books/best-sellers/" rel="noreferrer" target="_blank">NYT Best Sellers</a></h5>
-          <h5><a href="https://apps.npr.org/best-books/#view=covers&year=2021" rel="noreferrer" target="_blank">NPR Favorites</a></h5>
+          <div className="quickLinks">
+              <h3>QUICK LINKS</h3>
+              <i className="material-icons" id="link">link</i>
+              <h5><a href="https://www.google.com/search?q=local+bookstore" rel="noreferrer" target="_blank">Find Local Bookstores</a></h5>
+              <h5><a href="https://www.goodreads.com/" rel="noreferrer" target="_blank">Goodreads</a></h5>
+              <h5><a href="https://books.google.com/" rel="noreferrer" target="_blank">Google Books</a></h5>
+              <h5><a href="https://www.nytimes.com/books/best-sellers/" rel="noreferrer" target="_blank">NYT Best Sellers</a></h5>
+              <h5><a href="https://apps.npr.org/best-books/#view=covers&year=2021" rel="noreferrer" target="_blank">NPR Favorites</a></h5>
+          </div>
       </div>
     </div>
       <footer>ALL RIGHTS RESERVED</footer>
