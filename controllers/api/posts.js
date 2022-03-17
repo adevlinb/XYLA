@@ -30,7 +30,7 @@ async function create(req, res) {
 
 async function getAllPosts(req, res) {
     try{
-        const allPosts = await Post.find({}).populate('user').populate('book').populate('comment').populate('comment.user').sort({createdAt: 'desc'}).exec()
+        const allPosts = await Post.find({}).populate('user').populate('book').populate('comment').populate('comment.user').sort({createdAt: -1}).exec()
         res.json(allPosts);
     } catch (err) {
         res.status(400).json(err);
@@ -39,7 +39,7 @@ async function getAllPosts(req, res) {
 
 async function getUserPosts(req, res) {
     try{
-        const allUserPosts = await Post.find({ user: req.user._id }).populate('book').populate('user').populate('comment').populate('comment.user').exec()
+        const allUserPosts = await Post.find({ user: req.user._id }).populate('book').populate('user').populate('comment').populate('comment.user').sort({createdAt: -1}).exec()
         res.json(allUserPosts)
     } catch (err) {
         res.status(400).json(err);
@@ -53,7 +53,7 @@ async function addComment(req, res) {
         currentPost.comment.push({ content: req.body.content, user: req.user._id});
         console.log(currentPost.comment)
         await currentPost.save();
-        const allPosts = await Post.find({}).populate('comment').populate('user').populate('book').populate('comment.user').sort({comment: 'asc'}).exec()
+        const allPosts = await Post.find({}).populate('comment').populate('user').populate('book').populate('comment.user').exec()
         res.json(allPosts);
     } catch (err) {
         res.status(400).json(err);
