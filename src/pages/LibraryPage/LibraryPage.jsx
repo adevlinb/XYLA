@@ -50,7 +50,11 @@ export default function LibraryPage({library, setLibrary, user}) {
 
   async function addComment(commentData) {
     await postsAPI.addCommentToPost(commentData);
+    const userPosts = await postsAPI.getUserPosts();
+    setUserPosts(userPosts);
   }
+
+  
 
   return (
     <>
