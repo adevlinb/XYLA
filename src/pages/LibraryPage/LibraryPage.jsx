@@ -6,6 +6,7 @@ import { useState, useEffect } from 'react';
 import DisplayFavorites from '../../components/DisplayFavorites/DisplayFavorites';
 import DisplayRecs from '../../components/DisplayRecs/DisplayRecs';
 import DisplayPosts from '../../components/DisplayPosts/DisplayPosts';
+import DisplayLibraryItemDetail from '../../components/DisplayLibraryItemDetail/DisplayLibraryItemDetail';
 
 export default function LibraryPage({library, setLibrary, user}) {
   const [show, setShow] = useState({
@@ -13,6 +14,7 @@ export default function LibraryPage({library, setLibrary, user}) {
     recShelf: false,
     favShelf: false,
     postShelf: false,
+    bookDetail: false,
   })
   
   //array of user posts..
@@ -73,10 +75,11 @@ export default function LibraryPage({library, setLibrary, user}) {
         <button className="sideButtons" onClick={() => toggleShow('postShelf')}>  Make a post!</button>
       </div>
       <div className="verticalTwo">
-        {show.myShelf && <DisplayLibrary library={library} user={user}/>}
+          {show.myShelf && <DisplayLibrary library={library} user={user} toggleShow={toggleShow}/>}
           {show.recShelf && <DisplayRecs myRecs={myRecs} user={user}/>}
           {show.favShelf && <DisplayFavorites user={user}/>}
           {show.postShelf && <DisplayPosts library={library} createPost={createPost} userPosts={userPosts} addComment={addComment} user={user}/>}
+          {show.bookDetail && <DisplayLibraryItemDetail />}
       </div>
       <div className="space"></div>
       <div className="verticalThree">

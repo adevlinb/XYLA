@@ -1,9 +1,9 @@
 import DisplayLibraryItem from '../DisplayLibraryItem/DisplayLibraryItem'
 import "./DisplayLibrary.css"
 
-export default function DisplayLibrary({ library, user }) {
+export default function DisplayLibrary({ library, user, toggleShow }) {
     const book = library.map((b) => (
-        <DisplayLibraryItem b={b} key={b._id}/>
+        <DisplayLibraryItem b={b} key={b._id} toggleShow={toggleShow}/>
     ));
 
     return (

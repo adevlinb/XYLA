@@ -1,7 +1,7 @@
 import "./DisplayLibraryItem.css";
 import { useState } from 'react';
 
-export default function DisplayLibraryItem({ b }) {
+export default function DisplayLibraryItem({ b, toggleShow }) {
     const [cardFlip, setcardFlip] = useState(true);
 
     return (
@@ -9,7 +9,9 @@ export default function DisplayLibraryItem({ b }) {
             { cardFlip ? 
             <div className="card">
                 <div className="bookOnlyTextRow">
-                        <div id="bookOnlyTitle" name="title" value={`${b.book.title}`} ><strong>{b.book.title}</strong></div>
+                        <div id="bookOnlyTitle" name="title" value={`${b.book.title}`} ><strong>{b.book.title}</strong>
+                            <button onClick={() => toggleShow('bookDetail')}><i class="material-icons" id="personIconBook">menu_book</i></button>
+                        </div>
                 </div>
                 <div className="imageAndInfo">
                     <div className="cardImage">
