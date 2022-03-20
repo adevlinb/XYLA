@@ -12,6 +12,10 @@
   --blue-3: #e2f2ff;
   --text-light: #968c84;
   --text-dark: #615954;
+  --lg-desktop: 1280px;
+  --desktop: 1024px;
+  --tablet: 768px;
+  --smartphone: 480px;
 }
 
 body {

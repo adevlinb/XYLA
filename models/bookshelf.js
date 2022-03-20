@@ -1,5 +1,6 @@
 const mongoose = require('mongoose');
 const user = require('./user');
+const meBook = require('./meBook');
 const Schema = mongoose.Schema;
 
 const userBookSchema = new Schema ({
@@ -19,10 +20,11 @@ const userBookSchema = new Schema ({
 const recommendationSchema = new Schema({
     recommendation: {type: Schema.Types.ObjectId, ref: 'Book'},
     personRecommending: { type: Schema.Types.ObjectId, ref: 'User' }
-})
+}, { timestamps: true });
 
 const bookshelfSchema = new Schema({
     userId: { type: Schema.Types.ObjectId, ref: 'User' },
+    meBook: { type: Schema.Types.ObjectId, ref: 'meBook' },
     userBooks: [userBookSchema],
     recommended: [recommendationSchema],
 }, {timestamps: true});

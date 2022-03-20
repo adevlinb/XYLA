@@ -1,4 +1,3 @@
-import './DisplayRecs.css'
 import DisplayRecItems from '../DisplayRecItems/DisplayRecItems'
 
 export default function DisplayRecs({ myRecs, user }) {

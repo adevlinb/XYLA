@@ -1,10 +1,11 @@
+
+
+
 .card {
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-    border-width: 3px;
-    border-color: black;
-    border-style: solid;
+    border: 2px solid black;
     margin: 20px;
     background-color: rgb(255, 255, 255);
     overflow: scroll;
@@ -33,6 +34,7 @@
 
 #bookOnlyTitle {
     margin-left: 2vw;
+    font-size: 1.25vw;
 }
 
 .cardImage {
@@ -78,4 +80,16 @@
     margin-top: 10px;
     border: 1px solid black;
     box-shadow: 10px 5px 5px rgb(155, 155, 155);
+}
+
+@media only screen and (max-width: 800px) {
+    #bookOnlyTitle {
+        font-size: 1.75vw;
+    }
+}
+
+@media only screen and (max-width: 600px) {
+    #bookOnlyTitle {
+        font-size: 2.75vw;
+    }
 }

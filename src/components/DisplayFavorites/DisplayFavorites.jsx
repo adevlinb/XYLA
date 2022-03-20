@@ -1,4 +1,3 @@
-import './DisplayFavorites.css'
 
 export default function DisplayFavorites({ user }) {
 
