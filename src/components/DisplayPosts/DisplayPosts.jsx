@@ -12,6 +12,7 @@ export default function DisplayPosts({ library, createPost, userPosts, addCommen
         book: ''
     });
 
+        console.log(library, "display posts");
     let bookOptions = library.map((b, idx) => (
       {value: b.book._id, label: b.book.title}
     ));
@@ -35,6 +36,8 @@ export default function DisplayPosts({ library, createPost, userPosts, addCommen
             if(bookOptions[0] === null) return;
             else formData.book = bookOptions[0]
         }
+
+        
         console.log(formData);
         createPost(formData)
         setFormData({

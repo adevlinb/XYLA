@@ -12,6 +12,7 @@ const meBookSchema = new Schema({
     userId: { type: Schema.Types.ObjectId, ref: 'User' },
     // photos: [photoSchema],
     description: {type: String},
+    title: {type: String},
     comment: [meBookCommentSchema]
 }, { timestamps: true });
 

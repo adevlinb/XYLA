@@ -5,6 +5,7 @@ import * as booksAPI from '../../utilities/books-api';
 import DisplayAllPosts from '../../components/DisplayAllPosts/DisplayAllPosts';
 import DisplayFindFriends from '../../components/DisplayFindFriends/DisplayFindFriends';
 import DisplayProfileDetail from '../../components/DisplayProfileDetail/DisplayProfileDetail';
+import DisplayLibraryItemDetail from '../../components/DisplayLibraryItemDetail/DisplayLibraryItemDetail';
 import { useState, useEffect } from 'react'
 
 export default function SocialWallPage() {
@@ -18,19 +19,20 @@ export default function SocialWallPage() {
     const [show, setShow] = useState({
         displayAllPosts: true,
         findFriends: false,
-        profileDetail: false
+        profileDetail: false,
+        bookDetail: false,
     })
 
     //toggle component and get other users' profile / shelf info
-    async function toggleShow(shelf, id) {
+    async function toggleShow(shelf, userId, bookId) {
         const newShowState = { ...show };
         for (let key in newShowState) {
             newShowState[key] = false;
         }
-        if (id) {
-            const pro = await profilesAPI.findProfile(id)
-            const books = await booksAPI.getUserLibrary(id);
-            const recs = await booksAPI.getUserRecs(id);
+        if (userId) {
+            const pro = await profilesAPI.findProfile(userId)
+            const books = await booksAPI.getUserLibrary(userId);
+            const recs = await booksAPI.getUserRecs(userId);
             console.log(recs)
             setProfile(pro);
             setUserLibrary(books);
@@ -92,7 +94,8 @@ export default function SocialWallPage() {
             <div className="verticalTwo">
                 {show.displayAllPosts && <DisplayAllPosts allPosts={allPosts} addComment={addComment} />}
                 {show.findFriends && <DisplayFindFriends allProfiles={allProfiles} toggleShow={toggleShow} />}
-                {show.profileDetail && <DisplayProfileDetail profile={profile} userRecs={userRecs} userLibrary={userLibrary} myLibrary={myLibrary} addRecommendation={addRecommendation}/>}
+                {show.profileDetail && <DisplayProfileDetail profile={profile} userRecs={userRecs} userLibrary={userLibrary} myLibrary={myLibrary} addRecommendation={addRecommendation} toggleShow={toggleShow}/>}
+                {show.bookDetail && <DisplayLibraryItemDetail />}
             </div>
             <div className="verticalThree">
                 <div className="quickLinks">

@@ -21,7 +21,7 @@ export default function LibraryPage({library, setLibrary, user}) {
   const [userPosts, setUserPosts] = useState(false);
   const [myRecs, setMyRecs] = useState(false);
 
-  function toggleShow(shelf) {
+  function toggleShow(shelf, userId, bookId) {
     const newShowState = {...show};
     for (let key in newShowState) {
       newShowState[key] = false;
@@ -45,6 +45,7 @@ export default function LibraryPage({library, setLibrary, user}) {
     }, []);
 
     async function createPost(formData) {
+      if(formData.book === undefined) return;
       const posts = await postsAPI.addNewPost(formData)
       setUserPosts(posts);
       console.log(posts);

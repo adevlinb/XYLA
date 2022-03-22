@@ -7,7 +7,7 @@ export default function DisplayComment({c}) {
        <div className="container2">
             <div className="floatLeft">
                 <div className="personIcon">
-                    <i class="material-icons" id="personIcon">account_circle</i>
+                    <i className="material-icons" id="personIcon">account_circle</i>
                 </div>
                 {c.user.name}
             </div>

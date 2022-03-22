@@ -1,6 +1,7 @@
 const jwt = require('jsonwebtoken');
 const bcrypt = require('bcrypt');
 const User = require('../../models/user');
+const meBook = require('../../models/meBook');
 const Bookshelf = require('../../models/bookshelf');
 
 module.exports = {
@@ -13,11 +14,13 @@ async function create(req, res) {
   try {
     // Add the user to the db
     const user = await User.create(req.body);
-    console.log(user)
     //create their bookshelf
     const bookshelf = await new Bookshelf ({userId: user._id})
+    const newMeBook = await new meBook({ userId: user._id })
+    newMeBook.save();
+    bookshelf.meBook = newMeBook._id
     bookshelf.save();
-    console.log()
+    console.log(newMeBook, bookshelf)
     // token will be a string
     const token = createJWT(user);
     // Yes, we can serialize a string

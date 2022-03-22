@@ -2,7 +2,7 @@ import DisplayLibraryItem from '../DisplayLibraryItem/DisplayLibraryItem';
 import DisplayRecItems from '../DisplayRecItems/DisplayRecItems';
 import "./DisplayProfileDetail.css"
 
-export default function DisplayProfileDetail({ profile, userRecs, userLibrary, myLibrary, addRecommendation}) {
+export default function DisplayProfileDetail({ profile, userRecs, userLibrary, myLibrary, addRecommendation, toggleShow}) {
 
     const recData = {
         recommendation: "",
@@ -10,7 +10,7 @@ export default function DisplayProfileDetail({ profile, userRecs, userLibrary, m
     };
 
     const book = userLibrary.map((b) => (
-        <DisplayLibraryItem b={b} key={b._id} />
+        <DisplayLibraryItem b={b} key={b._id} user={profile._id} toggleShow={toggleShow}/>
     ));
 
     const rec = userRecs.map((r) => (

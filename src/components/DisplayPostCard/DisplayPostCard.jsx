@@ -38,7 +38,7 @@ export default function DisplayPostCard({post, addComment}) {
                             {post && <p id="postDate"> {new Date(post.createdAt).toLocaleDateString()}</p>}
                         </div>
                         <div className="bookIcon">
-                            <i class="material-icons" id="personIconBook">menu_book</i>
+                            <i className="material-icons" id="personIconBook">menu_book</i>
                         </div>
                     </div>
                     <div id="imageDescBox">

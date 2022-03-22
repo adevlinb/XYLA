@@ -3,7 +3,7 @@ import "./DisplayLibrary.css"
 
 export default function DisplayLibrary({ library, user, toggleShow }) {
     const book = library.map((b) => (
-        <DisplayLibraryItem b={b} key={b._id} toggleShow={toggleShow}/>
+        <DisplayLibraryItem b={b} key={b._id} toggleShow={toggleShow} user={user}/>
     ));
 
     return (
