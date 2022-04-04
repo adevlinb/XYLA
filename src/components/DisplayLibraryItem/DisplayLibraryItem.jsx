@@ -10,7 +10,7 @@ export default function DisplayLibraryItem({ b, toggleShow, user }) {
             <div className="card">
                 <div className="bookOnlyTextRow">
                         <div id="bookOnlyTitle" name="title" value={`${b.book.title}`} ><strong>{b.book.title}</strong>
-                            <button onClick={() => toggleShow('bookDetail', user, b.book._id)}><i className="material-icons" id="personIconBook">menu_book</i></button>
+                            {/* <button onClick={() => toggleShow('bookDetail', user, b.book._id)}><i className="material-icons" id="personIconBook">menu_book</i></button> */}
                         </div>
                 </div>
                 <div className="imageAndInfo">
