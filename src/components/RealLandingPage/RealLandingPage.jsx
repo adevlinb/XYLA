@@ -1,6 +1,6 @@
 import './RealLandingPage.css'
 
-export default function RealLandingPage({setShowLanding, showLanding}) {
+export default function RealLandingPage({setShowLanding, showLanding, guestLogin}) {
     return (
         <div id="landDiv">
             <h1>FINALLY!</h1>
@@ -29,6 +29,7 @@ export default function RealLandingPage({setShowLanding, showLanding}) {
                 </div>
             </div>
             <button onClick={() => setShowLanding(!showLanding)}>JOIN XYLA!</button>
+            <button onClick={() => guestLogin()}>Login as GUEST!</button>
         </div>
     )
 }
