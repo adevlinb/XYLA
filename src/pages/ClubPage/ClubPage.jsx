@@ -6,9 +6,9 @@ import DisplayFindAClub from '../../components/DisplayFindAClub/DisplayFindAClub
 import * as clubsAPI from '../../utilities/clubs-api';
 
 export default function ClubPage() {
-
+    const [myClubs, setMyClubs] = useState([]);
     const [show, setShow] = useState({
-        myClubs: true,
+        myClubsPage: true,
         startAClub: false,
         findClubs: false,
     })
@@ -24,7 +24,8 @@ export default function ClubPage() {
 
     async function startNewClub(data) {
         const newClub = clubsAPI.startNewClub(data);
-        console.log(newClub);
+        console.log(newClub, "clubpage");
+        setMyClubs([...myClubs, newClub]);
     }
 
     return (
@@ -33,13 +34,13 @@ export default function ClubPage() {
                 <div id="clubStats">
                     <h3>Tree House <i className="material-icons" id="landingIcons1">groups</i></h3>
                 </div>
-                <button className="sideButtons" onClick={() => toggleShow('myClubs')}>My Clubs</button>
+                <button className="sideButtons" onClick={() => toggleShow('myClubsPage')}>My Clubs</button>
                 <button className="sideButtons" onClick={() => toggleShow('startAClub')}>Start a club</button>
                 <button className="sideButtons" onClick={() => toggleShow('findClubs')}>Find Clubs</button>
             </div>
             <div className="verticalTwo">
                 <h1>BOOK CLUBS COMING SOON</h1>
-                {show.myClubs && <DisplayMyClubs />}
+                {show.myClubsPage && <DisplayMyClubs />}
                 {show.startAClub && <DisplayStartAClub startNewClub={startNewClub}/>}
                 {show.findClubs && <DisplayFindAClub />}
             </div>

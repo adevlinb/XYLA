@@ -15,8 +15,11 @@ async function getAllClubs(req, res) {
 }
 
 async function startNewClub(req, res) {
-
     try {
+        const club = await new Club(req.body)
+        await club.save();
+        console.log(club)
+        res.json(club)
 
     } catch (err) {
         res.status(400).json(err);
