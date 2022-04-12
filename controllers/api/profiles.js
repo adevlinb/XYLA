@@ -1,4 +1,4 @@
-const { Profiler } = require('react');
+// const { Profiler } = require('react');
 const User = require('../../models/user');
 
 module.exports = {

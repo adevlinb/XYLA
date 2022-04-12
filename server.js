@@ -26,6 +26,7 @@ app.use('/api/users', require('./routes/api/users'));
 app.use('/api/books', require('./routes/api/books'));
 app.use('/api/posts', require('./routes/api/posts'));
 app.use('/api/profiles', require('./routes/api/profiles'));
+app.use('/api/clubs', require('./routes/api/clubs'));
 
 
 // "Catch all" route

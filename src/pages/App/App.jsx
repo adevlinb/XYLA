@@ -29,7 +29,7 @@ export default function App() {
             <Routes>
               {/* Route components in here */}
               <Route path="/library" element={<LibraryPage library={library} setLibrary={setLibrary} user={user}/>} />
-            <Route path="/search" element={<SearchBooksPage addBook={addBook} user={user} />}  />
+              <Route path="/search" element={<SearchBooksPage addBook={addBook} user={user} />}  />
               <Route path="/wall" element={<SocialWallPage library={library} />} />
               <Route path="/clubs" element={<ClubPage />} />
               <Route path="/*" element={<Navigate to="/library" />} />

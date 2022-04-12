@@ -1,6 +1,31 @@
 import './ClubPage.css'
+import { useState } from 'react';
+import DisplayMyClubs from '../../components/DisplayMyClubs/DisplayMyClubs';
+import DisplayStartAClub from '../../components/DisplayStartAClub/DisplayStartAClub';
+import DisplayFindAClub from '../../components/DisplayFindAClub/DisplayFindAClub';
+import * as clubsAPI from '../../utilities/clubs-api';
 
 export default function ClubPage() {
+
+    const [show, setShow] = useState({
+        myClubs: true,
+        startAClub: false,
+        findClubs: false,
+    })
+
+    function toggleShow(shelf) {
+        const newShowState = { ...show };
+        for (let key in newShowState) {
+            newShowState[key] = false;
+        }
+        newShowState[shelf] = true;
+        setShow(newShowState);
+    }
+
+    async function startNewClub(data) {
+        const newClub = clubsAPI.startNewClub(data);
+        console.log(newClub);
+    }
 
     return (
         <div className="horizontal">
@@ -8,11 +33,15 @@ export default function ClubPage() {
                 <div id="clubStats">
                     <h3>Tree House <i className="material-icons" id="landingIcons1">groups</i></h3>
                 </div>
-                <button className="sideButtons">My Clubs</button>
-                <button className="sideButtons">Find Clubs</button>
+                <button className="sideButtons" onClick={() => toggleShow('myClubs')}>My Clubs</button>
+                <button className="sideButtons" onClick={() => toggleShow('startAClub')}>Start a club</button>
+                <button className="sideButtons" onClick={() => toggleShow('findClubs')}>Find Clubs</button>
             </div>
             <div className="verticalTwo">
                 <h1>BOOK CLUBS COMING SOON</h1>
+                {show.myClubs && <DisplayMyClubs />}
+                {show.startAClub && <DisplayStartAClub startNewClub={startNewClub}/>}
+                {show.findClubs && <DisplayFindAClub />}
             </div>
             <div className="verticalThree">
                 <div className="quickLinks">
