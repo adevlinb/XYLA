@@ -5,3 +5,8 @@
     border-radius: 8px;
     margin-bottom: 2vh;
 }
+
+#clubStatsAgain {
+    background: fixed;
+    background-color: pink;
+}
