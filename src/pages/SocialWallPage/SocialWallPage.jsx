@@ -8,7 +8,7 @@ import DisplayProfileDetail from '../../components/DisplayProfileDetail/DisplayP
 import DisplayLibraryItemDetail from '../../components/DisplayLibraryItemDetail/DisplayLibraryItemDetail';
 import { useState, useEffect } from 'react'
 
-export default function SocialWallPage() {
+export default function SocialWallPage({ user }) {
     const [allPosts, setAllPosts] = useState([]);
     const [allProfiles, setAllProfiles] = useState([]);
     const [profile, setProfile] = useState({});
@@ -94,7 +94,7 @@ export default function SocialWallPage() {
             <div className="verticalTwo">
                 {show.displayAllPosts && <DisplayAllPosts allPosts={allPosts} addComment={addComment} />}
                 {show.findFriends && <DisplayFindFriends allProfiles={allProfiles} toggleShow={toggleShow} />}
-                {show.profileDetail && <DisplayProfileDetail profile={profile} userRecs={userRecs} userLibrary={userLibrary} myLibrary={myLibrary} addRecommendation={addRecommendation} toggleShow={toggleShow}/>}
+                {show.profileDetail && <DisplayProfileDetail profile={profile} userRecs={userRecs} userLibrary={userLibrary} myLibrary={myLibrary} addRecommendation={addRecommendation} toggleShow={toggleShow} user={user} />}
                 {show.bookDetail && <DisplayLibraryItemDetail />}
             </div>
             <div className="verticalThree">

@@ -1,8 +1,18 @@
+import { useState } from "react";
 import DisplayLibraryItem from '../DisplayLibraryItem/DisplayLibraryItem';
 import DisplayRecItems from '../DisplayRecItems/DisplayRecItems';
+
 import "./DisplayProfileDetail.css"
 
-export default function DisplayProfileDetail({ profile, userRecs, userLibrary, myLibrary, addRecommendation, toggleShow}) {
+export default function DisplayProfileDetail({ profile, userRecs, userLibrary, myLibrary, addRecommendation, toggleShow, user}) {
+
+    const [friendRequested, setFriendRequested] = useState(false);
+    const [friends, setFriends] = useState(true);
+    console.log(user, "hi", profile)
+
+    if(user.requests.includes(profile._id)) setFriendRequested(false);
+    if(user.friends.includes(profile._id)) setFriendRequested(true);
+    // if(profile.requests.includes(user.))
 
     const recData = {
         recommendation: "",
@@ -38,6 +48,10 @@ export default function DisplayProfileDetail({ profile, userRecs, userLibrary, m
 
     return (
         <>
+
+            {friendRequested ? <h3>You already Requested</h3> : <h3>Request To Be Friends</h3> }
+        {friends ? 
+        <>
         <h1>{profile.name}'s Books</h1>
         <div id="profilePano">
             <img className="bookshelfPic" id="profileSplash" src="/images/profilePano.jpeg" alt="BooksLandingPhoto" />
@@ -61,6 +75,9 @@ export default function DisplayProfileDetail({ profile, userRecs, userLibrary, m
         <div className="grid">
             {rec}
         </div>
+        </>
+        : 
+        <h5>info will go here</h5>}
         </>
 
 

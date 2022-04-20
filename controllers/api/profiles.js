@@ -8,7 +8,8 @@ module.exports = {
 
 async function getAllProfiles(req, res) {
     try {
-        const allProfiles = await User.find({ _id: { $ne: req.user._id } }).select('name')
+        // const allProfiles = await User.find({ _id: { $ne: req.user._id } }).select('name')
+        const allProfiles = await User.find({ _id: { $ne: req.user._id } })
         res.json(allProfiles);
     } catch (err) {
         res.status(400).json(err);

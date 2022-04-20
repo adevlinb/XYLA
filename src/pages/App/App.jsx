@@ -15,6 +15,7 @@ export default function App() {
   const [library, setLibrary] = useState([]);
   let navigate = useNavigate();
 
+
   async function addBook(newBook) {
     const books = await booksAPI.addNewBook(newBook);
     setLibrary(books.userBooks);
@@ -30,8 +31,8 @@ export default function App() {
               {/* Route components in here */}
               <Route path="/library" element={<LibraryPage library={library} setLibrary={setLibrary} user={user}/>} />
               <Route path="/search" element={<SearchBooksPage addBook={addBook} user={user} />}  />
-              <Route path="/wall" element={<SocialWallPage library={library} />} />
-              <Route path="/clubs" element={<ClubPage />} />
+              <Route path="/wall" element={<SocialWallPage library={library} user={user}/>} />
+              <Route path="/clubs" element={<ClubPage user={user} />} />
               <Route path="/*" element={<Navigate to="/library" />} />
             </Routes>
           </>

@@ -17,6 +17,7 @@ export default function LibraryPage({library, setLibrary, user}) {
     bookDetail: false,
   })
   
+  console.log(user);
   //array of user posts..
   const [userPosts, setUserPosts] = useState(false);
   const [myRecs, setMyRecs] = useState(false);
