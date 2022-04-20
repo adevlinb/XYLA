@@ -11,7 +11,7 @@ export default function DisplayProfileDetail({ profile, userRecs, userLibrary, m
     console.log(user, "hi", profile)
 
     if(user.requests.includes(profile._id)) setFriendRequested(false);
-    if(user.friends.includes(profile._id)) setFriendRequested(true);
+    if(user.friends.includes(profile._id)) setFriendRequested(false);
     // if(profile.requests.includes(user.))
 
     const recData = {
@@ -49,14 +49,14 @@ export default function DisplayProfileDetail({ profile, userRecs, userLibrary, m
     return (
         <>
 
-            {friendRequested ? <h3>You already Requested</h3> : <h3>Request To Be Friends</h3> }
-        {friends ? 
-        <>
         <h1>{profile.name}'s Books</h1>
         <div id="profilePano">
             <img className="bookshelfPic" id="profileSplash" src="/images/profilePano.jpeg" alt="BooksLandingPhoto" />
         </div>
+        {friendRequested ? <h3>You already Requested</h3> : <h3>Request To Be Friends</h3> }
 
+        {friends ? 
+        <>
         <div className="grid">
             {book}
         </div>
