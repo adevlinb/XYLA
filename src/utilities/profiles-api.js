@@ -10,3 +10,8 @@ export function getAllProfiles() {
 export function findProfile(id) {
     return sendRequest(`${BASE_URL}/find/${id}`);
 }
+
+export function updateUserSettings(id, settings) {
+    console.log(id)
+    return sendRequest(`${BASE_URL}/updateUserSettings/${id}`, "POST", settings);
+}

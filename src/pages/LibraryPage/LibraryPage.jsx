@@ -2,11 +2,13 @@ import './LibraryPage.css'
 import DisplayLibrary from '../../components/DisplayLibrary/DisplayLibrary';
 import * as booksAPI from '../../utilities/books-api';
 import * as postsAPI from '../../utilities/posts-api';
+import * as profilesAPI from '../../utilities/profiles-api';
 import { useState, useEffect } from 'react';
 import DisplayFavorites from '../../components/DisplayFavorites/DisplayFavorites';
 import DisplayRecs from '../../components/DisplayRecs/DisplayRecs';
 import DisplayPosts from '../../components/DisplayPosts/DisplayPosts';
 import DisplayLibraryItemDetail from '../../components/DisplayLibraryItemDetail/DisplayLibraryItemDetail';
+import UserSettings from '../../components/UserSettings/UserSettings';
 
 export default function LibraryPage({library, setLibrary, user}) {
   const [show, setShow] = useState({
@@ -15,6 +17,7 @@ export default function LibraryPage({library, setLibrary, user}) {
     favShelf: false,
     postShelf: false,
     bookDetail: false,
+    userSettings: false,
   })
   
   console.log(user);
@@ -45,17 +48,23 @@ export default function LibraryPage({library, setLibrary, user}) {
       getMyShelf();  
     }, []);
 
-    async function createPost(formData) {
-      if(formData.book === undefined) return;
-      const posts = await postsAPI.addNewPost(formData)
-      setUserPosts(posts);
-      console.log(posts);
-    }
+  async function createPost(formData) {
+    if(formData.book === undefined) return;
+    const posts = await postsAPI.addNewPost(formData)
+    setUserPosts(posts);
+    console.log(posts);
+  }
 
   async function addComment(commentData) {
     await postsAPI.addCommentToPost(commentData);
     const userPosts = await postsAPI.getUserPosts();
     setUserPosts(userPosts);
+  }
+
+  async function updateSettings(settings){
+    console.log(user._id, "hello");
+    await profilesAPI.updateUserSettings(user._id, settings);
+    console.log("settings updated");
   }
 
   
@@ -75,12 +84,14 @@ export default function LibraryPage({library, setLibrary, user}) {
         <button className="sideButtons" onClick={() => toggleShow('recShelf')}> Recommendations</button>
         <button className="sideButtons" onClick={() => toggleShow('favShelf')}> My Favorites</button>
         <button className="sideButtons" onClick={() => toggleShow('postShelf')}>  Make a post!</button>
+        <button className="sideButtons" onClick={() => toggleShow('userSettings')}>  User Settings</button>
       </div>
       <div className="verticalTwo">
           {show.myShelf && <DisplayLibrary library={library} user={user} toggleShow={toggleShow}/>}
           {show.recShelf && <DisplayRecs myRecs={myRecs} user={user}/>}
           {show.favShelf && <DisplayFavorites user={user}/>}
           {show.postShelf && <DisplayPosts library={library} createPost={createPost} userPosts={userPosts} addComment={addComment} user={user}/>}
+          {show.userSettings && <UserSettings updateSettings={updateSettings} />}
           {show.bookDetail && <DisplayLibraryItemDetail />}
       </div>
       <div className="space"></div>

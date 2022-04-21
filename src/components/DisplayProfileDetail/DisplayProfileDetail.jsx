@@ -7,7 +7,7 @@ import "./DisplayProfileDetail.css"
 export default function DisplayProfileDetail({ profile, userRecs, userLibrary, myLibrary, addRecommendation, toggleShow, user}) {
 
     const [friendRequested, setFriendRequested] = useState(false);
-    const [friends, setFriends] = useState(true);
+    const [friends, setFriends] = useState(false);
     console.log(user, "hi", profile)
 
     if(user.requests.includes(profile._id)) setFriendRequested(false);
@@ -53,6 +53,7 @@ export default function DisplayProfileDetail({ profile, userRecs, userLibrary, m
         <div id="profilePano">
             <img className="bookshelfPic" id="profileSplash" src="/images/profilePano.jpeg" alt="BooksLandingPhoto" />
         </div>
+            {profile.profilePublicOrPrivate ? <h3>profile private</h3> : <h3>profile public</h3>}
         {friendRequested ? <h3>You already Requested</h3> : <h3>Request To Be Friends</h3> }
 
         {friends ? 

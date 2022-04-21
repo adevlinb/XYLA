@@ -24,6 +24,7 @@ const userSchema = new Schema({
   requests: [{ type: Schema.Types.ObjectId, ref: 'User' }],
   friends: [{ type: Schema.Types.ObjectId, ref: 'User' }],
   blocked: [{ type: Schema.Types.ObjectId, ref: 'User' }],
+  profilePublicOrPrivate: {type: Boolean, default: false},
 }, {
   timestamps: true,
   toJSON: {

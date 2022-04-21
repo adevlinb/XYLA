@@ -10,5 +10,8 @@ router.get('/allProfiles', ensureLoggedIn, profilesCtrl.getAllProfiles);
 // GET /api/profiles/find/:id
 router.get('/find/:id', ensureLoggedIn, profilesCtrl.findProfile);
 
+// POST /api/profiles/updateUserSettings/:id
+router.post('/updateUserSettings/:id', ensureLoggedIn, profilesCtrl.updateUserSettings);
+
 
 module.exports = router;
