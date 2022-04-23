@@ -29,10 +29,11 @@ async function findProfile(req, res) {
 
 async function updateUserSettings(req, res) {
     try {
-        console.log("hit the controller", req.body.checkbox);
-        let profile = await User.findOneAndUpdate({_id: req.params.id}, {profilePublicOrPrivate: req.body.checkbox})
+        console.log("hit the controller", req.body.profilePublicOrPrivate);
+        await User.findOneAndUpdate({_id: req.params.id}, {profilePublicOrPrivate: req.body.profilePublicOrPrivate})
+        const profile = await User.findById(req.params.id);
         console.log(profile, "hello update")
-        return res.json("hello");
+        return res.json(profile);
     } catch (err) {
         res.status(400).json(err);
     }

@@ -7,7 +7,8 @@ const clubSchema = new Schema({
     creator: { type: Schema.Types.ObjectId, ref: 'User' },
     members: [{ type: Schema.Types.ObjectId, ref: 'User' }],
     description: { type: String, default: 'Information Not Available' },
-    thumbnail: { type: String, default: "http://i.imgur.com/J5LVHEL.jpg" }
+    thumbnail: { type: String, default: "http://i.imgur.com/J5LVHEL.jpg" },
+    clubPublicOrPrivate: { type: Boolean, default: false }
 }, { timestamps: true });
 
 

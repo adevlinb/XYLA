@@ -9,8 +9,9 @@ import DisplayRecs from '../../components/DisplayRecs/DisplayRecs';
 import DisplayPosts from '../../components/DisplayPosts/DisplayPosts';
 import DisplayLibraryItemDetail from '../../components/DisplayLibraryItemDetail/DisplayLibraryItemDetail';
 import UserSettings from '../../components/UserSettings/UserSettings';
+import { getUser } from '../../utilities/users-service';
 
-export default function LibraryPage({library, setLibrary, user}) {
+export default function LibraryPage({ library, setLibrary, setUser, user}) {
   const [show, setShow] = useState({
     myShelf: true, 
     recShelf: false,
@@ -62,9 +63,12 @@ export default function LibraryPage({library, setLibrary, user}) {
   }
 
   async function updateSettings(settings){
-    console.log(user._id, "hello");
-    await profilesAPI.updateUserSettings(user._id, settings);
-    console.log("settings updated");
+    // console.log(settings)
+    // console.log(user._id, "hello");
+    let updatedUser = await profilesAPI.updateUserSettings(user._id, settings);
+    // console.log(updatedUser, "updatedUser")
+    setUser(updatedUser)
+    // console.log("settings updated", user);
   }
 
   
@@ -91,7 +95,7 @@ export default function LibraryPage({library, setLibrary, user}) {
           {show.recShelf && <DisplayRecs myRecs={myRecs} user={user}/>}
           {show.favShelf && <DisplayFavorites user={user}/>}
           {show.postShelf && <DisplayPosts library={library} createPost={createPost} userPosts={userPosts} addComment={addComment} user={user}/>}
-          {show.userSettings && <UserSettings updateSettings={updateSettings} />}
+          {show.userSettings && <UserSettings updateSettings={updateSettings} user={user} />}
           {show.bookDetail && <DisplayLibraryItemDetail />}
       </div>
       <div className="space"></div>
