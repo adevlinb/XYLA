@@ -8,7 +8,7 @@ import DisplayProfileDetail from '../../components/DisplayProfileDetail/DisplayP
 import DisplayLibraryItemDetail from '../../components/DisplayLibraryItemDetail/DisplayLibraryItemDetail';
 import { useState, useEffect } from 'react'
 
-export default function SocialWallPage({ user }) {
+export default function SocialWallPage({ user, setUser }) {
     const [allPosts, setAllPosts] = useState([]);
     const [allProfiles, setAllProfiles] = useState([]);
     const [profile, setProfile] = useState({});
@@ -33,7 +33,6 @@ export default function SocialWallPage({ user }) {
             const pro = await profilesAPI.findProfile(userId)
             const books = await booksAPI.getUserLibrary(userId);
             const recs = await booksAPI.getUserRecs(userId);
-            console.log(recs)
             setProfile(pro);
             setUserLibrary(books);
             setUserRecs(recs);
@@ -46,25 +45,35 @@ export default function SocialWallPage({ user }) {
         async function getMyBooks() {
             const books = await booksAPI.getLibrary();
             setMyLibrary(books);
+            const allPosts = await postsAPI.getAllPosts();
+            setAllPosts(allPosts);
+            const profiles = await profilesAPI.getAllProfiles();
+            setAllProfiles(profiles);
         }
         getMyBooks();
     }, []);
 
-    useEffect(() => {
-        async function getPosts() {
-            const allPosts = await postsAPI.getAllPosts();
-            setAllPosts(allPosts);
-        }
-        getPosts();
-    }, []);
+    // useEffect(() => {
+    //     async function getPosts() {
+    //         const allPosts = await postsAPI.getAllPosts();
+    //         setAllPosts(allPosts);
+    //     }
+    //     getPosts();
+    // }, []);
 
-    useEffect(() => {
-        async function getProfiles() {
-            const profiles = await profilesAPI.getAllProfiles();
-            setAllProfiles(profiles);
-        }
-        getProfiles();
-    }, []);
+    // useEffect(() => {
+    //     async function getProfiles() {
+    //         const profiles = await profilesAPI.getAllProfiles();
+    //         setAllProfiles(profiles);
+    //     }
+    //     getProfiles();
+    // }, []);
+    async function addFriendRequest(userId, profileId){
+        const profiles = await profilesAPI.friendRequest(userId, profileId);
+        console.log(profiles);
+        setUser(profiles[0]);
+        setProfile(profiles[1])
+    }
 
     async function addComment(commentData) {
         const updatePosts = await postsAPI.addCommentToPost(commentData);
@@ -94,7 +103,7 @@ export default function SocialWallPage({ user }) {
             <div className="verticalTwo">
                 {show.displayAllPosts && <DisplayAllPosts allPosts={allPosts} addComment={addComment} />}
                 {show.findFriends && <DisplayFindFriends allProfiles={allProfiles} toggleShow={toggleShow} />}
-                {show.profileDetail && <DisplayProfileDetail profile={profile} userRecs={userRecs} userLibrary={userLibrary} myLibrary={myLibrary} addRecommendation={addRecommendation} toggleShow={toggleShow} user={user} />}
+                {show.profileDetail && <DisplayProfileDetail profile={profile} userRecs={userRecs} userLibrary={userLibrary} myLibrary={myLibrary} addRecommendation={addRecommendation} toggleShow={toggleShow} user={user} addFriendRequest={addFriendRequest}/>}
                 {show.bookDetail && <DisplayLibraryItemDetail />}
             </div>
             <div className="verticalThree">

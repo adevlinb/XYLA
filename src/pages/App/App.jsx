@@ -31,7 +31,7 @@ export default function App() {
               {/* Route components in here */}
             <Route path="/library" element={<LibraryPage library={library} setLibrary={setLibrary} setUser={setUser} user={user}/>} />
               <Route path="/search" element={<SearchBooksPage addBook={addBook} user={user} />}  />
-              <Route path="/wall" element={<SocialWallPage library={library} user={user}/>} />
+            <Route path="/wall" element={<SocialWallPage library={library} user={user} setUser={setUser}/>} />
               <Route path="/clubs" element={<ClubPage user={user} />} />
               <Route path="/*" element={<Navigate to="/library" />} />
             </Routes>

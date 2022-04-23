@@ -6,7 +6,7 @@ const SALT_ROUNDS = 6;
 
 const userSchema = new Schema({
   name: { type: String, required: true },
-  nickname: { type: String, required: true },
+  nickname: { type: String },
   email: {
     type: String,
     unique: true,
@@ -24,6 +24,7 @@ const userSchema = new Schema({
   requests: [{ type: Schema.Types.ObjectId, ref: 'User' }],
   friends: [{ type: Schema.Types.ObjectId, ref: 'User' }],
   blocked: [{ type: Schema.Types.ObjectId, ref: 'User' }],
+  clubs: [{ type: Schema.Types.ObjectId, ref: 'Club' }],
   profilePublicOrPrivate: {type: Boolean, default: false},
 }, {
   timestamps: true,

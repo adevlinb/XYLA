@@ -11,6 +11,11 @@ export function findProfile(id) {
     return sendRequest(`${BASE_URL}/find/${id}`);
 }
 
+export function friendRequest(userId, profileId) {
+    console.log("profiles api")
+    return sendRequest(`${BASE_URL}/${userId}/friendRequest/${profileId}`);
+}
+
 export function updateUserSettings(id, settings) {
     console.log(id)
     return sendRequest(`${BASE_URL}/updateUserSettings/${id}`, "POST", settings);

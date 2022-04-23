@@ -4,7 +4,8 @@ const User = require('../../models/user');
 module.exports = {
     getAllProfiles,
     findProfile,
-    updateUserSettings
+    updateUserSettings,
+    addFriendRequest
 };
 
 async function getAllProfiles(req, res) {
@@ -38,3 +39,22 @@ async function updateUserSettings(req, res) {
         res.status(400).json(err);
     }
 }
+async function addFriendRequest(req, res) {
+    try {
+        console.log("hit the addfriendrequest controller", req.params.userId, req.params.profileId);
+        const user = await User.findById(req.params.userId);
+        const profile = await User.findById(req.params.profileId);
+        if (user.requests.includes(req.params.profileId) || profile.requests.includes(req.params.profileId)) return res.json([user, profile])
+        user.requests.push(req.params.profileId);
+        user.save();
+        profile.requests.push(req.params.userId);
+        profile.save()
+        const updatedUser = await User.findById(req.params.userId);
+        const updatedProfile = await User.findById(req.params.profileId);
+        console.log(updatedUser, updatedProfile);
+        return res.json([updatedUser, updatedProfile]);
+    } catch (err) {
+        res.status(400).json(err);
+    }
+}
+

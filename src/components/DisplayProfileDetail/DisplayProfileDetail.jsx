@@ -1,18 +1,22 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import DisplayLibraryItem from '../DisplayLibraryItem/DisplayLibraryItem';
 import DisplayRecItems from '../DisplayRecItems/DisplayRecItems';
 
 import "./DisplayProfileDetail.css"
 
-export default function DisplayProfileDetail({ profile, userRecs, userLibrary, myLibrary, addRecommendation, toggleShow, user}) {
+export default function DisplayProfileDetail({ profile, userRecs, userLibrary, myLibrary, addRecommendation, toggleShow, user, addFriendRequest}) {
 
     const [friendRequested, setFriendRequested] = useState(false);
     const [friends, setFriends] = useState(false);
     console.log(user, "hi", profile)
 
-    if(user.requests.includes(profile._id)) setFriendRequested(false);
-    if(user.friends.includes(profile._id)) setFriendRequested(false);
-    // if(profile.requests.includes(user.))
+    useEffect(() => {
+        async function checkFriends() {
+            if(profile.requests.includes(user._id)) setFriendRequested(true);
+            if(profile.friends.includes(user._id)) setFriends(true);
+        }
+        checkFriends();
+    }, []);
 
     const recData = {
         recommendation: "",
@@ -46,6 +50,12 @@ export default function DisplayProfileDetail({ profile, userRecs, userLibrary, m
         addRecommendation(recData, profile._id)
     }
 
+    function requestFriend(e){
+        e.preventDefault();
+        console.log("request friendship");
+        addFriendRequest(user._id, profile._id)
+    }
+
     return (
         <>
 
@@ -54,31 +64,35 @@ export default function DisplayProfileDetail({ profile, userRecs, userLibrary, m
             <img className="bookshelfPic" id="profileSplash" src="/images/profilePano.jpeg" alt="BooksLandingPhoto" />
         </div>
             {profile.profilePublicOrPrivate ? <h3>profile private</h3> : <h3>profile public</h3>}
-        {friendRequested ? <h3>You already Requested</h3> : <h3>Request To Be Friends</h3> }
+            
+        {/* {friendRequested ? <h3>You already Requested</h3> : <form onSubmit={requestFriend}><label htmlFor="requestFriend">Request Friendship</label><button type="submit"></button></form>} */}
 
         {friends ? 
         <>
-        <div className="grid">
-            {book}
-        </div>
-        <h1>Books Recommended to {profile.name}</h1>
-        <form onSubmit={handleAddRec} id="recForm">
-            <label >
-            <h5>Recommend a book to {profile.name}:</h5>
-                <select onChangeCapture={handleRecChange}>
-                    {bookOptions.map((option, ind) => {
-                        return <option value={option.value} key={option.value} name={option.value}>{option.label}</option>;
-                    })}
-                </select>
-            </label>
-            <button type="submit">Recommend!</button>
-        </form>
-        <div className="grid">
-            {rec}
-        </div>
-        </>
+                    <div className="grid">
+                        {book}
+                    </div>
+                    <h1>Books Recommended to {profile.name}</h1>
+                    <form onSubmit={handleAddRec} id="recForm">
+                        <label >
+                        <h5>Recommend a book to {profile.name}:</h5>
+                            <select onChangeCapture={handleRecChange}>
+                                {bookOptions.map((option, ind) => {
+                                    return <option value={option.value} key={option.value} name={option.value}>{option.label}</option>;
+                                })}
+                            </select>
+                        </label>
+                        <button type="submit">Recommend!</button>
+                    </form>
+                    <div className="grid">
+                        {rec}
+                    </div>
+                    </>
         : 
-        <h5>info will go here</h5>}
+
+                friendRequested ? <h3>You already Requested</h3> : <form onSubmit={requestFriend}><label htmlFor="requestFriend"></label><button id="requestFriend" type="submit">Request Friendship</button></form>
+                    //  <h5>Request Friend</h5>
+                     }
         </>
 
 

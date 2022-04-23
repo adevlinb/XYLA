@@ -10,6 +10,9 @@ router.get('/allProfiles', ensureLoggedIn, profilesCtrl.getAllProfiles);
 // GET /api/profiles/find/:id
 router.get('/find/:id', ensureLoggedIn, profilesCtrl.findProfile);
 
+// GET /api/profiles/:userId/friendRequest/:profileId
+router.get('/:userId/friendRequest/:profileId', ensureLoggedIn, profilesCtrl.addFriendRequest);
+
 // POST /api/profiles/updateUserSettings/:id
 router.post('/updateUserSettings/:id', ensureLoggedIn, profilesCtrl.updateUserSettings);
 
