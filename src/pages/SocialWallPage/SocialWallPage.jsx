@@ -7,6 +7,7 @@ import DisplayFindFriends from '../../components/DisplayFindFriends/DisplayFindF
 import DisplayProfileDetail from '../../components/DisplayProfileDetail/DisplayProfileDetail';
 import DisplayLibraryItemDetail from '../../components/DisplayLibraryItemDetail/DisplayLibraryItemDetail';
 import DisplaySocialAlerts from '../../components/SocialAlerts/DisplaySocialAlerts';
+import DisplayFriends from '../../components/DisplayFriends/DisplayFriends';
 import { useState, useEffect } from 'react'
 
 export default function SocialWallPage({ user, setUser }) {
@@ -102,12 +103,14 @@ export default function SocialWallPage({ user, setUser }) {
                 <button className="sideButtons" onClick={() => toggleShow('displayAllPosts')}> Social Wall</button>
                 <button className="sideButtons" onClick={() => toggleShow('findFriends')}> Find Friends</button>
                 <button className="sideButtons" onClick={() => toggleShow('socialAlerts')}>Social Alerts</button>
+                <button className="sideButtons" onClick={() => toggleShow('friendsList')}>My Friends</button>
             </div>
             <div className="verticalTwo">
                 {show.displayAllPosts && <DisplayAllPosts allPosts={allPosts} addComment={addComment} />}
-                {show.findFriends && <DisplayFindFriends allProfiles={allProfiles} toggleShow={toggleShow} />}
+                    {show.findFriends && <DisplayFindFriends allProfiles={allProfiles} toggleShow={toggleShow} user={user} />}
                 {show.profileDetail && <DisplayProfileDetail profile={profile} userRecs={userRecs} userLibrary={userLibrary} myLibrary={myLibrary} addRecommendation={addRecommendation} toggleShow={toggleShow} user={user} addFriendRequest={addFriendRequest}/>}
-                {show.socialAlerts && <DisplaySocialAlerts user={user}/>}
+                {show.socialAlerts && <DisplaySocialAlerts user={user} toggleShow={toggleShow}/>}
+                {show.friendsList && <DisplayFriends user={user} toggleShow={toggleShow}/>}
                 {show.bookDetail && <DisplayLibraryItemDetail />}
             </div>
             <div className="verticalThree">
