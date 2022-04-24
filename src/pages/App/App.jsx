@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { Routes, Route, Navigate, useNavigate } from 'react-router-dom';
 import './App.css';
 import LandingPage from '../LandingPage/LandingPage';
@@ -9,11 +9,21 @@ import ClubPage from '../ClubPage/ClubPage';
 import NavBar from '../../components/NavBar/NavBar';
 import { getUser } from '../../utilities/users-service';
 import * as booksAPI from '../../utilities/books-api';
+import * as usersAPI from '../../utilities/users-api';
 
 export default function App() {
   const [user, setUser] = useState(getUser());
   const [library, setLibrary] = useState([]);
   let navigate = useNavigate();
+
+  useEffect(() => {
+    async function updateUser() {
+      const updatedUser = await usersAPI.updateUser();
+      console.log(updatedUser);
+      setUser(updatedUser);
+    }
+    updateUser();
+  }, []);
 
 
   async function addBook(newBook) {

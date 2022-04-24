@@ -15,7 +15,7 @@ export default function UserSettings({ updateSettings, user }) {
 
 function handleChangeCheckbox(evt) {
     console.log(evt.target.checked);
-    setCheckbox({ ...checkbox, [evt.target.name]: evt.target.checked});
+    setCheckbox({ ...checkbox, [evt.target.name]: evt.target.value});
 }
 
     function submitSettings(e){

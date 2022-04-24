@@ -6,6 +6,7 @@ import DisplayAllPosts from '../../components/DisplayAllPosts/DisplayAllPosts';
 import DisplayFindFriends from '../../components/DisplayFindFriends/DisplayFindFriends';
 import DisplayProfileDetail from '../../components/DisplayProfileDetail/DisplayProfileDetail';
 import DisplayLibraryItemDetail from '../../components/DisplayLibraryItemDetail/DisplayLibraryItemDetail';
+import DisplaySocialAlerts from '../../components/SocialAlerts/DisplaySocialAlerts';
 import { useState, useEffect } from 'react'
 
 export default function SocialWallPage({ user, setUser }) {
@@ -20,6 +21,7 @@ export default function SocialWallPage({ user, setUser }) {
         displayAllPosts: true,
         findFriends: false,
         profileDetail: false,
+        socialAlerts: false,
         bookDetail: false,
     })
 
@@ -99,11 +101,13 @@ export default function SocialWallPage({ user, setUser }) {
                 </div>
                 <button className="sideButtons" onClick={() => toggleShow('displayAllPosts')}> Social Wall</button>
                 <button className="sideButtons" onClick={() => toggleShow('findFriends')}> Find Friends</button>
+                <button className="sideButtons" onClick={() => toggleShow('socialAlerts')}>Social Alerts</button>
             </div>
             <div className="verticalTwo">
                 {show.displayAllPosts && <DisplayAllPosts allPosts={allPosts} addComment={addComment} />}
                 {show.findFriends && <DisplayFindFriends allProfiles={allProfiles} toggleShow={toggleShow} />}
                 {show.profileDetail && <DisplayProfileDetail profile={profile} userRecs={userRecs} userLibrary={userLibrary} myLibrary={myLibrary} addRecommendation={addRecommendation} toggleShow={toggleShow} user={user} addFriendRequest={addFriendRequest}/>}
+                {show.socialAlerts && <DisplaySocialAlerts user={user}/>}
                 {show.bookDetail && <DisplayLibraryItemDetail />}
             </div>
             <div className="verticalThree">

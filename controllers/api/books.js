@@ -50,8 +50,7 @@ async function populateUserShelf(req, res) {
     try{ 
         const shelf = await Bookshelf.findOne({userId: req.user._id}).populate('userBooks.book').exec();
         console.log(shelf)
-        let books = shelf.userBooks
-        // if(!books) throw new Error();
+        let books = shelf.userBooks;
         res.json(books);
     }   catch (err) {  
         res.status(400).json(err);

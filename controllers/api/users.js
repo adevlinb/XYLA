@@ -7,7 +7,8 @@ const Bookshelf = require('../../models/bookshelf');
 module.exports = {
   create,
   login,
-  checkToken
+  checkToken,
+  updateUser
 };
 
 async function create(req, res) {
@@ -34,7 +35,7 @@ async function create(req, res) {
 async function login(req, res) {
   try {
     // Find the user by their email address
-    const user = await User.findOne({email: req.body.email});
+    const user = await User.findOne({ email: req.body.email });
     if (!user) throw new Error();
     // Check if the password matches
     const match = await bcrypt.compare(req.body.password, user.password);
@@ -62,4 +63,16 @@ function createJWT(user) {
     process.env.SECRET,
     { expiresIn: '24h' }
   );
+}
+
+async function updateUser(req, res){
+  try{
+    console.log("update user controller", req.user, "hello user")
+    let updatedUser = await User.findById(req.user._id).populate("requests").populate("friends");;
+    console.log(updatedUser)
+    return res.json(updatedUser);
+  } catch (err) {
+    res.status(400).json(err);
+  }
+
 }
