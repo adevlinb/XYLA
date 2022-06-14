@@ -107,7 +107,7 @@ export default function SocialWallPage({ user, setUser }) {
             </div>
             <div className="verticalTwo">
                 {show.displayAllPosts && <DisplayAllPosts allPosts={allPosts} addComment={addComment} />}
-                    {show.findFriends && <DisplayFindFriends allProfiles={allProfiles} toggleShow={toggleShow} user={user} />}
+                {show.findFriends && <DisplayFindFriends allProfiles={allProfiles} toggleShow={toggleShow} user={user} />}
                 {show.profileDetail && <DisplayProfileDetail profile={profile} userRecs={userRecs} userLibrary={userLibrary} myLibrary={myLibrary} addRecommendation={addRecommendation} toggleShow={toggleShow} user={user} addFriendRequest={addFriendRequest}/>}
                 {show.socialAlerts && <DisplaySocialAlerts user={user} toggleShow={toggleShow}/>}
                 {show.friendsList && <DisplayFriends user={user} toggleShow={toggleShow}/>}

@@ -10,6 +10,11 @@ import NavBar from '../../components/NavBar/NavBar';
 import { getUser } from '../../utilities/users-service';
 import * as booksAPI from '../../utilities/books-api';
 import * as usersAPI from '../../utilities/users-api';
+import io from "socket.io-client";
+const socket = io.connect();
+socket.on("connect_error", (err) => {
+  console.log(`connect_error due to ${err.message}`);
+});
 
 export default function App() {
   const [user, setUser] = useState(getUser());
@@ -39,9 +44,9 @@ export default function App() {
             <NavBar user={user} setUser={setUser} />
             <Routes>
               {/* Route components in here */}
-            <Route path="/library" element={<LibraryPage library={library} setLibrary={setLibrary} setUser={setUser} user={user}/>} />
+              <Route path="/library" element={<LibraryPage library={library} setLibrary={setLibrary} setUser={setUser} user={user}/>} />
               <Route path="/search" element={<SearchBooksPage addBook={addBook} user={user} />}  />
-            <Route path="/wall" element={<SocialWallPage library={library} user={user} setUser={setUser}/>} />
+              <Route path="/wall" element={<SocialWallPage library={library} user={user} setUser={setUser}/>} />
               <Route path="/clubs" element={<ClubPage user={user} />} />
               <Route path="/*" element={<Navigate to="/library" />} />
             </Routes>

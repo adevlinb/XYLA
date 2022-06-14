@@ -3,6 +3,18 @@ const path = require('path');
 const favicon = require('serve-favicon');
 const logger = require('morgan');
 const router = require('./routes/api/users');
+const app = express();
+const cors = require("cors");
+
+app.use(cors());
+const { Server } = require("socket.io");
+const io = new Server(3000);
+
+
+io.on("connection", (socket) => {
+  console.log(socket.id, "socket")
+})
+
 
 
 // Always require and configure neat the top
@@ -10,7 +22,6 @@ require('dotenv').config();
 // Connect to the database (after the dotenv)
 require('./config/database');
 
-const app = express();
 
 app.use(logger('dev'));
 app.use(express.json());
@@ -20,6 +31,9 @@ app.use(express.static(path.join(__dirname, 'build')));
 //middleware to verfiy the token and assign the user object to the request obj.
 app.use(require('./config/checkToken'));
 const ensureLoggedIn = require('./config/ensureLoggedIn');
+
+
+
 
 // API routes here
 app.use('/api/users', require('./routes/api/users'));

@@ -9,7 +9,6 @@ export default function DisplaySocialAlerts({ user, toggleShow }) {
         <>
         
         <h1>social alerts</h1>
-        
         <h5>Friend Requests:</h5>
         {requests}
         

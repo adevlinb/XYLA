@@ -67,7 +67,6 @@ function createJWT(user) {
 
 async function updateUser(req, res){
   try{
-    console.log("update user controller", req.user, "hello user")
     let updatedUser = await User.findById(req.user._id).populate("requests").populate("friends");;
     console.log(updatedUser)
     return res.json(updatedUser);
