@@ -4,24 +4,13 @@ const favicon = require('serve-favicon');
 const logger = require('morgan');
 const router = require('./routes/api/users');
 const app = express();
-const cors = require("cors");
-
-app.use(cors());
-const { Server } = require("socket.io");
-const io = new Server(3000);
-
-
-io.on("connection", (socket) => {
-  console.log(socket.id, "socket")
-})
-
-
+// const cors = require("cors");
+// app.use(cors());
 
 // Always require and configure neat the top
 require('dotenv').config();
 // Connect to the database (after the dotenv)
 require('./config/database');
-
 
 app.use(logger('dev'));
 app.use(express.json());
@@ -33,7 +22,22 @@ app.use(require('./config/checkToken'));
 const ensureLoggedIn = require('./config/ensureLoggedIn');
 
 
+const http = require('http').Server(app);
+require('./io').init(http);
+// const { Server } = require("socket.io") 
 
+// const server = http.createServer(app)
+
+// const io = new Server(http, {
+//   cors: {
+//     origin: "http://localhost:3000",
+//     methods: ["GET", "POST"]
+//   }
+// })
+
+// io.on("connection",  (socket) => {
+//   console.log("we're conencted")
+// })
 
 // API routes here
 app.use('/api/users', require('./routes/api/users'));
@@ -50,7 +54,7 @@ app.get('/*', function(req, res) {
 
 const port = process.env.PORT || 3001;
 
-app.listen(port, function() {
+http.listen(port, function() {
   console.log(`Express app running on port ${port}`);
 });
 

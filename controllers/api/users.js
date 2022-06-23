@@ -48,8 +48,8 @@ async function login(req, res) {
 
 function checkToken(req, res) {
     //req.user will always be there for you
-    console.log('req.user', req.user)
-    console.log('req.exp', req.exp)
+    // console.log('req.user', req.user)
+    // console.log('req.exp', req.exp)
     res.json(req.exp)
 }
 

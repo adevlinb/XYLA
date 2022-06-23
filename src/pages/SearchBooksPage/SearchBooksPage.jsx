@@ -25,8 +25,7 @@ export default function SearchBooksPage({ addBook, user }) {
   const book = library.map((b) => (
     <SearchBooksScroll b={b} key={b._id} />
   ));
-
-
+  
   return (
     <>
     <div className="horizontal">

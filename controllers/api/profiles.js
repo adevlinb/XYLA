@@ -30,10 +30,8 @@ async function findProfile(req, res) {
 
 async function updateUserSettings(req, res) {
     try {
-        console.log("hit the controller", req.body.profilePublicOrPrivate);
         await User.findOneAndUpdate({_id: req.params.id}, {profilePublicOrPrivate: req.body.profilePublicOrPrivate})
         const profile = await User.findById(req.params.id).populate("requests").populate("friends");
-        console.log(profile, "hello update")
         return res.json(profile);
     } catch (err) {
         res.status(400).json(err);
@@ -41,7 +39,6 @@ async function updateUserSettings(req, res) {
 }
 async function addFriendRequest(req, res) {
     try {
-        console.log("hit the addfriendrequest controller", req.params.userId, req.params.profileId);
         const user = await User.findById(req.params.userId);
         const profile = await User.findById(req.params.profileId);
         if (user.requests.includes(req.params.profileId) || profile.requests.includes(req.params.profileId)) return res.json([user, profile])

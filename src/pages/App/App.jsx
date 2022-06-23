@@ -10,8 +10,11 @@ import NavBar from '../../components/NavBar/NavBar';
 import { getUser } from '../../utilities/users-service';
 import * as booksAPI from '../../utilities/books-api';
 import * as usersAPI from '../../utilities/users-api';
-import io from "socket.io-client";
+import { io } from "socket.io-client";
 const socket = io.connect();
+socket.on('connect', () => {
+  console.log('connected to server');
+});
 socket.on("connect_error", (err) => {
   console.log(`connect_error due to ${err.message}`);
 });
