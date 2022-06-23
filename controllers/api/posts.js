@@ -14,7 +14,7 @@ module.exports = {
 async function create(req, res) {
     try {
         const postBook = await Book.findById(req.body.book.value).exec();
-        console.log(postBook, req.body.book.value)
+    
         if (!postBook) throw new Error ();
         const newPost = await Post.formatPostInfo(req);
         const post = await new Post(newPost)
@@ -51,7 +51,7 @@ async function addComment(req, res) {
         const currentPost = await Post.findById(req.body.postId).exec()
 
         currentPost.comment.unshift({ content: req.body.content, user: req.user._id});
-        console.log(currentPost.comment)
+ 
         await currentPost.save();
         const allPosts = await Post.find({}).populate('comment').populate('user').populate('book').populate('comment.user').exec()
         res.json(allPosts);

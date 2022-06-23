@@ -30,6 +30,7 @@ async function findProfile(req, res) {
 
 async function updateUserSettings(req, res) {
     try {
+        console.log(req.body, "updating user settings")
         await User.findOneAndUpdate({_id: req.params.id}, {profilePublicOrPrivate: req.body.profilePublicOrPrivate})
         const profile = await User.findById(req.params.id).populate("requests").populate("friends");
         return res.json(profile);

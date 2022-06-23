@@ -49,7 +49,7 @@ async function googleSearchAPI(req, res) {
 async function populateUserShelf(req, res) {
     try{ 
         const shelf = await Bookshelf.findOne({userId: req.user._id}).populate('userBooks.book').exec();
-        console.log(shelf)
+
         let books = shelf.userBooks;
         res.json(books);
     }   catch (err) {  

@@ -21,7 +21,6 @@ async function create(req, res) {
     newMeBook.save();
     bookshelf.meBook = newMeBook._id
     bookshelf.save();
-    console.log(newMeBook, bookshelf)
     // token will be a string
     const token = createJWT(user);
     // Yes, we can serialize a string
@@ -58,7 +57,6 @@ function checkToken(req, res) {
 
 function createJWT(user) {
   return jwt.sign(
-    // data payload
     { user },
     process.env.SECRET,
     { expiresIn: '24h' }
@@ -68,7 +66,6 @@ function createJWT(user) {
 async function updateUser(req, res){
   try{
     let updatedUser = await User.findById(req.user._id).populate("requests").populate("friends");;
-    console.log(updatedUser)
     return res.json(updatedUser);
   } catch (err) {
     res.status(400).json(err);

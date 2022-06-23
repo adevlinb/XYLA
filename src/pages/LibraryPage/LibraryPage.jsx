@@ -21,7 +21,6 @@ export default function LibraryPage({ library, setLibrary, setUser, user}) {
     userSettings: false,
   })
   
-  console.log(user);
   //array of user posts..
   const [userPosts, setUserPosts] = useState(false);
   const [myRecs, setMyRecs] = useState(false);
@@ -43,7 +42,6 @@ export default function LibraryPage({ library, setLibrary, setUser, user}) {
         const userPosts = await postsAPI.getUserPosts();
         setUserPosts(userPosts);
         const recs = await booksAPI.getMyRecs();
-        console.log(recs, "myshelf recs")
         setMyRecs(recs);
       }
       getMyShelf();  
@@ -63,12 +61,8 @@ export default function LibraryPage({ library, setLibrary, setUser, user}) {
   }
 
   async function updateSettings(settings){
-    // console.log(settings)
-    // console.log(user._id, "hello");
     let updatedUser = await profilesAPI.updateUserSettings(user._id, settings);
-    // console.log(updatedUser, "updatedUser")
     setUser(updatedUser)
-    // console.log("settings updated", user);
   }
 
   

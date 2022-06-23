@@ -1,27 +1,25 @@
 import { useState, useEffect } from 'react';
 
 export default function UserSettings({ updateSettings, user }) {
-    const [checkbox, setCheckbox] = useState({
-        profilePublicOrPrivate: true
+    const [formData, setFormData] = useState({
+        profilePublicOrPrivate: false
     });
 
     useEffect(() => {
         async function setCurrentSettings() {
         console.log(user, "hello user");
-        setCheckbox({ ...checkbox, profilePublicOrPrivate: user.profilePublicOrPrivate});
+        setFormData({ ...formData, profilePublicOrPrivate: user.profilePublicOrPrivate});
     }
-    setCurrentSettings();
-}, []);
+        setCurrentSettings();
+    }, [user]);
 
-function handleChangeCheckbox(evt) {
-    console.log(evt.target.checked);
-    setCheckbox({ ...checkbox, [evt.target.name]: evt.target.value});
-}
+    function handleChangeCheckbox(evt) {
+        setFormData({ ...formData, [evt.target.name]: evt.target.checked});
+    }
 
     function submitSettings(e){
         e.preventDefault();
-        updateSettings(checkbox)
-        console.log(checkbox, "hi check")
+        updateSettings(formData)
     }
 
 
@@ -32,7 +30,7 @@ function handleChangeCheckbox(evt) {
         
             <form onSubmit={submitSettings}>
                 <label htmlFor="privacy">Profile Public of Private? Check for private.</label>
-                <input type="checkbox" id="privacy" value={checkbox.profilePublicOrPrivate} checked={checkbox.profilePublicOrPrivate} name="profilePublicOrPrivate" onChange={handleChangeCheckbox}/>
+                <input type="checkbox" id="privacy" value={formData.profilePublicOrPrivate} name="profilePublicOrPrivate" onChange={handleChangeCheckbox}/>
                 <button type="submit">Update Settings</button>
             </form>
         </>
@@ -40,3 +38,6 @@ function handleChangeCheckbox(evt) {
 
     )
 }
+
+
+//value={form.profilePublicOrPrivate}  checked={formData.profilePublicOrPrivate} 
