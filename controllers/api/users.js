@@ -65,7 +65,8 @@ function createJWT(user) {
 
 async function updateUser(req, res){
   try{
-    let updatedUser = await User.findById(req.user._id).populate("requests").populate("friends");;
+    console.log("update here")
+    let updatedUser = await User.findById(req.user._id).populate("requests.user").populate("friends.user").populate("blocked.user").populate("clubs.club").exec();
     return res.json(updatedUser);
   } catch (err) {
     res.status(400).json(err);

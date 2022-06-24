@@ -19,11 +19,13 @@ socket.on("connect_error", (err) => {
   console.log(`connect_error due to ${err.message}`);
 });
 
+
 export default function App() {
   const [user, setUser] = useState(getUser());
   const [library, setLibrary] = useState([]);
   let navigate = useNavigate();
-
+  
+  console.log(user)
   useEffect(() => {
     async function updateUser() {
       const updatedUser = await usersAPI.updateUser();

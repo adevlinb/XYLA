@@ -15,7 +15,7 @@ const userBookSchema = new Schema ({
         default: false, 
         endDate: { type: Date }
         }
-})
+});
 
 const recommendationSchema = new Schema({
     recommendation: {type: Schema.Types.ObjectId, ref: 'Book'},

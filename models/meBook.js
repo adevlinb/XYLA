@@ -5,7 +5,7 @@ const Schema = mongoose.Schema;
 
 const meBookCommentSchema = new Schema({
     content: String,
-    user: { type: Schema.Types.ObjectId, ref: 'User' },
+    userId: { type: Schema.Types.ObjectId, ref: 'User' },
 }, { timestamps: true });
 
 const meBookSchema = new Schema({

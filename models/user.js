@@ -4,6 +4,22 @@ const Schema = mongoose.Schema;
 
 const SALT_ROUNDS = 6;
 
+const friendRequestSchema = new Schema({
+  user: { type: Schema.Types.ObjectId, ref: 'User' },
+}, { timestamps: true });
+
+const friendsListSchema = new Schema({
+  user: { type: Schema.Types.ObjectId, ref: 'User' },
+}, { timestamps: true });
+
+const blockedSchema = new Schema({
+  user: { type: Schema.Types.ObjectId, ref: 'User' },
+}, { timestamps: true });
+
+const clubsJoinedSchema = new Schema({
+  clubId: { type: Schema.Types.ObjectId, ref: 'Club' },
+}, { timestamps: true });
+
 const userSchema = new Schema({
   name: { type: String, required: true },
   nickname: { type: String },
@@ -21,10 +37,10 @@ const userSchema = new Schema({
     required: true
   },
   profilePhotoUrl: {type: String},
-  requests: [{ type: Schema.Types.ObjectId, ref: 'User' }],
-  friends: [{ type: Schema.Types.ObjectId, ref: 'User' }],
-  blocked: [{ type: Schema.Types.ObjectId, ref: 'User' }],
-  clubs: [{ type: Schema.Types.ObjectId, ref: 'Club' }],
+  requests: [friendRequestSchema],
+  friends: [friendsListSchema],
+  blocked: [blockedSchema],
+  clubs: [clubsJoinedSchema],
   profilePublicOrPrivate: {type: Boolean, default: false},
 }, {
   timestamps: true,

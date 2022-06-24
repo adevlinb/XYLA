@@ -8,15 +8,16 @@ export default function DisplayProfileDetail({ profile, userRecs, userLibrary, m
 
     const [friendRequested, setFriendRequested] = useState(false);
     const [friends, setFriends] = useState(false);
-    console.log(user, "hi", profile)
+    console.log(user, "hi friends", profile)
 
-    useEffect(() => {
-        async function checkFriends() {
-            if(profile.requests.includes(user._id)) setFriendRequested(true);
-            if(profile.friends.includes(user._id)) setFriends(true);
-        }
-        checkFriends();
-    }, []);
+ 
+    function checkFriends() {
+        console.log("check Friends");
+        if(profile.requests.includes(user._id)) setFriendRequested(true);
+        if(profile.friends.includes(user._id)) setFriends(true);
+    }
+   
+
 
     const recData = {
         recommendation: "",
