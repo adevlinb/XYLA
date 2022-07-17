@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import { Routes, Route, Navigate, useNavigate } from 'react-router-dom';
+import { Routes, Route, Navigate, useNavigate, useLocation } from 'react-router-dom';
 import './App.css';
 import LandingPage from '../LandingPage/LandingPage';
 import LibraryPage from '../LibraryPage/LibraryPage';
@@ -9,7 +9,7 @@ import ClubPage from '../ClubPage/ClubPage';
 import NavBar from '../../components/NavBar/NavBar';
 import { getUser } from '../../utilities/users-service';
 import * as booksAPI from '../../utilities/books-api';
-import * as usersAPI from '../../utilities/users-api';
+// import * as usersAPI from '../../utilities/users-api';
 import { io } from "socket.io-client";
 const socket = io.connect();
 socket.on('connect', () => {
@@ -20,21 +20,36 @@ socket.on("connect_error", (err) => {
 });
 
 
+
+
+
 export default function App() {
   const [user, setUser] = useState(getUser());
   const [library, setLibrary] = useState([]);
-  let navigate = useNavigate();
+  const [userLocation, setUserLocation] = useState({
+    currLocation: "",
+    currChat: "",
+  });
   
-  console.log(user)
-  useEffect(() => {
-    async function updateUser() {
-      const updatedUser = await usersAPI.updateUser();
-      console.log(updatedUser);
-      setUser(updatedUser);
-    }
-    updateUser();
-  }, []);
 
+  let navigate = useNavigate();
+  let location = useLocation();
+
+  useEffect(() => {
+    console.log(location);
+    setUserLocation({
+      currLocation: location.pathName,
+      currChat: "",
+    });
+  }, [location]);
+
+  socket.on("disconnect", () => {
+    setUserLocation({
+      currLocation: "",
+      currChat: "",
+    });
+    console.log(userLocation, "disconnect")
+  });
 
   async function addBook(newBook) {
     const books = await booksAPI.addNewBook(newBook);

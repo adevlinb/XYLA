@@ -16,6 +16,8 @@ export function friendRequest(userId, profileId) {
     return sendRequest(`${BASE_URL}/${userId}/friendRequest/${profileId}`);
 }
 
+
+// change HTTP METHOD TO PUT
 export function updateUserSettings(id, settings) {
     console.log(id)
     return sendRequest(`${BASE_URL}/updateUserSettings/${id}`, "POST", settings);

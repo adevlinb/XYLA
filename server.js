@@ -4,8 +4,7 @@ const favicon = require('serve-favicon');
 const logger = require('morgan');
 const router = require('./routes/api/users');
 const app = express();
-// const cors = require("cors");
-// app.use(cors());
+var methodOverride = require('method-override');
 
 // Always require and configure neat the top
 require('dotenv').config();
@@ -16,28 +15,15 @@ app.use(logger('dev'));
 app.use(express.json());
 app.use(favicon(path.join(__dirname, 'build', 'favicon.ico')));
 app.use(express.static(path.join(__dirname, 'build')));
+app.use(methodOverride('_method')); 
 
 //middleware to verfiy the token and assign the user object to the request obj.
 app.use(require('./config/checkToken'));
-const ensureLoggedIn = require('./config/ensureLoggedIn');
+// const ensureLoggedIn = require('./config/ensureLoggedIn');
 
 
 const http = require('http').Server(app);
 require('./io').init(http);
-// const { Server } = require("socket.io") 
-
-// const server = http.createServer(app)
-
-// const io = new Server(http, {
-//   cors: {
-//     origin: "http://localhost:3000",
-//     methods: ["GET", "POST"]
-//   }
-// })
-
-// io.on("connection",  (socket) => {
-//   console.log("we're conencted")
-// })
 
 // API routes here
 app.use('/api/users', require('./routes/api/users'));
