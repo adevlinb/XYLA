@@ -6,6 +6,7 @@ import LibraryPage from '../LibraryPage/LibraryPage';
 import SearchBooksPage from '../SearchBooksPage/SearchBooksPage';
 import SocialWallPage from '../SocialWallPage/SocialWallPage';
 import ClubPage from '../ClubPage/ClubPage';
+import ChatPage from '../ChatPage/ChatPage';
 import NavBar from '../../components/NavBar/NavBar';
 import { getUser } from '../../utilities/users-service';
 import * as booksAPI from '../../utilities/books-api';
@@ -68,6 +69,7 @@ export default function App() {
               <Route path="/search" element={<SearchBooksPage addBook={addBook} user={user} />}  />
               <Route path="/wall" element={<SocialWallPage library={library} user={user} setUser={setUser}/>} />
               <Route path="/clubs" element={<ClubPage user={user} />} />
+              <Route path="/chat" element={<ChatPage user={user} />} />
               <Route path="/*" element={<Navigate to="/library" />} />
             </Routes>
           </>

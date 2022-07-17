@@ -22,6 +22,8 @@ export default function NavBar({ user, setUser }) {
           &nbsp; | &nbsp;
           <Link to="/clubs">CLUBS!</Link>
           &nbsp; | &nbsp;
+          <Link to="/chat">CHAT!</Link>
+          &nbsp; | &nbsp;
           <span>Welcome, {user.name}</span>
           &nbsp; | &nbsp;
         </div>
