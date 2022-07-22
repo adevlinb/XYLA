@@ -4,25 +4,24 @@ const Schema = mongoose.Schema;
 
 const SALT_ROUNDS = 6;
 
-const friendRequestSchema = new Schema({
-  user: { type: Schema.Types.ObjectId, ref: 'User' },
-}, { timestamps: true });
+// const friendRequestSchema = new Schema({
+//   user: { type: Schema.Types.ObjectId, ref: 'User' },
+// }, { timestamps: true });
 
-const friendsListSchema = new Schema({
-  user: { type: Schema.Types.ObjectId, ref: 'User' },
-}, { timestamps: true });
+// const friendsListSchema = new Schema({
+//   user: { type: Schema.Types.ObjectId, ref: 'User' },
+// }, { timestamps: true });
 
-const blockedSchema = new Schema({
-  user: { type: Schema.Types.ObjectId, ref: 'User' },
-}, { timestamps: true });
+// const blockedSchema = new Schema({
+//   user: { type: Schema.Types.ObjectId, ref: 'User' },
+// }, { timestamps: true });
 
-const clubsJoinedSchema = new Schema({
-  clubId: { type: Schema.Types.ObjectId, ref: 'Club' },
-}, { timestamps: true });
+// const clubsJoinedSchema = new Schema({
+//   clubId: { type: Schema.Types.ObjectId, ref: 'Club' },
+// }, { timestamps: true });
 
 const userSchema = new Schema({
   name: { type: String, required: true },
-  nickname: { type: String },
   email: {
     type: String,
     unique: true,
@@ -36,12 +35,7 @@ const userSchema = new Schema({
     minlength: 3,
     required: true
   },
-  profilePhotoUrl: {type: String},
-  requests: [friendRequestSchema],
-  friends: [friendsListSchema],
-  blocked: [blockedSchema],
-  clubs: [clubsJoinedSchema],
-  profilePublicOrPrivate: {type: Boolean, default: false},
+  profileId: { type: Schema.Types.ObjectId, ref: 'Profile' },
 }, {
   timestamps: true,
   toJSON: {

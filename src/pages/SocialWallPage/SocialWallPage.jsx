@@ -73,7 +73,7 @@ export default function SocialWallPage({ user, setUser }) {
     // }, []);
     async function addFriendRequest(userId, profileId){
         const profiles = await profilesAPI.friendRequest(userId, profileId);
-        console.log(profiles);
+        console.log(profiles, "profiles here");
         setUser(profiles[0]);
         setProfile(profiles[1])
     }

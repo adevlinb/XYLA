@@ -1,5 +1,6 @@
 // const { Profiler } = require('react');
 const User = require('../../models/user');
+const Profile = require('../../models/profile');
 
 module.exports = {
     getAllProfiles,
@@ -39,20 +40,23 @@ async function updateUserSettings(req, res) {
     }
 }
 async function addFriendRequest(req, res) {
-    console.log("i made it here")
+    console.log("i made it here", req.params.userId, "profile: ", req.params.profileId)
     try {
         const user = await User.findById(req.params.userId);
         const profile = await User.findById(req.params.profileId);
-        // if (user.requests.includes(req.params.profileId) || profile.requests.includes(req.params.profileId)) return res.json([user, profile])
-        console.log("im here a little later")
-        user.requests.push({ user: req.params.profileId });
+        if (user.requests.includes(req.params.profileId) || profile.requests.includes(req.params.profileId)) return res.json([user, profile])
+        user.requests = [];
+        profile.requests = [];
+        user.requests.push(req.params.profileId);
         user.save();
-        profile.requests.push({ user: req.params.userId });
+        profile.requests.push(req.params.userId);
         profile.save()
-        console.log("now im here");
-        const updatedUser = await User.findById(req.params.userId).populate("requests.user").populate("friends.user").populate("blocked.user").populate("clubs.club").exec();
-        const updatedProfile = await User.findById(req.params.profileId).populate("requests.user").populate("friends.user").populate("blocked.user").populate("clubs.club").exec();
-        console.log("im here and testing", updatedUser, updatedProfile);
+        console.log("now im here", user, user.requests, profile, profile.requests);
+        // const updatedUser = await User.findById(req.params.userId).populate("requests.user").exec();
+        // const updatedUser = await User.findById(req.params.userId).populate("requests.User").populate("friends.User").populate("blocked.User").populate("clubs.Club").exec();
+        // const updatedProfile = await User.findById(req.params.profileId).populate("requests.user").exec();
+        // const updatedProfile = await User.findById(req.params.profileId).populate("requests.User").populate("friends.User").populate("blocked.User").populate("clubs.Club").exec();
+        console.log("im here and testing", updatedUser.requests, updatedProfile.requests);
         return res.json([updatedUser, updatedProfile]);
     } catch (err) {
         res.status(400).json(err);
