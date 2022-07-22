@@ -4,22 +4,6 @@ const Schema = mongoose.Schema;
 
 const SALT_ROUNDS = 6;
 
-// const friendRequestSchema = new Schema({
-//   user: { type: Schema.Types.ObjectId, ref: 'User' },
-// }, { timestamps: true });
-
-// const friendsListSchema = new Schema({
-//   user: { type: Schema.Types.ObjectId, ref: 'User' },
-// }, { timestamps: true });
-
-// const blockedSchema = new Schema({
-//   user: { type: Schema.Types.ObjectId, ref: 'User' },
-// }, { timestamps: true });
-
-// const clubsJoinedSchema = new Schema({
-//   clubId: { type: Schema.Types.ObjectId, ref: 'Club' },
-// }, { timestamps: true });
-
 const userSchema = new Schema({
   name: { type: String, required: true },
   email: {
@@ -35,7 +19,6 @@ const userSchema = new Schema({
     minlength: 3,
     required: true
   },
-  profileId: { type: Schema.Types.ObjectId, ref: 'Profile' },
 }, {
   timestamps: true,
   toJSON: {

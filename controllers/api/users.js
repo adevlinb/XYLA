@@ -3,7 +3,7 @@ const bcrypt = require('bcrypt');
 const User = require('../../models/user');
 const meBook = require('../../models/meBook');
 const Bookshelf = require('../../models/bookshelf');
-const profile = require('../../models/profile');
+const Profile = require('../../models/profile');
 
 module.exports = {
   create,
@@ -14,18 +14,14 @@ module.exports = {
 
 async function create(req, res) {
   try {
-    // Add the user to the db
+    console.log("create", req.body)
+
     const user = await User.create(req.body);
-    //create their bookshelf
-    const bookshelf = await new Bookshelf ({userId: user._id});
-    const newMeBook = await new meBook({ userId: user._id });
-    const profile = await new profile({ userId: user._id });
-    newMeBook.save();
-    bookshelf.meBook = newMeBook._id
-    bookshelf.save();
-    profile.save();
-    user.profileId = profile._id
-    user.save();
+    const newMeBook = await meBook.create({ userId: user._id });
+    const bookshelf = await Bookshelf.create({userId: user._id, meBook: newMeBook._id});
+    const profile = await Profile.create({ userId: user._id, name: user.name });
+
+    console.log(user, profile, "signup");
     // token will be a string
     const token = createJWT(user);
     // Yes, we can serialize a string
@@ -40,7 +36,7 @@ async function login(req, res) {
   try {
     // Find the user by their email address
     const user = await User.findOne({ email: req.body.email });
-    console.log(user.profileId, "login: test profileId")
+
     if (!user) throw new Error();
     // Check if the password matches
     const match = await bcrypt.compare(req.body.password, user.password);

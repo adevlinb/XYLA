@@ -11,14 +11,14 @@ import NavBar from '../../components/NavBar/NavBar';
 import { getUser } from '../../utilities/users-service';
 import * as booksAPI from '../../utilities/books-api';
 // import * as usersAPI from '../../utilities/users-api';
-import { io } from "socket.io-client";
-const socket = io.connect();
-socket.on('connect', () => {
-  console.log('connected to server');
-});
-socket.on("connect_error", (err) => {
-  console.log(`connect_error due to ${err.message}`);
-});
+// import { io } from "socket.io-client";
+// const socket = io.connect();
+// socket.on('connect', () => {
+//   console.log('connected to server');
+// });
+// socket.on("connect_error", (err) => {
+//   console.log(`connect_error due to ${err.message}`);
+// });
 
 
 
@@ -27,30 +27,30 @@ socket.on("connect_error", (err) => {
 export default function App() {
   const [user, setUser] = useState(getUser());
   const [library, setLibrary] = useState([]);
-  const [userLocation, setUserLocation] = useState({
-    currLocation: "",
-    currChat: "",
-  });
+  // const [userLocation, setUserLocation] = useState({
+  //   currLocation: "",
+  //   currChat: "",
+  // });
   
 
   let navigate = useNavigate();
-  let location = useLocation();
+  // let location = useLocation();
 
-  useEffect(() => {
-    console.log(location);
-    setUserLocation({
-      currLocation: location.pathName,
-      currChat: "",
-    });
-  }, [location]);
+  // useEffect(() => {
+  //   console.log(location);
+  //   setUserLocation({
+  //     currLocation: location.pathName,
+  //     currChat: "",
+  //   });
+  // }, [location]);
 
-  socket.on("disconnect", () => {
-    setUserLocation({
-      currLocation: "",
-      currChat: "",
-    });
-    console.log(userLocation, "disconnect")
-  });
+  // socket.on("disconnect", () => {
+  //   setUserLocation({
+  //     currLocation: "",
+  //     currChat: "",
+  //   });
+  //   console.log(userLocation, "disconnect")
+  // });
 
   async function addBook(newBook) {
     const books = await booksAPI.addNewBook(newBook);
