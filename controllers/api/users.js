@@ -15,7 +15,6 @@ module.exports = {
 async function create(req, res) {
   try {
     console.log("create", req.body)
-
     const user = await User.create(req.body);
     const newMeBook = await meBook.create({ userId: user._id });
     const bookshelf = await Bookshelf.create({userId: user._id, meBook: newMeBook._id});
@@ -27,6 +26,7 @@ async function create(req, res) {
     // Yes, we can serialize a string
     res.json(token);
   } catch (err) {
+    console.log(err)
     // Probably a dup email
     res.status(400).json(err);
   }
